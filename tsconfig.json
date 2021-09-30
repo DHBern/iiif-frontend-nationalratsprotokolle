@@ -22,9 +22,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "suppressImplicitAnyIndexErrors": true
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "untyped.d.ts"
   ]
 }

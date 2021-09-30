@@ -704,7 +704,8 @@ class Manifest {
                     id: manifestoManifest.id,
                     label: manifestoManifest.getLabel(),
                     thumbnail: this.getThumbnail(manifestoManifest),
-                    type: manifestoManifest.getProperty('type')
+                    type: manifestoManifest.getProperty('type'),
+                    ...((this.isV3(manifestoData) && manifestoManifest.getProperty('navDate')) && { navDate: manifestoManifest.getProperty('navDate') })
                 });
             }
         }
@@ -726,7 +727,8 @@ class Manifest {
                     id: manifestoManifest.id,
                     label: manifestoManifest.getLabel(),
                     thumbnail: this.getThumbnail(manifestoManifest),
-                    type: manifestoManifest.getProperty('type').replace('sc:', '')
+                    type: manifestoManifest.getProperty('type').replace('sc:', ''),
+                    ...((this.isV3(manifestoData) && manifestoManifest.getProperty('navDate')) && { navDate: manifestoManifest.getProperty('navDate') })
                 });
             }
         }

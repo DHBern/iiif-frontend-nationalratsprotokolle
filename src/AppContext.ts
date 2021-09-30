@@ -10,7 +10,7 @@ interface IContext {
     page: number;
     setPage: (currentPage: number) => void;
     currentManifest: IManifestData | undefined;
-    setCurrentManifest: (id?: string) => void;
+    setCurrentManifest: (id?: string, history?: boolean) => Promise<unknown> | undefined;
     currentFolder: IManifestData | undefined;
     setCurrentFolder: (manifest: IManifestData | undefined) => void;
     authDate: number;
@@ -32,7 +32,7 @@ export const AppContext = React.createContext<IContext>({
     page: 0,
     setPage: () => {},
     currentManifest: undefined,
-    setCurrentManifest: () => {},
+    setCurrentManifest: () => (undefined),
     currentFolder: undefined,
     setCurrentFolder: () => {},
     authDate: 0,

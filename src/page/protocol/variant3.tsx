@@ -1,19 +1,28 @@
 import * as React from 'react';
-import Viewer from "../viewer/Viewer";
-import Splitter from "../splitter/Splitter";
-import FolderView from "../folder/FolderView";
-import IManifestData from "../interface/IManifestData";
-import {isSingleManifest} from "../lib/ManifestHelpers";
-import {useContext} from "react";
-import {AppContext} from "../AppContext";
+import { useContext, useState, useEffect } from "react";
+import Main from "../../main/main";
+import Viewer from "../../viewer/Viewer";
+import Splitter from "../../splitter/Splitter";
+import FolderView from "../../folder/FolderView";
+import IManifestData from "../../interface/IManifestData";
+import { isSingleManifest } from "../../lib/ManifestHelpers";
+import {AppContext} from "../../AppContext";
 
 
-export default function Content3() {
+export default function PageProtocol3() {
+    const { currentManifest, setCurrentManifest } = useContext(AppContext);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const {currentManifest} = useContext(AppContext);
+    useEffect(() => {
+        setIsLoading(true);
+        setCurrentManifest('', false)?.then(() => {
+            setIsLoading(false);
+        });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    if (!currentManifest) {
-        return <></>;
+    if (isLoading || !currentManifest) {
+        return <Main />;
     }
 
     if (isSingleManifest(currentManifest)) {

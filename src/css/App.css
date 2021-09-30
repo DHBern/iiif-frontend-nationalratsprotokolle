@@ -4,8 +4,6 @@ html, body, #root
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    overflow: hidden;
 }
 
 * {
@@ -66,4 +64,25 @@ h3 {
 /* wired firefox workaround */
 .aiiif-content > .aiiif-b {
     height: 1px;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.nopadding {
+    padding: 0!important;
+}
+
+.nomargin {
+    margin: 0!important;
+}
+
+.nomarginbottom {
+    margin-bottom: 0!important;
+}
+
+.noborder {
+    border: 0!important;
 }

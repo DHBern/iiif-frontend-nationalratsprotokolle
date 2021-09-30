@@ -11,7 +11,7 @@ interface IProps {
     item: IManifestReference;
     selected: IManifestData;
     authDate: number;
-    setCurrentManifest: (id?: string) => void;
+    setCurrentManifest: (id?: string, history?: boolean) => Promise<unknown> | undefined;
 }
 
 export default  function Item(props: IProps) {

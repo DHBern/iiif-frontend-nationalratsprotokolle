@@ -1,4 +1,5 @@
 .aiiif-viewer {
+    position: relative;
     background-color: #404346;
     overflow: hidden;
     width: 100%;

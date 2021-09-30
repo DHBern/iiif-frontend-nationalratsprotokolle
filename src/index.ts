@@ -11,7 +11,7 @@ import FolderView from './folder/FolderView';
 import Item from './folder/Item';
 import IIIFIcon from './icons/IIIFIcon';
 import Download from './infoBar/tabs/Download';
-import Metadata from './infoBar/tabs/Metadata';
+import Metadata from './infoBar/tabs/metadata';
 import Pages from './infoBar/tabs/Pages';
 import Search from './infoBar/tabs/Search';
 import Share from './infoBar/tabs/Share';
@@ -24,9 +24,6 @@ import * as IManifestData from './interface/IManifestData';
 import * as IManifestDataThumbnail from './interface/IManifestDataThumbnail';
 import * as ISequence from './interface/ISequence';
 import * as ITranscription from './interface/ITranscription';
-import Content1 from './layout/Content1';
-import Content2 from './layout/Content2';
-import Content3 from './layout/Content3';
 import Main from './layout/Main';
 import Cache from './lib/Cache';
 import Config from './lib/Config';
@@ -86,9 +83,6 @@ export {
     IManifestDataThumbnail,
     ISequence,
     ITranscription,
-    Content1,
-    Content2,
-    Content3,
     Main,
     Cache,
     Config,

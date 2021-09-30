@@ -1,6 +1,9 @@
 import React, {useState, useEffect} from 'react';
+import {
+    BrowserRouter as Router,
+} from "react-router-dom";
 import ManifestHistory from './lib/ManifestHistory';
-import {I18nextProvider} from 'react-i18next';
+import {I18nextProvider, Translation} from 'react-i18next';
 import i18n  from 'i18next';
 import IConfigParameter from './interface/IConfigParameter';
 import Config from './lib/Config';
@@ -45,7 +48,7 @@ export default function App(props: IProps) {
     const [searchResult, setSearchResult] = useState<HitType[]>([]);
     const [alert, setAlert] = useState<IAlertContent | undefined>(undefined);
 
-    const setCurrentManifest0 = (id?: string) => {
+    const setCurrentManifest0 = (id?: string, history: boolean = true) => {
 
         if (!id) {
             id = PresentationApi.getIdFromCurrentUrl();
@@ -55,46 +58,55 @@ export default function App(props: IProps) {
         }
         const url = id;
 
-        PresentationApi.get(url).then((currentManifest: IManifestData) =>  {
-            ManifestHistory.pageChanged(
-                currentManifest.request ?? currentManifest.id,
-                getLocalized(currentManifest.label)
-            );
+        return new Promise((resolve, reject) => (
+            PresentationApi.get(url).then((currentManifest: IManifestData) =>  {
 
-            if (currentManifest.type === 'Collection') {
-                const currentFolder = currentManifest;
-                setPage(0);
-                setCurrentManifest(currentManifest);
-                setCurrentFolder(currentFolder);
-                setCurrentAnnotation(undefined);
-                setSearchResult([]);
-                if (!currentManifest.restricted) {
-                    TreeBuilder.buildCache(currentFolder.id, () => {
-                        setTreeDate(Date.now());
-                    });
+                if (history) {
+                    ManifestHistory.pageChanged(
+                        currentManifest.request ?? currentManifest.id,
+                        getLocalized(currentManifest.label)
+                    );
                 }
-            } else if (!isSingleManifest(currentManifest)) {
-                PresentationApi.get(currentManifest.parentId).then((currentFolder: IManifestData) => {
+
+                if (currentManifest.type === 'Collection') {
+                    const currentFolder = currentManifest;
                     setPage(0);
                     setCurrentManifest(currentManifest);
                     setCurrentFolder(currentFolder);
                     setCurrentAnnotation(undefined);
                     setSearchResult([]);
-                    TreeBuilder.buildCache(currentFolder.id, () => {
-                        setTreeDate(Date.now());
-                    });
-                }).catch(r => setAlert(r));
-            } else {
-                const currentFolder = new ManifestData();
-                currentFolder.type = 'Manifest';
-                setCurrentManifest(currentManifest);
-                setCurrentFolder(currentFolder);
-            }
+                    if (!currentManifest.restricted) {
+                        TreeBuilder.buildCache(currentFolder.id, () => {
+                            setTreeDate(Date.now());
+                        });
+                    }
+                    resolve(currentManifest);
+                } else if (!isSingleManifest(currentManifest)) {
+                    PresentationApi.get(currentManifest.parentId).then((currentFolder: IManifestData) => {
+                        setPage(0);
+                        setCurrentManifest(currentManifest);
+                        setCurrentFolder(currentFolder);
+                        setCurrentAnnotation(undefined);
+                        setSearchResult([]);
+                        TreeBuilder.buildCache(currentFolder.id, () => {
+                            setTreeDate(Date.now());
+                        });
+                        resolve(currentManifest);
+                    }).catch(r => setAlert(r));
+                } else {
+                    const currentFolder = new ManifestData();
+                    currentFolder.type = 'Manifest';
+                    setCurrentManifest(currentManifest);
+                    setCurrentFolder(currentFolder);
+                    resolve(currentManifest);
+                }
 
-            document.title = getLocalized(currentManifest.label);
-        }).catch(r => {
-            setAlert(r);
-        });
+                document.title = getLocalized(currentManifest.label);
+            }).catch(r => {
+                setAlert(r);
+                reject(r);
+            })
+        ));
     }
 
     const setTab0 = (t: string) => {
@@ -156,7 +168,13 @@ export default function App(props: IProps) {
 
     return <AppContext.Provider value={appContextValue}>
         <I18nextProvider i18n={i18n}>
-            <Main />
+        <Router>
+            <Translation>
+                {() => (
+                    <Main />
+                )}
+            </Translation>
+        </Router>
         </I18nextProvider>
     </AppContext.Provider>;
 }

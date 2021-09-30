@@ -1,19 +1,19 @@
 import * as React from 'react';
-import Viewer from "../viewer/Viewer";
-import Splitter from "../splitter/Splitter";
-import {isSingleManifest, isSingleRoot} from "../lib/ManifestHelpers";
-import Content3 from "./Content3";
-import InfoBar from "../infoBar/InfoBar";
+import Viewer from "../../viewer/Viewer";
+import Splitter from "../../splitter/Splitter";
+import {isSingleManifest, isSingleRoot} from "../../lib/ManifestHelpers";
+import PageProtocol3 from "./variant3";
+import InfoBar from "../../infoBar/InfoBar";
 import {useContext} from "react";
-import {AppContext} from "../AppContext";
-import TabButtons from "../infoBar/TabButtons";
-import Config from "../lib/Config";
+import {AppContext} from "../../AppContext";
+import TabButtons from "../../infoBar/TabButtons";
+import Config from "../../lib/Config";
 
 declare let global: {
     config: Config;
 };
 
-export default function Content2() {
+export default function PageProtocol2() {
 
     const {tab, currentManifest, currentFolder} = useContext(AppContext);
 
@@ -26,12 +26,12 @@ export default function Content2() {
     }
 
     if (global.config.getHideUnbranchedTrees() && isSingleRoot(currentFolder)) {
-        return <Content3/>;
+        return <PageProtocol3/>;
     }
 
     if (tab === '') {
         return <>
-            <Content3 />
+            <PageProtocol3 />
             <TabButtons />
         </>
     }
@@ -39,7 +39,7 @@ export default function Content2() {
     return <>
             <Splitter
             id="content0"
-            a={<Content3/>}
+            a={<PageProtocol3/>}
             b={<InfoBar key={currentManifest.id} />}
             aSize={80}
             direction="vertical"

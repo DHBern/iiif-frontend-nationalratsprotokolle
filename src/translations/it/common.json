@@ -22,5 +22,22 @@
   "toggleFullScreen": "Schermo intero",
   "zoomIn": "Ingrandire",
   "zoomOut": "Strizzacervelli",
-  "zoomReset": "Resetta la vista"
+  "zoomReset": "Resetta la vista",
+
+  "headerProjectTitle": "[IT] Bundesratsprotokolle IIIF",
+  "footerTitle": "Archivio federale svizzero BAR",
+  "footerTermsAndConditionsLabel": "Informazioni legali",
+  "footerTermsAndConditionsLink": "https://www.admin.ch/gov/it/pagina-iniziale/basi-legali.html",
+  "footerContactLabel": "Contatto",
+  "footerContactLink": "mailto:info@4eyes.ch",
+
+  "navItemOverview": "[IT] Protokolle",
+  "navItemSearch": "[IT] Suche",
+
+  "pageOverviewH1": "[IT] Bundesratsprotokolle",
+  "pageOverviewManifestUndefined": "[IT] Es wurde kein Manifest konfiguriert.",
+
+  "timelineResultsDate": "[IT] Datum",
+  "timelineResultsDateFormat": "DD.MM.YYYY",
+  "timelineResultsTitle": "[IT] Titel"
 }

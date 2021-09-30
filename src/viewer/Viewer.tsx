@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactOpenSeadragon from './image/ReactOpenSeadragon';
+import ReactMirador from './image/ReactMirador';
 import MediaPlayer from './media/MediaPlayer';
 import PlainTextViewer from './plainText/PlainTextViewer';
 import './viewer.css';
@@ -10,17 +10,14 @@ import {AppContext} from "../AppContext";
 
 export default function Viewer() {
 
-    const {currentManifest, authDate} = useContext(AppContext);
+    const {currentManifest} = useContext(AppContext);
     if (!currentManifest) {
         return <></>;
     }
 
     if (currentManifest.images.length > 0) {
         return  <div className="aiiif-viewer">
-            <ReactOpenSeadragon
-                images={currentManifest.images}
-                key={currentManifest.id + authDate.toString()}
-            />
+           <ReactMirador manifest={currentManifest} key={currentManifest.id} />
         </div>;
     }
 

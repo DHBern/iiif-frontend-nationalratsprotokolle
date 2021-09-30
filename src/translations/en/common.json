@@ -22,5 +22,22 @@
   "toggleFullScreen": "Toggle full screen",
   "zoomIn": "Zoom in",
   "zoomOut": "Zoom out",
-  "zoomReset": "Reset zoom"
+  "zoomReset": "Reset zoom",
+
+  "headerProjectTitle": "[EN] Bundesratsprotokolle IIIF",
+  "footerTitle": "Swiss Federal Archives SFA",
+  "footerTermsAndConditionsLabel": "Legal framework",
+  "footerTermsAndConditionsLink": "https://www.admin.ch/gov/en/start/terms-and-conditions.html",
+  "footerContactLabel": "Contact",
+  "footerContactLink": "mailto:info@4eyes.ch",
+
+  "navItemOverview": "[EN] Protokolle",
+  "navItemSearch": "[EN] Suche",
+
+  "pageOverviewH1": "[EN] Bundesratsprotokolle",
+  "pageOverviewManifestUndefined": "[EN] Es wurde kein Manifest konfiguriert.",
+
+  "timelineResultsDate": "[EN] Datum",
+  "timelineResultsDateFormat": "DD.MM.YYYY",
+  "timelineResultsTitle": "[EN] Titel"
 }

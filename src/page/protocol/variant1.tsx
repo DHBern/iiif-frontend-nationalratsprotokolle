@@ -1,20 +1,20 @@
 import * as React from 'react';
-import Splitter from "../splitter/Splitter";
-import Content2 from "./Content2";
+import Splitter from "../../splitter/Splitter";
+import PageProtocol2 from "./variant2";
 import {useContext} from "react";
-import {AppContext} from "../AppContext";
-import {isSingleManifest, isSingleRoot} from "../lib/ManifestHelpers";
-import TabButtons from "../infoBar/TabButtons";
-import InfoBar from "../infoBar/InfoBar";
-import TreeView from "../treeView/TreeView";
-import Content3 from "./Content3";
-import Config from "../lib/Config";
+import {AppContext} from "../../AppContext";
+import {isSingleManifest, isSingleRoot} from "../../lib/ManifestHelpers";
+import TabButtons from "../../infoBar/TabButtons";
+import InfoBar from "../../infoBar/InfoBar";
+import TreeView from "../../treeView/TreeView";
+import PageProtocol3 from "./variant3";
+import Config from "../../lib/Config";
 
 declare let global: {
     config: Config;
 };
 
-export default function Content1() {
+export default function PageProtocol1() {
 
     const {currentManifest, tab, currentFolder} = useContext(AppContext);
 
@@ -30,7 +30,7 @@ export default function Content1() {
             return <>
                 <div className="aiiif-infobar">
                     <TabButtons />
-                    <Content3 key={currentManifest.id}/>
+                    <PageProtocol3 key={currentManifest.id}/>
                 </div>
             </>;
         }
@@ -43,7 +43,7 @@ export default function Content1() {
                     <InfoBar />
                 </div>
             </div>}
-            b={<Content2 key={currentManifest.id}/>}
+            b={<PageProtocol2 key={currentManifest.id}/>}
             direction="vertical"
         />;
     }
@@ -51,7 +51,7 @@ export default function Content1() {
     return <Splitter
         id="main"
         a={<div className="aiiif-navigation"><TreeView /></div>}
-        b={<Content2 key={currentManifest.id}/>}
+        b={<PageProtocol2 key={currentManifest.id}/>}
         direction="vertical"
     />;
 }

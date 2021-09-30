@@ -26,6 +26,10 @@
     text-decoration: none;
 }
 
+.aiiif-icon-button p {
+    margin: 0;
+}
+
 .aiiif-icon-button  > svg {
     margin-right: 2px;
 }
