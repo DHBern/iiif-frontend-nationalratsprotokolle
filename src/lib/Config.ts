@@ -25,7 +25,7 @@ class Config {
 
     private readonly manifest: string;
 
-    private readonly fallbackLanguage: string = 'en';
+    private readonly fallbackLanguage: string = 'de';
 
     private readonly allowedOrigins: string | string[] = '*';
 
@@ -34,7 +34,6 @@ class Config {
         de: 'Deutsch',
         fr: 'Français',
         it: 'Italiano',
-        nl: 'Nederlands'
     };
 
     constructor(config: IConfigParameter) {
