@@ -9,7 +9,7 @@ import FederationHeader from '../federation/header';
 import FederationFooter from '../federation/footer';
 import PageOverview from "../page/overview";
 import PageSearch from "../page/search";
-import PageProtocolVariant3 from "../page/protocol/variant3";
+import PageProtocolVariant3 from "../page/protocol/protocol";
 import PageNotFound from "../page/notfound";
 
 require('../topBar/topbar.css');
