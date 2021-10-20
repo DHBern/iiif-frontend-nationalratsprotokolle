@@ -40,9 +40,11 @@ export default function App(props: IProps) {
     const [treeDate, setTreeDate] = useState<number>(Date.now());
     const [authDate, setAuthDate] = useState<number>(0);
     let initialQ = PresentationApi.getGetParameter('q') ?? '';
+    let initialCv = PresentationApi.getGetParameter('cv') ?? '';
     let initialTab = initialQ !== '' ? 'search' : PresentationApi.getGetParameter('tab') ?? 'metadata';
     const [tab, setTab] = useState<string>(initialTab);
     const [q, setQ] = useState<string>(initialQ);
+    const [cv, setCv] = useState<string>(initialCv);
     const [page, setPage] = useState<number>(0);
     const [currentAnnotation, setCurrentAnnotation] = useState<AnnotationType | undefined>(undefined);
     const [searchResult, setSearchResult] = useState<HitType[]>([]);
@@ -132,6 +134,18 @@ export default function App(props: IProps) {
         }
     }
 
+    const setCv0 = (cv: string) => {
+        console.log('setcv', cv);
+        if (currentManifest) {
+            ManifestHistory.pageChanged(
+                currentManifest.request ?? currentManifest.id,
+                getLocalized(currentManifest.label),
+                cv
+            );
+            setCv(cv);
+        }
+    }
+
     useEffect(() => {
         const tokenReceived = () => {
             setAuthDate(Date.now());
@@ -164,7 +178,7 @@ export default function App(props: IProps) {
 
     const appContextValue= {treeDate, tab, setTab: setTab0, page, setPage, currentManifest, setCurrentManifest:
         setCurrentManifest0, currentFolder, setCurrentFolder, authDate, setAuthDate, currentAnnotation,
-        setCurrentAnnotation, searchResult, setSearchResult, q, setQ: setQ0, alert, setAlert};
+        setCurrentAnnotation, searchResult, setSearchResult, q, setQ: setQ0, cv, setCv: setCv0, alert, setAlert};
 
     return <AppContext.Provider value={appContextValue}>
         <I18nextProvider i18n={i18n}>
