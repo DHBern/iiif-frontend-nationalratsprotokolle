@@ -27,7 +27,7 @@ class LanguageSwitcher extends React.Component<any, IState> {
         const languages: object = global.config.getTranslations();
 
         return (
-            <nav className="nav-lang">
+            <nav className="nav-lang noborder">
                 <ul>
                     {Object.entries(languages).map(([langKey, langLabel]) => {
                         const isActive = i18n.language === langKey;

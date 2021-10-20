@@ -6,6 +6,7 @@
     display: flex;
     align-items: stretch;
     max-height: 100vh;
+    flex: 1;
 }
 
 .aiiif-plain-text {
