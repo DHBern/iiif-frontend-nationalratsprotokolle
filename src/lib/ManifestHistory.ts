@@ -4,7 +4,7 @@ class ManifestHistory {
 
     static previousIds: string[] = [];
 
-    static pageChanged(id: string, label: string, q?: string, tab?: string) {
+    static pageChanged(id: string, label: string, q?: string, tab?: string, cv?: string) {
 
         let previousId = '';
         if (this.previousIds.length > 0) {
@@ -24,6 +24,11 @@ class ManifestHistory {
         tab = tab ?? PresentationApi.getGetParameter('tab');
         if (tab) {
             url += '&tab=' + tab;
+        }
+
+        cv = cv ?? PresentationApi.getGetParameter('cv');
+        if (cv) {
+            url += '&cv=' + cv;
         }
 
         window.history.pushState({}, label, url);
