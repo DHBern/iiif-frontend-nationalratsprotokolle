@@ -19,6 +19,7 @@ import {AppContext} from "./AppContext";
 import {AnnotationType, HitType} from "./fetch/SearchApi";
 import Main from "./layout/Main";
 import {IAlertContent} from "./Alert";
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
 interface IProps {
     config: IConfigParameter;
@@ -29,6 +30,14 @@ declare let global: {
 };
 
 InitI18n();
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: '#069'
+        },
+    }
+});
 
 export default function App(props: IProps) {
 
@@ -171,7 +180,9 @@ export default function App(props: IProps) {
         <Router>
             <Translation>
                 {() => (
-                    <Main />
+                    <MuiThemeProvider theme={theme}>
+                        <Main />
+                    </MuiThemeProvider>
                 )}
             </Translation>
         </Router>

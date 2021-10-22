@@ -29,12 +29,15 @@ class Config {
 
     private readonly allowedOrigins: string | string[] = '*';
 
-    private readonly translations: {[key: string]: string} = {
+    private readonly translations: { [key: string]: string } = {
         en: 'English',
         de: 'Deutsch',
         fr: 'Français',
         it: 'Italiano',
     };
+
+    private readonly overviewYearSliderDefaultRange: number[];
+
 
     constructor(config: IConfigParameter) {
         this.id = config.id;
@@ -47,6 +50,7 @@ class Config {
         this.lazyTree = config.lazyTree ? config.lazyTree : false;
         this.hideUnbranchedTrees = config.hideUnbranchedTrees ? config.hideUnbranchedTrees : false;
         this.externalSearchUrl = config.externalSearchUrl;
+        this.overviewYearSliderDefaultRange = config.overviewYearSliderDefaultRange ? config.overviewYearSliderDefaultRange : [1878, 1879];
     }
 
     getSplitterWidth(folded: boolean) {
@@ -139,6 +143,10 @@ class Config {
 
     getID() {
         return this.id;
+    }
+
+    getOverviewYearSliderDefaultRange() {
+        return this.overviewYearSliderDefaultRange;
     }
 }
 
