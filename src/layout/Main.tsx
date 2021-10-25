@@ -8,7 +8,6 @@ import Login from "../Login";
 import FederationHeader from '../federation/header';
 import FederationFooter from '../federation/footer';
 import PageOverview from "../page/overview";
-import PageSearch from "../page/search";
 import PageProtocolVariant3 from "../page/protocol/protocol";
 import PageNotFound from "../page/notfound";
 
@@ -22,9 +21,6 @@ export default function Main() {
         <Switch>
             <Route exact path="/">
                 <PageOverview />
-            </Route>
-            <Route path="/search">
-                <PageSearch />
             </Route>
             <Route path="/protocol">
                 <PageProtocolVariant3 />

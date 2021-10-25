@@ -17,7 +17,7 @@ export default function Viewer() {
 
     if (currentManifest.images.length > 0) {
         return  <div className="aiiif-viewer">
-           <ReactMirador manifest={currentManifest} key={currentManifest.id} />
+           <ReactMirador />
         </div>;
     }
 
