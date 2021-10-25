@@ -1,7 +1,6 @@
 import React from 'react';
 import moment from 'moment';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import { getLocalized } from "../lib/ManifestHelpers";
 import { IManifestReference } from "../interface/IManifestData";
@@ -50,7 +49,7 @@ const TimelineResults = function (props: IProps) {
                                                     <tr key={manifest.id}>
                                                         <td>{date.format(t('timelineResultsDateFormat'))}</td>
                                                         <td>
-                                                            <Link to={{ pathname: '/protocol', search: `?manifest=${manifest.id}` }}>{getLocalized(manifest.label)}</Link>
+                                                            <a href={`/protocol?manifest=${manifest.id}`}>{getLocalized(manifest.label)}</a>
                                                         </td>
                                                     </tr>
                                                 )

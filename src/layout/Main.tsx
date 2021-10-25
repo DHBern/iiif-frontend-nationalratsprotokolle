@@ -22,9 +22,11 @@ export default function Main() {
             <Route exact path="/">
                 <PageOverview />
             </Route>
-            <Route path="/protocol">
-                <PageProtocolVariant3 />
-            </Route>
+            <Route path="/protocol"
+                render={props => (
+                    <PageProtocolVariant3 key={props.location.key} />
+                  )}
+            />
             <Route path="*">
                 <PageNotFound />
             </Route>
