@@ -30,10 +30,10 @@ class Config {
     private readonly allowedOrigins: string | string[] = '*';
 
     private readonly translations: { [key: string]: string } = {
-        en: 'English',
         de: 'Deutsch',
         fr: 'Français',
         it: 'Italiano',
+        en: 'English',
     };
 
     private readonly overviewYearSliderDefaultRange: number[];
@@ -50,7 +50,7 @@ class Config {
         this.lazyTree = config.lazyTree ? config.lazyTree : false;
         this.hideUnbranchedTrees = config.hideUnbranchedTrees ? config.hideUnbranchedTrees : false;
         this.externalSearchUrl = config.externalSearchUrl;
-        this.overviewYearSliderDefaultRange = config.overviewYearSliderDefaultRange ? config.overviewYearSliderDefaultRange : [1878, 1879];
+        this.overviewYearSliderDefaultRange = config.overviewYearSliderDefaultRange ? config.overviewYearSliderDefaultRange : [1874, 1900];
     }
 
     getSplitterWidth(folded: boolean) {

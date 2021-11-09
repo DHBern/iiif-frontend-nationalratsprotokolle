@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Translation } from 'react-i18next';
+import Cookie from 'universal-cookie';
+import PresentationApi from "../fetch/PresentationApi";
 import IManifestData from "../interface/IManifestData";
+import ITimelineData from "../interface/ITimelineData";
 import RangeSlider from 'rangeSlider/rangeSlider';
 import TimelineCalendar from './calendar';
 import TimelineResults from './results';
 import Config from '../lib/Config';
-import { getGroupedManifestsByDate, filterManifestsByDateRange } from './util';
+import { buildManifest, fetchYearsByRange, fetchMonth, filterManifestsByDateRange } from './util';
+
 
 declare let global: {
     config: Config;
@@ -13,82 +18,120 @@ declare let global: {
 
 require('./timeline.css');
 
-interface LooseObject {
-    [key: string]: any
-}
+const Timeline = function () {
+    const url = process.env.REACT_APP_DEFAULT_COLLECTION_MANIFEST;
+    const location = useLocation();
+    const cookie = new Cookie();
+    const defaultRange = cookie.get('timelineRange') || global.config.getOverviewYearSliderDefaultRange();
+    const [manifest, setManifest] = useState<ITimelineData | undefined>(undefined);
+    const [filterRange, setFilterRange] = useState<number[]>(defaultRange);
+    const [selectedYear, setSelectedYear] = useState<string | undefined>(undefined);
+    const [selectedMonth, setSelectedMonth] = useState<string | undefined>(undefined);
+    const [yearsArray, setYearsArray] = useState<string[] | undefined>(undefined);
 
-interface IProps {
-    manifest: IManifestData | undefined,
-    selectedYear: string | undefined,
-    selectedMonth: string | undefined,
-}
+    const filteredManifests: ITimelineData|undefined = filterManifestsByDateRange(manifest, filterRange[0], filterRange[1]);
 
-const Timeline = function (props: IProps) {
-    const { manifest, selectedYear, selectedMonth } = props;
-    const [filterRange, setFilterRange] = useState<number[]>(global.config.getOverviewYearSliderDefaultRange());
-    const [groupedManifests, setGroupedManifests] = useState<LooseObject>({});
-    const [filteredManifests, setFilteredManifests] = useState<LooseObject>({});
-    const [minYear, setMinYear] = useState<number>(0);
-    const [maxYear, setMaxYear] = useState<number>(0);
-
+    // Fetching manifest...
     useEffect(() => {
-        let newRange: number[];
-        let grpManifests: LooseObject = {};
-        let minY: number;
-        let maxY: number;
-        let yearsArray: string[];
-
-        if (manifest?.manifests) {
-            grpManifests = getGroupedManifestsByDate(manifest.manifests);
-            yearsArray = Object.keys(grpManifests);
-            minY = parseInt(yearsArray[0]);
-            maxY = parseInt(yearsArray[yearsArray.length - 1]);
-            newRange = [
-                Math.max(minY, filterRange[0]), Math.min(maxY, filterRange[1])
-            ];
-            if (newRange !== filterRange) {
-                setFilterRange(newRange);
-            }
-            setMinYear(minY);
-            setMaxYear(maxY);
-            setGroupedManifests(grpManifests);
+        if (url) {
+            PresentationApi.get(url).then(async (fetchedManifest: IManifestData) => {
+                const grpManifest = buildManifest(fetchedManifest);
+                setYearsArray(Object.keys(grpManifest));
+                setManifest(grpManifest);
+            })
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [manifest]);
+    }, [url]);
 
+
+    // (re)defining filterRange by respecting yearsArray...
     useEffect(() => {
-        setFilteredManifests(filterManifestsByDateRange(groupedManifests, filterRange[0], filterRange[1]));
-    }, [groupedManifests, filterRange]);
+        if (yearsArray && filterRange) {
+            const minY = parseInt(yearsArray[0]);
+            const maxY = parseInt(yearsArray[yearsArray.length - 1]);
+            if (selectedYear && selectedMonth) {
+                setFilterRange([Math.max(minY, Math.min(filterRange[0], parseInt(selectedYear))), Math.min(maxY, Math.max(filterRange[1], parseInt(selectedYear)))]);
+            } else {
+                setFilterRange([Math.max(minY, filterRange[0]), Math.min(maxY, filterRange[1])]);
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [yearsArray, selectedYear, selectedMonth])
+
+
+    // Fetching missing year manifests by filterRange...
+    useEffect(() => {
+        if (manifest && filterRange) {
+            fetchYearsByRange(manifest, filterRange)
+                .then((newManifest) => {
+                    setManifest(newManifest)
+                })
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [filterRange])
+
+    // (re)defining selectedYear and selectedMonth by listening to URL parameters...
+    useEffect(() => {
+        const queryParams = Object.fromEntries(new URLSearchParams(location.search));
+        setSelectedYear(queryParams.year);
+        setSelectedMonth(queryParams.month);
+    }, [location])
+
+    // fetching selected month...
+    useEffect(() => {
+        if (manifest && selectedMonth && selectedYear) {
+            const yearExistsInManifest = manifest[selectedYear]?.months && manifest[selectedYear]?.months[selectedMonth] &&  !manifest[selectedYear]?.months[selectedMonth]?.items;
+            if (yearExistsInManifest) {
+                fetchMonth(manifest, selectedYear, selectedMonth)
+                    .then((newManifest) => {
+                        if (manifest !== newManifest) {
+                            setManifest(newManifest)
+                        }
+                    })
+                    .catch(() => {})
+            }
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [manifest, selectedMonth, selectedYear])
 
     return (
         <Translation ns="common">
             {(t) => (
                 <>
-                    {(Object.keys(groupedManifests).length > 0) && (
+                    {manifest && yearsArray && (
                         <>
                             <h2>{t('pageOverviewH2')}</h2>
                             <RangeSlider
-                                marks={Object.keys(groupedManifests).map((value: string) => ({ value: parseInt(value) }))}
+                                marks={Object.keys(manifest).map((value: string) => ({ value: parseInt(value) }))}
                                 value={filterRange}
                                 setValue={setFilterRange}
-                                min={minYear}
-                                max={maxYear}
+                                min={parseInt(yearsArray[0])}
+                                max={parseInt(yearsArray[yearsArray.length - 1])}
                                 valueLabelDisplay="on"
                             />
                         </>
                     )}
-                    {Object.keys(filteredManifests).length > 0 ? (
+                    {filteredManifests && (
                         <table className="aiii-timeline-results table">
                             <tbody>
                                 {Object.keys(filteredManifests).map((year) => (
                                     <React.Fragment key={year}>
-                                        <TimelineCalendar year={year} manifestsByMonth={filteredManifests[year]} selectedMonth={selectedMonth} selectedYear={selectedYear} />
-                                        <TimelineResults year={year} manifestsByMonth={filteredManifests[year]} selectedMonth={selectedMonth} selectedYear={selectedYear} />
+                                        <TimelineCalendar 
+                                            year={year} 
+                                            manifestsByMonth={filteredManifests[year].months} 
+                                            selectedMonth={selectedMonth} 
+                                            selectedYear={selectedYear} 
+                                        />
+                                        <TimelineResults 
+                                            year={year}
+                                            manifestsByMonth={filteredManifests[year].months}
+                                            selectedMonth={selectedMonth}
+                                            selectedYear={selectedYear} 
+                                        />
                                     </React.Fragment>
                                 ))}
                             </tbody>
                         </table>
-                    ) : null}
+                    )}
                 </>
             )}
         </Translation>

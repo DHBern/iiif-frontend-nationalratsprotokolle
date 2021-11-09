@@ -79,7 +79,7 @@ class Manifest {
 
                 response.json().then((json) => {
 
-                    let manifestoData;
+                    let manifestoData: any;
                     manifestoData = manifesto.parseManifest(json);
                     if (!manifestoData) {
                         reject({
@@ -699,12 +699,14 @@ class Manifest {
         for (const key in manifestoManifests) {
             if (manifestoManifests.hasOwnProperty(key)) {
                 const manifestoManifest = manifestoManifests[key];
+                
                 manifests.push({
                     id: manifestoManifest.id,
                     label: manifestoManifest.getLabel(),
                     thumbnail: this.getThumbnail(manifestoManifest),
                     type: manifestoManifest.getProperty('type'),
-                    ...((this.isV3(manifestoData) && manifestoManifest.getProperty('navDate')) && { navDate: manifestoManifest.getProperty('navDate') })
+                    ...((this.isV3(manifestoData) && manifestoManifest.getProperty('navDate')) && { navDate: manifestoManifest.getProperty('navDate') }),
+                    ...((this.isV3(manifestoData) && manifestoManifest.getProperty('rendering')) && { rendering: manifestoManifest.getProperty('rendering') }),
                 });
             }
         }

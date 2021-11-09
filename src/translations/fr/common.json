@@ -40,5 +40,6 @@
 
   "timelineResultsDate": "[FR] Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
-  "timelineResultsTitle": "[FR] Titel"
+  "timelineResultsTitle": "[FR] Titel",
+  "timelineResultsArchiveLink": "[FR] Archiv"
 }

@@ -40,5 +40,6 @@
 
   "timelineResultsDate": "[EN] Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
-  "timelineResultsTitle": "[EN] Titel"
+  "timelineResultsTitle": "[EN] Titel",
+  "timelineResultsArchiveLink": "[EN] Archiv"
 }

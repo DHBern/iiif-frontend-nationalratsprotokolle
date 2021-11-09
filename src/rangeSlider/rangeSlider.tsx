@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider, { Mark } from '@material-ui/core/Slider';
+import Cookie from 'universal-cookie';
 
 const useStyles = makeStyles({
   root: {
@@ -24,22 +25,31 @@ const defaultProps = {
 };
 
 export default function RangeSlider(props: IProps & typeof defaultProps) {
-  const { min, max, marks, value, setValue, valueLabelDisplay } = props;
+  const { min, max, value, setValue, valueLabelDisplay } = props;
   const classes = useStyles();
+  const [innerValue, setInnerValue] = useState<number[]>(value)
+  const cookie = new Cookie();
 
   const handleChange = (event: any, newValue: number | number[]) => {
+    setInnerValue(newValue as number[]);
+  };
+
+  const handleChangeCommited = (event: any, newValue: number | number[]) => {
     setValue(newValue as number[]);
+    cookie.set('timelineRange', newValue, {
+      secure: true,
+      sameSite: 'strict'
+    });
   };
 
   return (
     <div className={classes.root}>
       <Slider
-        value={value}
+        value={innerValue}
         onChange={handleChange}
-        marks={marks}
+        onChangeCommitted={handleChangeCommited}
         min={min}
         max={max}
-        step={null}
         valueLabelDisplay={valueLabelDisplay}
       />
     </div>

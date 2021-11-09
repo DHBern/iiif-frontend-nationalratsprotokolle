@@ -40,5 +40,6 @@
 
   "timelineResultsDate": "Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
-  "timelineResultsTitle": "Titel"
+  "timelineResultsTitle": "Titel",
+  "timelineResultsArchiveLink": "Archiv"
 }

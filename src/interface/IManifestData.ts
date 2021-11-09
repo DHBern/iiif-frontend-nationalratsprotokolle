@@ -56,6 +56,7 @@ export interface IManifestReference {
     label: PropertyValue;
     thumbnail?: IManifestDataThumbnail;
     type: string;
+    rendering?: [];
     navDate?: string;
 }
 
