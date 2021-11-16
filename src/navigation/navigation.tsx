@@ -16,7 +16,11 @@ class Navigation extends React.Component<any> {
         {
             href: process.env.REACT_APP_OCR_SEARCH_URL,
             name: 'Search'
-        }
+        },
+        {
+            to: '/information',
+            name: 'Information'
+        },
     ];
 
     getNavLinkClass = (path: string) => {
@@ -84,7 +88,7 @@ class Navigation extends React.Component<any> {
                                         </li>
                                     )}
                                     {(item.to) && (
-                                        <li className={this.getNavLinkClass(item.to)}>
+                                        <li className={`dropdown yamm-fw ${this.getNavLinkClass(item.to)}`}>
                                             <NavLink exact activeClassName={'is-active'} to={item.to}>
                                                 {t(`navItem${item.name}`)}
                                             </NavLink>

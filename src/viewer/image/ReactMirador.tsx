@@ -51,6 +51,9 @@ export default function ReactMirador() {
                         info: true
                     }
                 },
+                thumbnailNavigation: {
+                    defaultPosition: 'far-right',
+                },
                 windows: [
                     windows,
                 ],

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import LanguageSwitcher from './languageSwitcher';
+import FederationBreadcrumbs from './breadcrumbs';
 import { Translation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Navigation from 'navigation/navigation';
@@ -12,6 +13,7 @@ class FederationHeader extends React.Component<any> {
                 {(t) => (
                     <>
                         <header>
+                            <FederationBreadcrumbs />
                             <section className="nav-services clearfix">
                                 <h2 className="sr-only">{t('languageSelection')}</h2>
                                 <LanguageSwitcher />

@@ -33,10 +33,13 @@
 
   "navItemOverview": "[FR] Protokolle",
   "navItemSearch": "[FR] Suche",
+  "navItemInformation": "[EN] Information",
 
   "pageOverviewH1": "[FR] Bundesratsprotokolle",
   "pageOverviewH2": "[FR] Zeitspanne",
   "pageOverviewManifestUndefined": "[FR] Es wurde kein Manifest konfiguriert.",
+
+  "pageInformationH1": "[FR] Information",
 
   "timelineResultsDate": "[FR] Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
