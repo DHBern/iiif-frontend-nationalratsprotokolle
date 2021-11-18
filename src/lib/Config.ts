@@ -1,5 +1,6 @@
 import TouchDetection from './TouchDetection';
 import IConfigParameter from '../interface/IConfigParameter';
+import { ISolrRequest } from '../interface/IOcrSearchData';
 
 class Config {
 
@@ -38,6 +39,7 @@ class Config {
 
     private readonly overviewYearSliderDefaultRange: number[];
 
+    private readonly solrFieldConfig: ISolrRequest;
 
     constructor(config: IConfigParameter) {
         this.id = config.id;
@@ -51,6 +53,16 @@ class Config {
         this.hideUnbranchedTrees = config.hideUnbranchedTrees ? config.hideUnbranchedTrees : false;
         this.externalSearchUrl = config.externalSearchUrl;
         this.overviewYearSliderDefaultRange = config.overviewYearSliderDefaultRange ? config.overviewYearSliderDefaultRange : [1874, 1900];
+        this.solrFieldConfig = config.solrFieldConfig ? config.solrFieldConfig : {
+            'q': '',
+            'fl': 'id,source,title,date,ocr_text',
+            'qf': 'title^20.0 subtitle^16.0 author^10.0 newspaper_part^5.0 publisher^5.0 ocr_text^0.3',
+            'df': 'ocr_text',
+            'hl': 'on',
+            'hl.ocr.fl': 'ocr_text',
+            'hl.snippets': '3',
+            'hl.weightMatches': 'true',
+        }
     }
 
     getSplitterWidth(folded: boolean) {
@@ -147,6 +159,10 @@ class Config {
 
     getOverviewYearSliderDefaultRange() {
         return this.overviewYearSliderDefaultRange;
+    }
+
+    getSolrFieldConfig() {
+        return this.solrFieldConfig;
     }
 }
 

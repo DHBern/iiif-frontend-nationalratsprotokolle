@@ -1,3 +1,5 @@
+import { ISolrRequest } from "./IOcrSearchData";
+
 export default interface IConfigParameter {
     id: string;
     language?: string;
@@ -10,5 +12,6 @@ export default interface IConfigParameter {
     externalSearchUrl?: string;
     allowedOrigins?: string | string[];
     overviewYearSliderDefaultRange?: number[];
+    solrFieldConfig: ISolrRequest
 }
 

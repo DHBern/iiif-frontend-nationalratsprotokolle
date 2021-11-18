@@ -41,6 +41,10 @@
 
   "pageInformationH1": "[EN] Information",
 
+  "pageSearchH1": "[EN] Suche",
+  "searchFormInputLabel": "[EN] Suchbegriff eingeben",
+  "searchFormFoundMatches": "[EN] Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
+
   "timelineResultsDate": "[EN] Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "[EN] Titel",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { NavLink } from "react-router-dom";
 import { Translation } from 'react-i18next';
 import Main from '../main/main';
@@ -10,12 +10,12 @@ require('./navigation.css');
 class Navigation extends React.Component<any> {
     menuItems = [
         {
-            to: '/',
-            name: 'Overview'
+            to: '/search',
+            name: 'Search'
         },
         {
-            href: process.env.REACT_APP_OCR_SEARCH_URL,
-            name: 'Search'
+            to: '/browser',
+            name: 'Overview'
         },
         {
             to: '/information',
@@ -51,13 +51,6 @@ class Navigation extends React.Component<any> {
                                             <ul>
                                                 {this.menuItems.map((item) => (
                                                     <React.Fragment key={item.name}>
-                                                        {(item.href) && (
-                                                            <li className="dropdown yamm-fw">
-                                                                <a href={item.href}>
-                                                                    {t(`navItem${item.name}`)}
-                                                                </a>
-                                                            </li>
-                                                        )}
                                                         {(item.to) && (
                                                             <li className={this.getNavLinkClass(item.to)}>
                                                                 <NavLink exact activeClassName={'is-active'} to={item.to}>
@@ -80,13 +73,6 @@ class Navigation extends React.Component<any> {
                         <ul className="nav navbar-nav nomargin">
                             {this.menuItems.map((item) => (
                                 <React.Fragment key={item.name}>
-                                    {(item.href) && (
-                                        <li className="dropdown yamm-fw ">
-                                            <a href={item.href}>
-                                                {t(`navItem${item.name}`)}
-                                            </a>
-                                        </li>
-                                    )}
                                     {(item.to) && (
                                         <li className={`dropdown yamm-fw ${this.getNavLinkClass(item.to)}`}>
                                             <NavLink exact activeClassName={'is-active'} to={item.to}>

@@ -41,6 +41,11 @@
 
   "pageInformationH1": "Information",
 
+  "pageSearchH1": "Suche",
+  "searchFormInputLabel": "Suchbegriff eingeben",
+  "searchFormFoundMatches": "Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
+  "searchResultsMatchingPassages": "{{amount}} übereinstimmende Passagen im Text gefunden",
+
   "timelineResultsDate": "Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Titel",
