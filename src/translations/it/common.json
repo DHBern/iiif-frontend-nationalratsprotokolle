@@ -24,29 +24,30 @@
   "zoomOut": "Strizzacervelli",
   "zoomReset": "Resetta la vista",
 
-  "headerProjectTitle": "[IT] Bundesratsprotokolle IIIF",
+  "headerProjectTitle": "Archivio federale svizzero",
+  "headerPRojectSubtitle": "Verbali del Consiglio federale (1848-1963)",
   "footerTitle": "Archivio federale svizzero BAR",
   "footerTermsAndConditionsLabel": "Informazioni legali",
   "footerTermsAndConditionsLink": "https://www.admin.ch/gov/it/pagina-iniziale/basi-legali.html",
   "footerContactLabel": "Contatto",
   "footerContactLink": "mailto:info@4eyes.ch",
 
-  "navItemOverview": "[IT] Protokolle",
-  "navItemSearch": "[IT] Suche",
-  "navItemInformation": "[IT] Information",
+  "navItemOverview": "Ricerca per data",
+  "navItemSearch": "Ricerca semplice",
+  "navItemInformation": "Informazioni",
 
-  "pageOverviewH1": "[IT] Bundesratsprotokolle",
-  "pageOverviewH2": "[IT] Zeitspanne",
-  "pageOverviewManifestUndefined": "[IT] Es wurde kein Manifest konfiguriert.",
+  "pageOverviewH1": "Verbali del Consiglio federale",
+  "pageOverviewH2": "Periodo di tempo",
+  "pageOverviewManifestUndefined": "Nessun manifesto è stato configurato.",
 
-  "pageInformationH1": "[IT] Information",
+  "pageInformationH1": "Informazioni",
 
-  "pageSearchH1": "[IT] Suche",
-  "searchFormInputLabel": "[IT] Suchbegriff eingeben",
-  "searchFormFoundMatches": "[IT] Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
+  "pageSearchH1": "Ricerca",
+  "searchFormInputLabel": "Inserisci il termine di ricerca",
+  "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
 
-  "timelineResultsDate": "[IT] Datum",
+  "timelineResultsDate": "Data",
   "timelineResultsDateFormat": "DD.MM.YYYY",
-  "timelineResultsTitle": "[IT] Titel",
-  "timelineResultsArchiveLink": "[IT] Archiv"
+  "timelineResultsTitle": "Titolo",
+  "timelineResultsArchiveLink": "Archivio"
 }

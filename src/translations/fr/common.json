@@ -24,29 +24,30 @@
   "zoomOut": "Zoom arrière",
   "zoomReset": "Réinitialiser le zoom",
 
-  "headerProjectTitle": "[FR] Bundesratsprotokolle IIIF",
+  "headerProjectTitle": "Archives fédérales suisses",
+  "headerProjectSubtitle": "Procès-verbaux du Conseil fédéral (1848-1963)",
   "footerTitle": "Archives fédérales suisses BAR",
   "footerTermsAndConditionsLabel": "Avis juridiques",
   "footerTermsAndConditionsLink": "https://www.admin.ch/gov/fr/accueil/conditions-utilisation.html",
   "footerContactLabel": "Contactez",
   "footerContactLink": "mailto:info@4eyes.ch",
 
-  "navItemOverview": "[FR] Protokolle",
-  "navItemSearch": "[FR] Suche",
-  "navItemInformation": "[EN] Information",
+  "navItemOverview": "Recherche par date",
+  "navItemSearch": "Recherche simple",
+  "navItemInformation": "Information",
 
-  "pageOverviewH1": "[FR] Bundesratsprotokolle",
-  "pageOverviewH2": "[FR] Zeitspanne",
-  "pageOverviewManifestUndefined": "[FR] Es wurde kein Manifest konfiguriert.",
+  "pageOverviewH1": "Procès-verbaux du Conseil fédéral",
+  "pageOverviewH2": "Période",
+  "pageOverviewManifestUndefined": "Aucun manifeste n'a été configuré.",
 
-  "pageInformationH1": "[FR] Information",
+  "pageInformationH1": "Information",
 
-  "pageSearchH1": "[FR] Suche",
-  "searchFormInputLabel": "[FR] Suchbegriff eingeben",
-  "searchFormFoundMatches": "[FR] Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
+  "pageSearchH1": "Recherche",
+  "searchFormInputLabel": "Saisir le terme de recherche",
+  "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}}. documents trouvés dans {{QTime}}ms.",
 
-  "timelineResultsDate": "[FR] Datum",
+  "timelineResultsDate": "Date",
   "timelineResultsDateFormat": "DD.MM.YYYY",
-  "timelineResultsTitle": "[FR] Titel",
-  "timelineResultsArchiveLink": "[FR] Archiv"
+  "timelineResultsTitle": "Titre",
+  "timelineResultsArchiveLink": "Archives"
 }

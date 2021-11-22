@@ -24,15 +24,16 @@
   "zoomOut": "Verkleinern",
   "zoomReset": "Ansicht zurücksetzen",
 
-  "headerProjectTitle": "Bundesratsprotokolle IIIF",
+  "headerProjectTitle": "Schweizerishes Bundesarchiv",
+  "headerProjectSubtitle": "Protokolle des Bundesrates (1848-1963)",
   "footerTitle": "Schweizerisches Bundesarchiv BAR",
   "footerTermsAndConditionsLabel": "Rechtliche Hinweise",
   "footerTermsAndConditionsLink": "http://www.disclaimer.admin.ch/terms_and_conditions.html",
   "footerContactLabel": "Kontakt",
   "footerContactLink": "mailto:info@4eyes.ch",
 
-  "navItemOverview": "Protokolle",
-  "navItemSearch": "Suche",
+  "navItemOverview": "Suche nach Datum",
+  "navItemSearch": "Einfache Suche",
   "navItemInformation": "Information",
 
   "pageOverviewH1": "Bundesratsprotokolle",

@@ -24,29 +24,30 @@
   "zoomOut": "Zoom out",
   "zoomReset": "Reset zoom",
 
-  "headerProjectTitle": "[EN] Bundesratsprotokolle IIIF",
+  "headerProjectTitle": "Swiss Federal Archives",
+  "headerProjectSubtitle": "Minutes of the Federal Council (1848-1963)",
   "footerTitle": "Swiss Federal Archives SFA",
   "footerTermsAndConditionsLabel": "Legal framework",
   "footerTermsAndConditionsLink": "https://www.admin.ch/gov/en/start/terms-and-conditions.html",
   "footerContactLabel": "Contact",
   "footerContactLink": "mailto:info@4eyes.ch",
 
-  "navItemOverview": "[EN] Protokolle",
-  "navItemSearch": "[EN] Suche",
-  "navItemInformation": "[EN] Information",
+  "navItemOverview": "Search by Date",
+  "navItemSearch": "Simple Search",
+  "navItemInformation": "Information",
 
-  "pageOverviewH1": "[EN] Bundesratsprotokolle",
-  "pageOverviewH2": "[EN] Zeitspanne",
-  "pageOverviewManifestUndefined": "[EN] Es wurde kein Manifest konfiguriert.",
+  "pageOverviewH1": "Minutes of the Federal Council",
+  "pageOverviewH2": "Time span",
+  "pageOverviewManifestUndefined": "No manifest has been configured.",
 
-  "pageInformationH1": "[EN] Information",
+  "pageInformationH1": "Information",
 
-  "pageSearchH1": "[EN] Suche",
-  "searchFormInputLabel": "[EN] Suchbegriff eingeben",
-  "searchFormFoundMatches": "[EN] Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
+  "pageSearchH1": "Search",
+  "searchFormInputLabel": "Enter search term",
+  "searchFormFoundMatches": "Matches found in {{numFound}} documents in {{QTime}}ms.",
 
-  "timelineResultsDate": "[EN] Datum",
+  "timelineResultsDate": "Date",
   "timelineResultsDateFormat": "DD.MM.YYYY",
-  "timelineResultsTitle": "[EN] Titel",
-  "timelineResultsArchiveLink": "[EN] Archiv"
+  "timelineResultsTitle": "Titel",
+  "timelineResultsArchiveLink": "Archive"
 }
