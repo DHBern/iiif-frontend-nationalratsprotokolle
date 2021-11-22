@@ -41,11 +41,27 @@
   "pageOverviewManifestUndefined": "Es wurde kein Manifest konfiguriert.",
 
   "pageInformationH1": "Information",
+  "infoIntroP1": "Die Seite Protokolle des Bundesrates (1848-1963) erlaubt die Volltextsuche über die handschriftlichen Protokolle 1848-1903 und die maschinengeschriebenen Protokolle bis 1963. ",
+  "infoIntroP2": "Die Texterkennung der handschriftlichen Protokolle beruht auf den neuesten KI-gestützten Verfahren. Sind Sie dennoch auf Texterkennungsfehler gestossen? Senden Sie uns Ihre Fehlermeldung an bundesratsprotokolle@bar.admin.ch. Sie hilft uns, das KI-Verfahren zu verbessern.",
+  "infoIntroP3": "Wir empfehlen, für die Konsultation der Bundesratsprotokolle einen Laptop oder ein Tablet zu verwenden. Die Nutzung mittels Smartphone ist aber möglich. Die Seite Protokolle des Bundesrates (1848-1963) ist barrierefrei.",
+  "infoSearchH2": "Suchen",
+  "infoSimpleP1": "Bei der einfachen Suche auf der Startseite geben Sie einen beliebigen Begriff ein, der dann in sämtlichen Protokollen gesucht wird.",
+  "infoSimpleP2": "Mit dem Zeitstrahl können Sie die Suche auf einen bestimmten Zeitraum eingrenzen.",
+  "infoSimpleP3": "Für fortgeschrittene Abfragen stehen Ihnen weitere Optionen zur Verfügung:",
+  "infoSimpleL1": "Term- und Phrasensuche (\"wort\" \"das ist eine Phrase\")\u2028Beispiel: \"Kanton Zürich\"",
+  "infoSimpleL2": "Wildcard-Suche: ? (ein einzelnes Zeichen), * (mehrere Zeichen), ~ (unscharfe Suche)\u2028Beispiele: Z?rich, Zür*, Zürich~",
+  "infoSimpleL3": "Boolesche Operatoren: && (AND), || (OR), ! (NOT)\u2028Beispiele: Kanton && Bern, Bern || Zürich, Kanton !Stadt (auch: Kanton AND Bern, Bern OR Zürich, Kanton NOT Stadt)",
+  "infoResultH2": "Resultatliste",
+  "infoResultP1": "Die Resultatliste zeigt die Protokolle an, in denen der Suchbegriff gefunden wurde. Pro Protokoll wird die Anzahl der Textstellen angezeigt, die mit dem Suchbegriff übereinstimmen.",
+  "infoResultP2": "Mit Klick auf ein Protokoll gelangen Sie in das ausgewählte Protokoll zur ersten gefundenen Textstelle.",
+  "infoBrowserP1": "Die Beschlussprotokolle sind chronologisch geordnet. Mit der Suche nach Datum gelangen Sie einfach auf ein bestimmtes Protokoll.",
+
 
   "pageSearchH1": "Suche",
   "searchFormInputLabel": "Suchbegriff eingeben",
   "searchFormFoundMatches": "Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
   "searchResultsMatchingPassages": "{{amount}} übereinstimmende Passagen im Text gefunden",
+  "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
 
   "timelineResultsDate": "Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",

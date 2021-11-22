@@ -41,11 +41,29 @@
   "pageOverviewManifestUndefined": "Aucun manifeste n'a été configuré.",
 
   "pageInformationH1": "Information",
+  "infoIntroP1": "[FR] Die Seite Protokolle des Bundesrates (1848-1963) erlaubt die Volltextsuche über die handschriftlichen Protokolle 1848-1903 und die maschinengeschriebenen Protokolle bis 1963. ",
+  "infoIntroP2": "[FR] Die Texterkennung der handschriftlichen Protokolle beruht auf den neuesten KI-gestützten Verfahren. Sind Sie dennoch auf Texterkennungsfehler gestossen? Senden Sie uns Ihre Fehlermeldung an bundesratsprotokolle@bar.admin.ch. Sie hilft uns, das KI-Verfahren zu verbessern.",
+  "infoIntroP3": "[FR] Wir empfehlen, für die Konsultation der Bundesratsprotokolle einen Laptop oder ein Tablet zu verwenden. Die Nutzung mittels Smartphone ist aber möglich. Die Seite Protokolle des Bundesrates (1848-1963) ist barrierefrei.",
+  "infoSearchH2": "[FR] Suchen",
+  "infoSimpleP1": "[FR] Bei der einfachen Suche auf der Startseite geben Sie einen beliebigen Begriff ein, der dann in sämtlichen Protokollen gesucht wird.",
+  "infoSimpleP2": "[FR] Mit dem Zeitstrahl können Sie die Suche auf einen bestimmten Zeitraum eingrenzen.",
+  "infoSimpleP3": "[FR] Für fortgeschrittene Abfragen stehen Ihnen weitere Optionen zur Verfügung:",
+  "infoSimpleL1": "[FR] Term- und Phrasensuche (\"wort\" \"das ist eine Phrase\")\u2028Beispiel: \"Kanton Zürich\"",
+  "infoSimpleL2": "[FR] Wildcard-Suche: ? (ein einzelnes Zeichen), * (mehrere Zeichen), ~ (unscharfe Suche)\u2028Beispiele: Z?rich, Zür*, Zürich~",
+  "infoSimpleL3": "[FR] Boolesche Operatoren: && (AND), || (OR), ! (NOT)\u2028Beispiele: Kanton && Bern, Bern || Zürich, Kanton !Stadt (auch: Kanton AND Bern, Bern OR Zürich, Kanton NOT Stadt)",
+  "infoResultH2": "[FR] Resultatliste",
+  "infoResultP1": "[FR] Die Resultatliste zeigt die Protokolle an, in denen der Suchbegriff gefunden wurde. Pro Protokoll wird die Anzahl der Textstellen angezeigt, die mit dem Suchbegriff übereinstimmen.",
+  "infoResultP2": "[FR] Mit Klick auf ein Protokoll gelangen Sie in das ausgewählte Protokoll zur ersten gefundenen Textstelle.",
+  "infoBrowserP1": "[FR] Die Beschlussprotokolle sind chronologisch geordnet. Mit der Suche nach Datum gelangen Sie einfach auf ein bestimmtes Protokoll.",
 
+  
+  
   "pageSearchH1": "Recherche",
   "searchFormInputLabel": "Saisir le terme de recherche",
   "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}}. documents trouvés dans {{QTime}}ms.",
+  "searchIntroductionText":"Sur la page Procès-verbaux du Conseil fédéral (1848-1963), vous pouvez effectuer une recherche par mot-clé dans les procès-verbaux de décision manuscrits et dactylographiés du Conseil fédéral.",
 
+  
   "timelineResultsDate": "Date",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Titre",
