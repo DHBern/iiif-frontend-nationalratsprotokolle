@@ -82,6 +82,7 @@ class SearchForm extends React.Component<IProps, IState> {
                         <form className="search-form" onSubmit={this.onSubmit.bind(this)}>
                             <div className="search-form-inner">
                                 <TextField
+                                    className="mdc-text-field"
                                     disabled={isSearchPending || sources.length === 0}
                                     label={t('searchFormInputLabel')}
                                     value={query}
@@ -93,10 +94,10 @@ class SearchForm extends React.Component<IProps, IState> {
                                     }}
                                 />
 
-                                {isSearchPending && <LinearProgress />}
+                                {isSearchPending && <LinearProgress className="mdc-linear-progress" />}
 
                                 {!isSearchPending && searchResults && (
-                                    <p>
+                                    <p className="mdc-typography">
                                         {t('searchFormFoundMatches', {
                                             numFound: searchResults?.response?.numFound,
                                             QTime: searchResults?.responseHeader?.QTime,

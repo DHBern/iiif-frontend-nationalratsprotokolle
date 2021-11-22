@@ -75,7 +75,6 @@ class ResultDocument extends React.Component<IProps, IState> {
                             <a
                                 className="highlightable"
                                 href={viewerUrl}
-                                title="Open in viewer"
                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(doc.title) }}
                             />
                         </h2>

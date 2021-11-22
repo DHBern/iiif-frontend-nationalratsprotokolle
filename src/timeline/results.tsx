@@ -63,7 +63,7 @@ const TimelineResults = function (props: IProps) {
                                                         </td>
                                                         <td>
                                                             {renderingItems.map((item: any) => (
-                                                                <a key={item.id} href={item.id} target="_blank" rel="noreferrer">{item.id}</a>
+                                                                <a className="icon icon--after icon--external" key={item.id} href={item.id} target="_blank" rel="noreferrer">{getLocalized(item.label)}</a>
                                                             ))}
                                                         </td>
                                                     </tr>

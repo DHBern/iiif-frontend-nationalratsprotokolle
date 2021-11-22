@@ -60,7 +60,7 @@ class SnippetView extends React.Component<IProps, IState> {
             const viewerUrl = `${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifestUri}&cv=${docId}&q=${query}&lang=${language}`;
             return (
                 <div className="snippet-display">
-                    <a href={viewerUrl} title="Open page in viewer">
+                    <a href={viewerUrl}>
                         <img
                             ref={(i) => (this.img = i)}
                             src={getImageUrl(region)}

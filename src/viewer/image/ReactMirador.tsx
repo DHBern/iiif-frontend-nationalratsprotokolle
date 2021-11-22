@@ -11,6 +11,7 @@ import * as actions from 'mirador/dist/es/src/state/actions/index.js';
 import { AppContext } from "../../AppContext";
 
 export default function ReactMirador() {
+    const [viewerInstance, setViewerInstance] = React.useState<any>(null);
     const { currentManifest } = useContext(AppContext);
     const { searchParams } = new URL(window.location.href);
     const canvasImageName = searchParams.has('cv') ? searchParams.get('cv') : '';
@@ -18,9 +19,9 @@ export default function ReactMirador() {
     const collectionName = collectionParts ? collectionParts[0] : '';
     const canvasId = `${process.env.REACT_APP_MANIFEST_API_BASE}${collectionName}/canvasses/${canvasImageName}`;
 
+
     // init viewer
     useEffect(() => {
-        let viewerInstance = null;
         let windows = {};
 
         if (currentManifest && currentManifest.id) {
@@ -60,7 +61,17 @@ export default function ReactMirador() {
                 language: i18next.language
             };
 
-            viewerInstance = Mirador.viewer(config, [...ocrHelperPlugin]);
+            setViewerInstance(Mirador.viewer(config, [...ocrHelperPlugin]));
+
+            return () => {
+                setViewerInstance(null);
+            }
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [currentManifest]);
+
+    useEffect(() => {
+        if (viewerInstance) {
             const { store } = viewerInstance;
 
             if (searchParams.has('q')) {
@@ -68,7 +79,7 @@ export default function ReactMirador() {
                 const targetId = Object.keys(state.windows)[0];
                 const companionWindows: any = Object.values(state.companionWindows)
                     .filter((obj: any) => obj.content !== 'thumbnailNavigation');
-
+    
                 new Promise((resolve) => resolve(
                     store.dispatch(
                         actions.updateCompanionWindow(
@@ -82,7 +93,7 @@ export default function ReactMirador() {
                     )
                 )).then(() => {
                     const searchUrl = `${process.env.REACT_APP_MANIFEST_SEARCH_URL}/${collectionName}?q=${searchParams.get('q')}`;
-
+    
                     new Promise((resolve) => resolve(
                         store.dispatch(
                             actions.fetchSearch(
@@ -103,7 +114,23 @@ export default function ReactMirador() {
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentManifest]);
+    }, [viewerInstance]);
+
+    useEffect(() => {
+        const changeLanguage = () => {
+            var action = actions.updateConfig({
+                language: i18next.language,
+            });
+    
+            viewerInstance.store.dispatch(action);
+        }
+
+        i18next.on('languageChanged', changeLanguage);
+
+        return () => {
+            i18next.off('languageChanged', changeLanguage);
+        }
+    })
 
     return (currentManifest) ? <div id={'mirador'} className="aiiif-mirador" key={currentManifest.id}></div> : null;
 }
