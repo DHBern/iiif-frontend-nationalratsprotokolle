@@ -86,3 +86,7 @@ h3 {
 .noborder {
     border: 0!important;
 }
+
+.italic {
+    font-style: italic;
+}
