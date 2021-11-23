@@ -62,11 +62,10 @@
   "infoMachineH2": "[EN] Maschinengeschriebene Beschlussprotokolle (1904-1963)",
   "infoMachine": "[EN] <p>Auch der ausgelesene Text der maschinengeschriebenen Beschlussprotokolle weist Texterkennungsfehler auf. Die Fehlerquote liegt jedoch generell tiefer als bei den handgeschriebenen Protokollen.</p>",
 
-
-
   "pageSearchH1": "Search",
   "searchFormInputLabel": "Enter search term",
   "searchFormFoundMatches": "Matches found in {{numFound}} documents in {{QTime}}ms.",
+  "searchResultsMatchingPassages": "[EN] {{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText":"On the Protocols of the Federal Council (1848-1963) page, you can search for search terms in both the handwritten and typewritten minutes of Federal Council resolutions.",
 
   "timelineResultsDate": "Date",

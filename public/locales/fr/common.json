@@ -62,13 +62,11 @@
   "infoMachineH2": "[FR] Maschinengeschriebene Beschlussprotokolle (1904-1963)",
   "infoMachine": "[FR] <p>Auch der ausgelesene Text der maschinengeschriebenen Beschlussprotokolle weist Texterkennungsfehler auf. Die Fehlerquote liegt jedoch generell tiefer als bei den handgeschriebenen Protokollen.</p>",
 
-
-
   "pageSearchH1": "Recherche",
   "searchFormInputLabel": "Saisir le terme de recherche",
   "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}}. documents trouvés dans {{QTime}}ms.",
+  "searchResultsMatchingPassages": "[FR] {{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText":"Sur la page Procès-verbaux du Conseil fédéral (1848-1963), vous pouvez effectuer une recherche par mot-clé dans les procès-verbaux de décision manuscrits et dactylographiés du Conseil fédéral.",
-
   
   "timelineResultsDate": "Date",
   "timelineResultsDateFormat": "DD.MM.YYYY",

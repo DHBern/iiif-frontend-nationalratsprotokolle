@@ -25,26 +25,18 @@ export default function Main() {
             <Route exact path="/">
                 <Redirect to="/search" />
             </Route>
-            <Route path="/search"
-                render={props => (
-                    <PageSearch key={props.location.key} />
-                )}
-            />
-            <Route path="/browser"
-                render={props => (
-                    <PageOverview key={props.location.key} />
-                )}
-            />
-            <Route path="/protocol"
-                render={props => (
-                    <PageProtocolVariant3 key={props.location.key} />
-                )}
-            />
-            <Route path="/information"
-                render={props => (
-                    <PageInformation key={props.location.key} />
-                )}
-            />
+            <Route path="/search">
+                <PageSearch />
+            </Route>
+            <Route path="/browser">
+                <PageOverview />
+            </Route>
+            <Route path="/protocol">
+                <PageProtocolVariant3 />
+            </Route>
+            <Route path="/information">
+                <PageInformation />
+            </Route>
             <Route path="*">
                 <PageNotFound />
             </Route>

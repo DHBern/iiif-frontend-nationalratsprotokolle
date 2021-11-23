@@ -62,10 +62,10 @@
   "infoMachineH2": "[IT] Maschinengeschriebene Beschlussprotokolle (1904-1963)",
   "infoMachine": "[IT] <p>Auch der ausgelesene Text der maschinengeschriebenen Beschlussprotokolle weist Texterkennungsfehler auf. Die Fehlerquote liegt jedoch generell tiefer als bei den handgeschriebenen Protokollen.</p>",
 
-
   "pageSearchH1": "Ricerca",
   "searchFormInputLabel": "Inserisci il termine di ricerca",
   "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
+  "searchResultsMatchingPassages": "[IT] {{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText": "Sulla pagina dei Protocolli del Consiglio Federale (1848-1963), puoi cercare i termini di ricerca nei verbali manoscritti e dattiloscritti delle delibere del Consiglio Federale.",
 
   "timelineResultsDate": "Data",

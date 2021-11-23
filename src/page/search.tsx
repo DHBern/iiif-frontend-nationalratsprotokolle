@@ -11,7 +11,7 @@ export default function PageSearch() {
                 <Main>
                     <>
                         <h1>{t('pageSearchH1')}</h1>
-                        <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                        <p dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                             __html: DOMPurify.sanitize(t('searchIntroductionText'))
                         }} />
                         <Search />

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {Suspense, useState, useEffect} from 'react';
 import {
     BrowserRouter as Router,
 } from "react-router-dom";
@@ -166,8 +166,6 @@ export default function App(props: IProps) {
         }
 
         Cache.ee.addListener('token-changed', tokenReceived);
-        i18n.changeLanguage(global.config.getLanguage());
-        i18n.options.fallbackLng = global.config.getFallbackLanguage();
         i18n.on('languageChanged', refresh);
 
         window.addEventListener('popstate', function(event) {
@@ -189,17 +187,21 @@ export default function App(props: IProps) {
         setCurrentManifest0, currentFolder, setCurrentFolder, authDate, setAuthDate, currentAnnotation,
         setCurrentAnnotation, searchResult, setSearchResult, q, setQ: setQ0, cv, setCv: setCv0, alert, setAlert};
 
-    return <AppContext.Provider value={appContextValue}>
-        <I18nextProvider i18n={i18n}>
-        <Router>
-            <Translation>
-                {() => (
-                    <MuiThemeProvider theme={theme}>
-                        <Main />
-                    </MuiThemeProvider>
-                )}
-            </Translation>
-        </Router>
-        </I18nextProvider>
-    </AppContext.Provider>;
+    return (
+        <Suspense fallback={null}>
+            <AppContext.Provider value={appContextValue}>
+                <I18nextProvider i18n={i18n}>
+                <Router>
+                    <Translation>
+                        {() => (
+                            <MuiThemeProvider theme={theme}>
+                                <Main />
+                            </MuiThemeProvider>
+                        )}
+                    </Translation>
+                </Router>
+                </I18nextProvider>
+            </AppContext.Provider>
+        </Suspense>
+    );
 }

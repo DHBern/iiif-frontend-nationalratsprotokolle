@@ -37,7 +37,7 @@ const TimelineResults = function (props: IProps) {
                         {isExpanded && selectedMonthFetched && (
                             <motion.div className={`aiii-timeline-results__inner`} initial="collapsed" animate="expanded" exit="collapsed" variants={{
                                 expanded: { opacity: 1, height: 'auto' },
-                                collapsed: { opacity: 0, height: 0, transition: { duration: 0.15 } },
+                                collapsed: { opacity: 0, height: 0, transition: { duration: 0.3 } },
                             }}>
                                 <table className="table table-striped table-bordered nomargin">
                                     <thead>
