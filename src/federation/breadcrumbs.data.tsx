@@ -62,7 +62,7 @@ const rootline = {
             },
             {
                 id: "project",
-                toggle: "Bundesratsprotokolle IIIF",
+                toggle: "Protokolle des Bundesrates (1848-1963)",
             }
         ]
     },
@@ -129,7 +129,7 @@ const rootline = {
             },
             {
                 id: "project",
-                toggle: "[FR] Bundesratsprotokolle IIIF",
+                toggle: "Procès-verbaux du Conseil fédéral (1848-1963)",
             }
         ]
     },
@@ -196,7 +196,7 @@ const rootline = {
             },
             {
                 id: "project",
-                toggle: "[IT] Bundesratsprotokolle IIIF",
+                toggle: "Protokolle des Bundesrates (1848-1963)",
             }
         ]
     },
@@ -263,7 +263,7 @@ const rootline = {
             },
             {
                 id: "project",
-                toggle: "[EN] Bundesratsprotokolle IIIF",
+                toggle: "Minutes of the Federal Council (1848-1963)",
             }
         ]
     }

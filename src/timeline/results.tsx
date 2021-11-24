@@ -53,7 +53,8 @@ const TimelineResults = function (props: IProps) {
                                                 const date = moment(manifest.navDate);
                                                 const dateMonth = date.month().toString();
                                                 const dateYear = date.year().toString();
-                                                const renderingItems = getRelevantRenderingItems(manifest?.rendering, language)
+                                                const renderingItems = getRelevantRenderingItems(manifest?.rendering, language);
+                                                console.log(manifest?.rendering);
                                                 
                                                 return (dateYear === selectedYear && dateMonth === selectedMonth) && (
                                                     <tr key={`${manifest.id}_${dateYear}_${dateMonth}_${i}`}>

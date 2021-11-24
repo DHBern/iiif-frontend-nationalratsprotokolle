@@ -165,5 +165,5 @@ export const filterManifestsByDateRange = (groupedManifests: ITimelineData | und
 export const getRelevantRenderingItems = (allRenderingItems: any, language: string, excludeIndexes = [0,1]) => {
     return allRenderingItems
         .filter((rendering: any, index: number) => !excludeIndexes.includes(index))
-        .filter((rendering: any) => rendering?.language?.includes(language));
+        .filter((rendering: any) => rendering?.language?.includes(language) || rendering?.language === 'none');
 }

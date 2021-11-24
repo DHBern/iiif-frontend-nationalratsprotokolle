@@ -13,9 +13,16 @@
     background: #ffffff !important;
 }
 
+.search-form .mdc-linear-progress-wrap {
+    position: relative;
+    height: 10px
+}
+
 .search-form .mdc-linear-progress {
-    grid-column: 1/7;
-    grid-row: 4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 .search-form .mdc-typography {
