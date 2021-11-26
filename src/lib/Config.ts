@@ -60,7 +60,7 @@ class Config {
             'df': 'ocr_text',
             'hl': 'on',
             'hl.ocr.fl': 'ocr_text',
-            'hl.snippets': '3',
+            'hl.snippets': '1',
             'hl.weightMatches': 'true',
         }
     }
