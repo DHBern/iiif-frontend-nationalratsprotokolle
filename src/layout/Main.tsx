@@ -14,9 +14,13 @@ import PageInformation from "../page/information";
 import PageProtocolVariant3 from "../page/protocol/protocol";
 import PageNotFound from "../page/notfound";
 
+
 require('../topBar/topbar.css');
 
 export default function Main() {
+
+
+
     return <>
         <Alert />
         <Login />

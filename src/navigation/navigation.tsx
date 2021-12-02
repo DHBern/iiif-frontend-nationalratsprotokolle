@@ -11,7 +11,7 @@ class Navigation extends React.Component<any> {
     menuItems = [
         {
             to: '/search',
-            name: 'Search'
+            name: 'Search',
         },
         {
             to: '/browser',
