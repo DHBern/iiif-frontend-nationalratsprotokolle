@@ -58,6 +58,21 @@ export default function PageOverview() {
                         <div className="italic" dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                             __html: DOMPurify.sanitize(t('infoMiradorImageAlt'))
                         }} />
+                        <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                            __html: DOMPurify.sanitize(t('infoMiradorImageLegend'))
+                        }} />
+                        <h2>{t('infoDataH2')}</h2>
+                        <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                            __html: DOMPurify.sanitize(t('infoData'))
+                        }} />
+                        <h2>{t('infoHandH2')}</h2>
+                        <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                            __html: DOMPurify.sanitize(t('infoHand'))
+                        }} />
+                        <h2>{t('infoMachineH2')}</h2>
+                        <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                            __html: DOMPurify.sanitize(t('infoMachine'))
+                        }} />
                     </>
                 </Main>
             )}
