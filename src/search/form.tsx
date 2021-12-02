@@ -66,7 +66,7 @@ class SearchForm extends React.Component<IProps, IState> {
         const fq = [];
         if (evt) {
             evt.preventDefault();
-            this.props.history.push(`?q=${query}`);
+            this.props.history.push(`?q=${query}~`);
         }
         const params = {
             ...this.props.queryParams,
