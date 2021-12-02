@@ -139,7 +139,7 @@ class SearchForm extends React.Component<IProps, IState> {
 
                                 {yearsArray && (
                                     <React.Fragment>
-                                        <h2>{t('pageOverviewH2')}</h2>
+                                        <h4>{t('pageOverviewH2')}</h4>
                                         <RangeSlider
                                             marks={yearsArray.map((value: string) => ({ value: parseInt(value) }))}
                                             value={filterRange}

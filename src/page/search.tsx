@@ -9,13 +9,13 @@ export default function PageSearch() {
         <Translation ns="common">
             {(t) => (
                 <Main>
-                    <>  
-                        <div style={{marginTop: '80px'}}>
+                    <>
+                        <div style={{marginTop: '40px', marginBottom: '40px'}}>
+                            <h1>{t('headerProjectSubtitle')}</h1>
                             <h3 dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                                 __html: DOMPurify.sanitize(t('searchIntroductionText'))
                             }} />
                         </div>
-                        <h1>{t('pageSearchH1')}</h1>
                         <Search />
                     </>
                 </Main>
