@@ -85,7 +85,7 @@ class SearchForm extends React.Component<IProps, IState> {
             params.fq = fq.join(' AND ');
         }
 
-        fetch(`${process.env.REACT_APP_SOLR_API_BASE_DEV}?${new URLSearchParams(params)}`)
+        fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
             .then((resp) => resp.json())
             .then((data: ISearchResults) => {
                 this.setState({ isSearchPending: false })
