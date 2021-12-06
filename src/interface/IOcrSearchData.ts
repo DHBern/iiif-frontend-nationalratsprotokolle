@@ -55,4 +55,5 @@ export interface ISolrRequest {
     'hl.fl'?: string,
     'hl.snippets': string,
     'hl.weightMatches': string,
+    'rows': string,
 }

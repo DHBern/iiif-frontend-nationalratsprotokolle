@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@4eyes/mirador-ocr-helper@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@4eyes/mirador-ocr-helper/-/mirador-ocr-helper-1.0.10.tgz#1c1ad3c0dac9192550b7a1f8897e9fd122f3b18a"
-  integrity sha512-e3tXqraviHahT+lQis+l7lp0WCd6XvleVsSKT40WIyahUNHRYh7gFE+T1mm4iggjsYr3XzmtUBwvDC+Pomk2jg==
+"@4eyes/mirador-ocr-helper@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@4eyes/mirador-ocr-helper/-/mirador-ocr-helper-1.0.12.tgz#d62f725361023b752da1ede62c27d427cfd68cfc"
+  integrity sha512-id79zk3s3UZShx5JpyKX07buXhibJGJZ09mwZol1JUW1t5YW44phn5HdmiJkVKjKasbw96JGWSrH4eNsSekOBg==
 
 "@babel/code-frame@7.10.4":
   version "7.10.4"
@@ -8261,10 +8261,10 @@ minizlib@^2.1.1:
     minipass "^3.0.0"
     yallist "^4.0.0"
 
-mirador@3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/mirador/-/mirador-3.2.0.tgz#0171478d09ca810ba67bca4a34243434e4dac8f9"
-  integrity sha512-AVyI8fi06ELWIGqDjCp+fFmY4FzKvJKlr24vubISxS/s5aB1O+bfqOH+H9+kaMh9msb9OCJGmD90SMO/+Kc+6A==
+mirador@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/mirador/-/mirador-3.3.0.tgz#7a957a1db1a5388b2b8cafab00db4eb9f97557b9"
+  integrity sha512-BmGfRnWJ45B+vtiAwcFT7n9nKialfejE9UvuUK0NorO37ShArpsKr3yVSD4jQASwSR4DRRpPEG21jOk4WN7H3w==
   dependencies:
     "@material-ui/core" "^4.11.0"
     "@material-ui/icons" "^4.9.1"

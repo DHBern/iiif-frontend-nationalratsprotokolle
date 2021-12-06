@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as DOMPurify from "dompurify";
 import i18next from 'i18next';
 import { Translation } from 'react-i18next';
@@ -10,6 +11,7 @@ interface IProps {
     ocr_hl: IOCRHighlight,
     query: string,
     doc: IHighlightDocument,
+    snippets: string,
 }
 
 interface IState {
@@ -36,16 +38,16 @@ class ResultDocument extends React.Component<IProps, IState> {
     highlightDocument(doc: IHighlightDocument, highlights: {}) {
         if (typeof highlights !== 'undefined') {
             Object.keys(highlights).forEach((field) => {
-              if (Array.isArray(doc[field])) {
-                doc[field] = doc[field].map((fval: string) =>
-                  this.highlightFieldValue(fval, highlights[field])
-                );
-              } else {
-                doc[field] = this.highlightFieldValue(doc[field], highlights[field]);
-              }
+                if (Array.isArray(doc[field])) {
+                    doc[field] = doc[field].map((fval: string) =>
+                        this.highlightFieldValue(fval, highlights[field])
+                    );
+                } else {
+                    doc[field] = this.highlightFieldValue(doc[field], highlights[field]);
+                }
             });
-          }
-          return doc;
+        }
+        return doc;
     }
 
     highlightFieldValue(val: string, highlights: string[]) {
@@ -60,7 +62,7 @@ class ResultDocument extends React.Component<IProps, IState> {
     }
 
     render() {
-        const { hl, ocr_hl, query } = this.props;
+        const { hl, ocr_hl, query, snippets } = this.props;
         const doc = this.highlightDocument(this.props.doc, hl);
         const collection = this.props.doc.source;
         const language = i18next.language;
@@ -72,15 +74,15 @@ class ResultDocument extends React.Component<IProps, IState> {
                 {(t) => (
                     <div className="result-document">
                         <h2>
-                            <a
+                            <Link
                                 className="highlightable"
-                                href={viewerUrl}
+                                to={viewerUrl}
                                 dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(doc.title) }}
                             />
                         </h2>
-                        <p>
-                            {t(`searchResultsMatchingPassages`, {amount: ocr_hl?.numTotal || '0'})}
-                        </p>
+                        {parseInt(snippets) > 1 && (<p>
+                            {t(`searchResultsMatchingPassages`, { amount: ocr_hl?.numTotal || '0' })}
+                        </p>)}
                         {ocr_hl &&
                             ocr_hl.snippets.map((snip) => (
                                 <SnippetView

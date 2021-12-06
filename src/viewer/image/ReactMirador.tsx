@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 import './mirador.css';
 
@@ -11,6 +11,7 @@ import * as actions from 'mirador/dist/es/src/state/actions/index.js';
 import { AppContext } from "../../AppContext";
 
 export default function ReactMirador() {
+    const id = useRef<number>(Math.floor(Math.random() * 10000));
     const [viewerInstance, setViewerInstance] = React.useState<any>(null);
     const { currentManifest } = useContext(AppContext);
     const { searchParams } = new URL(window.location.href);
@@ -36,7 +37,10 @@ export default function ReactMirador() {
                 }
             }
             const config = {
-                id: 'mirador',
+                id: 'mirador-' + id.current.toString(10),
+                createGenerateClassNameOptions: { // Options passed directly to createGenerateClassName in Material-UI https://material-ui.com/styles/api/#creategenerateclassname-options-class-name-generator
+                    productionPrefix: 'mirador-' + id.current.toString(10),
+                },
                 workspace: {
                     allowNewWindows: false,
                     isWorkspaceAddVisible: false
@@ -118,19 +122,20 @@ export default function ReactMirador() {
 
     useEffect(() => {
         const changeLanguage = () => {
-            var action = actions.updateConfig({
-                language: i18next.language,
-            });
-    
-            viewerInstance.store.dispatch(action);
+            viewerInstance.store.dispatch(actions.updateConfig({
+                language: i18next.language
+            }));
         }
 
         i18next.on('languageChanged', changeLanguage);
 
         return () => {
             i18next.off('languageChanged', changeLanguage);
+            setViewerInstance(null);
         }
     })
 
-    return (currentManifest) ? <div id={'mirador'} className="aiiif-mirador" key={currentManifest.id}></div> : null;
+    return (
+        <div id={'mirador-' + id.current.toString()} className="aiiif-mirador"></div>
+    );
 }

@@ -33,6 +33,7 @@ class SearchResults extends React.Component<IProps> {
                                         ocr_hl={ocrHl}
                                         doc={doc}
                                         query={queryParams.q}
+                                        snippets={queryParams['hl.snippets']}
                                     />
                                 )
                                 )}

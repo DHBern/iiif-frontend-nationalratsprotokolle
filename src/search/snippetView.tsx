@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import i18next from 'i18next';
 import * as DOMPurify from "dompurify";
 import { IHighlightInformation, IHighlightSnippet } from '../interface/IOcrSearchData';
@@ -60,13 +61,13 @@ class SnippetView extends React.Component<IProps, IState> {
             const viewerUrl = `${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifestUri}&cv=${docId}&q=${query}&lang=${language}`;
             return (
                 <div className="snippet-display">
-                    <a href={viewerUrl}>
+                    <Link to={viewerUrl}>
                         <img
                             ref={(i) => (this.img = i)}
                             src={getImageUrl(region)}
                             alt=""
                         />
-                    </a>
+                    </Link>
                     {this.state.renderedImage &&
                         highlights.flatMap((hls) =>
                             hls.map((hl) => (

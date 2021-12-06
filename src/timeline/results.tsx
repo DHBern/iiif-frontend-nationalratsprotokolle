@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Translation } from 'react-i18next';
@@ -59,7 +60,7 @@ const TimelineResults = function (props: IProps) {
                                                     <tr key={`${manifest.id}_${dateYear}_${dateMonth}_${i}`}>
                                                         <td>{date.format(t('timelineResultsDateFormat'))}</td>
                                                         <td>
-                                                            <a href={`${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifest.id}`}>{getLocalized(manifest.label)}</a>
+                                                            <Link to={`protocol?manifest=${manifest.id}`}>{getLocalized(manifest.label)}</Link>
                                                         </td>
                                                         <td>
                                                             {renderingItems.map((item: any) => (
