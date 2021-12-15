@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import ManifestHistory from './lib/ManifestHistory';
 import {I18nextProvider, Translation } from 'react-i18next';
-import i18n  from 'i18next';
+import i18n from 'i18next';
 import IConfigParameter from './interface/IConfigParameter';
 import Config from './lib/Config';
 import './css/App.css';

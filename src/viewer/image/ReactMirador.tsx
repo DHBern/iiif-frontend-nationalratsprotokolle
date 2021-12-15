@@ -20,7 +20,6 @@ export default function ReactMirador() {
     const collectionName = collectionParts ? collectionParts[0] : '';
     const canvasId = `${process.env.REACT_APP_MANIFEST_API_BASE}${collectionName}/canvasses/${canvasImageName}`;
 
-
     // init viewer
     useEffect(() => {
         let windows = {};
@@ -117,13 +116,13 @@ export default function ReactMirador() {
                 });
             }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [viewerInstance]);
 
     useEffect(() => {
         const changeLanguage = () => {
             viewerInstance.store.dispatch(actions.updateConfig({
-                language: i18next.language
+                language: i18next.language,
             }));
         }
 
@@ -131,9 +130,8 @@ export default function ReactMirador() {
 
         return () => {
             i18next.off('languageChanged', changeLanguage);
-            setViewerInstance(null);
         }
-    })
+    });
 
     return (
         <div id={'mirador-' + id.current.toString()} className="aiiif-mirador"></div>
