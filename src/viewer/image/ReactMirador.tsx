@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useContext } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import i18next from 'i18next';
 import './mirador.css';
 
@@ -12,7 +12,8 @@ import { AppContext } from "../../AppContext";
 
 export default function ReactMirador() {
     const id = useRef<number>(Math.floor(Math.random() * 10000));
-    const [viewerInstance, setViewerInstance] = React.useState<any>(null);
+    const [viewerInstance, setViewerInstance] = useState<any>(null);
+    const [isMobile, setIsMobile] = useState<boolean>(window.matchMedia('(max-width: 600px)').matches);
     const { currentManifest } = useContext(AppContext);
     const { searchParams } = new URL(window.location.href);
     const canvasImageName = searchParams.has('cv') ? searchParams.get('cv') : '';
@@ -24,7 +25,7 @@ export default function ReactMirador() {
     useEffect(() => {
         let windows = {};
 
-        if (currentManifest && currentManifest.id) {
+        if (currentManifest && currentManifest.id && isMobile !== undefined) {
             if (searchParams.has('cv')) {
                 windows = {
                     loadedManifest: searchParams.get('manifest'),
@@ -47,16 +48,16 @@ export default function ReactMirador() {
                 window: {
                     allowClose: true,
                     textOverlay: {
-                        enabled: true,
-                        visible: true,
+                        enabled: !isMobile,
+                        visible: !isMobile,
                     },
-                    sideBarOpenByDefault: true,
+                    sideBarOpenByDefault: !isMobile,
                     panels: {
                         info: true
                     }
                 },
                 thumbnailNavigation: {
-                    defaultPosition: 'far-right',
+                    defaultPosition: isMobile ? 'off' : 'far-right',
                 },
                 windows: [
                     windows,
@@ -120,16 +121,45 @@ export default function ReactMirador() {
     }, [viewerInstance]);
 
     useEffect(() => {
+        if (viewerInstance) {
+            const { store } = viewerInstance;
+
+            store.dispatch(
+                actions.updateWindow(
+                    Object.keys(store.getState().windows)[0],
+                    {
+                        textOverlay: {
+                            enabled: !isMobile,
+                            visible: !isMobile,
+                        },
+                        sideBarOpen: !isMobile,
+                    }
+                )
+            );
+            store.dispatch(
+                actions.setWindowThumbnailPosition(
+                    Object.keys(store.getState().windows)[0], 
+                    isMobile ? 'off' : 'far-right',
+                )
+            );
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isMobile]);
+
+    useEffect(() => {
         const changeLanguage = () => {
             viewerInstance.store.dispatch(actions.updateConfig({
                 language: i18next.language,
             }));
         }
+        const handler = (event: any) => setIsMobile(event.matches);
 
         i18next.on('languageChanged', changeLanguage);
+        window.matchMedia("(max-width: 600px)").addEventListener('change', handler);
 
         return () => {
             i18next.off('languageChanged', changeLanguage);
+            window.matchMedia("(max-width: 600px)").removeEventListener('change', handler);
         }
     });
 
