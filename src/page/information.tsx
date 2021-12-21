@@ -1,9 +1,15 @@
 import React from 'react';
-import { Translation } from 'react-i18next';
+import {Translation, useTranslation} from 'react-i18next';
 import Main from "../main/main";
 import * as DOMPurify from "dompurify";
-import browserImage from "../images/de-scrn-browser.png";
-import miradorImage from "../images/de-scrn-mirador.png";
+import browserImageDe from "../images/de-scrn-browser.png";
+import miradorImageDe from "../images/de-scrn-mirador.png";
+import browserImageEn from "../images/en-scrn-browser.png";
+import miradorImageEn from "../images/en-scrn-mirador.png";
+import browserImageFr from "../images/fr-scrn-browser.png";
+import miradorImageFr from "../images/fr-scrn-mirador.png";
+import browserImageIt from "../images/it-scrn-browser.png";
+import miradorImageIt from "../images/it-scrn-mirador.png";
 
 export default function PageOverview() {
     DOMPurify.addHook('afterSanitizeAttributes', function (node: any) {
@@ -13,6 +19,27 @@ export default function PageOverview() {
             node.setAttribute('rel', 'noopener');
         }
     });
+    const {t, i18n} = useTranslation();
+    let browserImage = browserImageDe; // fallback
+    let miradorImage = miradorImageDe; // fallback
+    switch(i18n.language) {
+        case 'de':
+            browserImage = browserImageDe;
+            miradorImage = miradorImageDe;
+            break;
+        case 'en':
+            browserImage = browserImageEn;
+            miradorImage = miradorImageEn;
+            break;
+        case 'fr':
+            browserImage = browserImageFr;
+            miradorImage = miradorImageFr;
+            break;
+        case 'it':
+            browserImage = browserImageIt;
+            miradorImage = miradorImageIt;
+            break;
+    }
     return (
         <Translation ns="common">
             {(t) => (
@@ -38,11 +65,13 @@ export default function PageOverview() {
                         }} />
 
                         <h2>{t('navItemOverview')}</h2>
-                        <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                        <div >
+                            <p dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                             __html: DOMPurify.sanitize(t('infoBrowserBeforeImage'))
                         }} />
-                        <img alt={t('infoBrowserImageAlt')} src={browserImage} />
 
+                        <img alt={t('infoBrowserImageAlt')} src={browserImage} />
+                        </div>
 
                         <h2>{t('infoMiradorH2')}</h2>
                         <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
@@ -53,10 +82,12 @@ export default function PageOverview() {
                         }}>
                         </ul>
                         <img alt={t('infoMiradorImageAlt')} src={miradorImage} />
-                        
-                        <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+
+                        <div>
+                            <p dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                             __html: DOMPurify.sanitize(t('infoMiradorImageLegend'))
                         }} />
+                        </div>
                         <h2>{t('infoDataH2')}</h2>
                         <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                             __html: DOMPurify.sanitize(t('infoData'))
