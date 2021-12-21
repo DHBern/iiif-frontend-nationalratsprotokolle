@@ -2,8 +2,8 @@ import React from 'react';
 import { Translation } from 'react-i18next';
 import Main from "../main/main";
 import * as DOMPurify from "dompurify";
-import browserImage from "../images/scrn-browser.png";
-import miradorImage from "../images/scrn-mirador.png";
+import browserImage from "../images/de-scrn-browser.png";
+import miradorImage from "../images/de-scrn-mirador.png";
 
 export default function PageOverview() {
     DOMPurify.addHook('afterSanitizeAttributes', function (node: any) {
@@ -42,9 +42,7 @@ export default function PageOverview() {
                             __html: DOMPurify.sanitize(t('infoBrowserBeforeImage'))
                         }} />
                         <img alt={t('infoBrowserImageAlt')} src={browserImage} />
-                        <div className="italic" dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-                            __html: DOMPurify.sanitize(t('infoBrowserImageAlt'))
-                        }} />
+
 
                         <h2>{t('infoMiradorH2')}</h2>
                         <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
@@ -55,9 +53,7 @@ export default function PageOverview() {
                         }}>
                         </ul>
                         <img alt={t('infoMiradorImageAlt')} src={miradorImage} />
-                        <div className="italic" dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-                            __html: DOMPurify.sanitize(t('infoMiradorImageAlt'))
-                        }} />
+                        
                         <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                             __html: DOMPurify.sanitize(t('infoMiradorImageLegend'))
                         }} />
