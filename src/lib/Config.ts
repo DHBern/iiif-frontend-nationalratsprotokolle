@@ -62,7 +62,7 @@ class Config {
             'hl.ocr.fl': 'ocr_text',
             'hl.snippets': '1',
             'hl.weightMatches': 'true',
-            'rows': '999',
+            'rows': '100',
         }
     }
 
