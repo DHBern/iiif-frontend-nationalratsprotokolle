@@ -9,6 +9,11 @@ import ocrHelperPlugin from '@4eyes/mirador-ocr-helper';
 import * as actions from 'mirador/dist/es/src/state/actions/index.js';
 
 import { AppContext } from "../../AppContext";
+import Config from "../../lib/Config";
+
+declare let global: {
+    config: Config;
+};
 
 export default function ReactMirador() {
     const id = useRef<number>(Math.floor(Math.random() * 10000));
@@ -20,6 +25,7 @@ export default function ReactMirador() {
     const collectionParts = canvasImageName?.split('-');
     const collectionName = collectionParts ? collectionParts[0] : '';
     const canvasId = `${process.env.REACT_APP_MANIFEST_API_BASE}${collectionName}/canvasses/${canvasImageName}`;
+    const availableLanguages = global.config.getTranslations();
 
     // init viewer
     useEffect(() => {
@@ -53,7 +59,8 @@ export default function ReactMirador() {
                     },
                     sideBarOpenByDefault: !isMobile,
                     panels: {
-                        info: true
+                        info: true,
+                        annotations: false,
                     }
                 },
                 thumbnailNavigation: {
@@ -62,7 +69,8 @@ export default function ReactMirador() {
                 windows: [
                     windows,
                 ],
-                language: i18next.language
+                language: i18next.language,
+                availableLanguages: false, // Workaround: Needs to be 'false' on init, otherwise restrictions won't be applied...
             };
 
             setViewerInstance(Mirador.viewer(config, [...ocrHelperPlugin]));
@@ -77,9 +85,8 @@ export default function ReactMirador() {
     useEffect(() => {
         if (viewerInstance) {
             const { store } = viewerInstance;
-
+            const state = store.getState();
             if (searchParams.has('q')) {
-                const state = store.getState();
                 const targetId = Object.keys(state.windows)[0];
                 const companionWindows: any = Object.values(state.companionWindows)
                     .filter((obj: any) => obj.content !== 'thumbnailNavigation');
@@ -115,6 +122,11 @@ export default function ReactMirador() {
                         );
                     })
                 });
+            }
+            if(!state.config.availableLanguages) {
+                viewerInstance.store.dispatch(actions.updateConfig({
+                    availableLanguages
+                }));
             }
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
