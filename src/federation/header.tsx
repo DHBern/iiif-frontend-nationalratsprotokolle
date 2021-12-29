@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import Navigation from 'navigation/navigation';
 import logo from '../images/logo-CH.svg';
 import ChangePageTitle from "../changePageTitle/changePageTitle";
+
+require('./header.css');
 class FederationHeader extends React.Component<any> {
-
-
     render() {
         return (
             <Translation ns="common">

@@ -19,7 +19,7 @@ export default function PageOverview() {
             node.setAttribute('rel', 'noopener');
         }
     });
-    const {t, i18n} = useTranslation();
+    const { i18n } = useTranslation();
     let browserImage = browserImageDe; // fallback
     let miradorImage = miradorImageDe; // fallback
     switch(i18n.language) {
