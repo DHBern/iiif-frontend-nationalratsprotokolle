@@ -23,8 +23,8 @@ class FederationHeader extends React.Component<any> {
                             </section>
                             <Link to="/" className="brand hidden-xs" title={t('logoAlt')}>
                                 <img alt={t('logoAlt')} src={logo} />
-                                <h1>{t('headerProjectTitle')}</h1><b />
-                                <h1>{t('headerProjectSubtitle')}</h1>
+                                <h1>{t('headerProjectTitle')}<br />
+                                {t('headerProjectSubtitle')}</h1>
                             </Link>
                         </header>
                         <Navigation />
