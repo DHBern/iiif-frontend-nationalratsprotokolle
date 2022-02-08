@@ -68,7 +68,7 @@ class ResultDocument extends React.Component<IProps, IState> {
         const language = i18next.language;
 
         const manifestUri = encodeURIComponent(`${process.env.REACT_APP_MANIFEST_API_BASE}${collection}/${collection}.json`);
-        const viewerUrl = `${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifestUri}&q=${query}&lang=${language}`;
+        const viewerUrl = `${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifestUri}&cv=${doc.id}&q=${query}&lang=${language}`;
         return (
             <Translation ns="common">
                 {(t) => (
