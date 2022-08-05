@@ -68,6 +68,12 @@
   "searchResultsMatchingPassages": "{{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
 
+  "paginationResults": "Ergebnisse {{start}} - {{end}} von {{total}}",
+  "paginationFirstPage": "Zur ersten Seite",
+  "paginationBack": "Eine Seite zurück",
+  "paginationForward": "Eine Seite vor",
+  "paginationLastPage": "Zur letzten Seite",
+
   "timelineResultsDate": "Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Protokoll",

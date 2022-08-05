@@ -72,7 +72,7 @@ class SnippetView extends React.Component<IProps, IState> {
                         highlights.flatMap((hls) =>
                             hls.map((hl) => (
                                 <div
-                                    key={hl.text}
+                                    key={`${hl.lrx}_${hl.lry}_${hl.ulx}_${hl.uly}`}
                                     className="highlight-box"
                                     title={hl.text}
                                     style={this.getHighlightStyle(hl, 50)}
