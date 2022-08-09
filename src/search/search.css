@@ -1,4 +1,8 @@
 
+.search {
+    scroll-margin-top: 30px;
+}
+
 .search p {
     font-size: 1rem;
 }

@@ -56,4 +56,5 @@ export interface ISolrRequest {
     'hl.snippets': string,
     'hl.weightMatches': string,
     'rows': string,
+    'start'?: string,
 }

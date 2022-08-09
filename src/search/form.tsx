@@ -56,13 +56,17 @@ class SearchForm extends React.Component<IProps, IState> {
     }
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
-        if (prevState.filterRange !== this.state.filterRange && prevState.filterRange[0] !== 0) {
+        const filterRangeChanges = prevState.filterRange !== this.state.filterRange && prevState.filterRange[0] !== 0;
+        const queryParamsChanges = prevProps.queryParams?.start !== this.props.queryParams?.start;
+
+        if (filterRangeChanges || queryParamsChanges) {
             this.onSubmit();
         }
     }
 
     onSubmit(evt?: React.SyntheticEvent) {
         const { sources, query, filterRange } = this.state;
+        const start = this.props.queryParams?.start || '1';
         const fq = [];
         if (evt) {
             evt.preventDefault();
@@ -83,6 +87,9 @@ class SearchForm extends React.Component<IProps, IState> {
         }
         if (fq.length > 0) {
             params.fq = fq.join(' AND ');
+        }
+        if (start !== '0') {
+            params.start = start;
         }
 
         fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
@@ -153,15 +160,12 @@ class SearchForm extends React.Component<IProps, IState> {
                                         />
                                     </React.Fragment>
                                 )}
-
-                                {!isSearchPending && searchResults && (
-                                    <p className="mdc-typography">
-                                        {t('searchFormFoundMatches', {
-                                            numFound: searchResults?.response?.numFound,
-                                            QTime: searchResults?.responseHeader?.QTime,
-                                        })}
-                                    </p>
-                                )}
+                                <p className="mdc-typography" style={{ opacity: (!isSearchPending && searchResults) ? '1' : '0' }}>
+                                    {t('searchFormFoundMatches', {
+                                        numFound: searchResults?.response?.numFound,
+                                        QTime: searchResults?.responseHeader?.QTime,
+                                    })}
+                                </p>
                             </div>
                         </form>
                     </>
