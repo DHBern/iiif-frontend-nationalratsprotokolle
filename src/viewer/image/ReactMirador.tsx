@@ -52,6 +52,7 @@ export default function ReactMirador() {
                     isWorkspaceAddVisible: false
                 },
                 window: {
+                    allowFullscreen: true,
                     allowClose: true,
                     textOverlay: {
                         enabled: !isMobile,
