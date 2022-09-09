@@ -7,6 +7,7 @@ import PresentationApi from "../fetch/PresentationApi";
 import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
 import IManifestData from "../interface/IManifestData";
 import { buildManifest } from '../timeline/util';
+import { replaceSearchParameters } from '../util/url';
 
 interface IProps extends RouteComponentProps<any> {
     queryParams: ISolrRequest,
@@ -57,7 +58,7 @@ class SearchForm extends React.Component<IProps, IState> {
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
         const filterRangeChanges = prevState.filterRange !== this.state.filterRange && prevState.filterRange[0] !== 0;
-        const queryParamsChanges = prevProps.queryParams?.start !== this.props.queryParams?.start;
+        const queryParamsChanges = JSON.stringify(prevProps.queryParams) !== JSON.stringify(this.props.queryParams);
 
         if (filterRangeChanges || queryParamsChanges) {
             this.onSubmit();
@@ -70,7 +71,7 @@ class SearchForm extends React.Component<IProps, IState> {
         const fq = [];
         if (evt) {
             evt.preventDefault();
-            this.props.history.push(`?q=${query}`);
+            this.props.history.push(replaceSearchParameters({ q: query, page: null }));
         }
         const params = {
             ...this.props.queryParams,
