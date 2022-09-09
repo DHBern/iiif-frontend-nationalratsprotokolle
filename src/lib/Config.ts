@@ -63,8 +63,12 @@ class Config {
             'hl.snippets': '1',
             'hl.weightMatches': 'true',
             'rows': '25',
+            'sort': 'score desc',
         }
     }
+
+    private readonly availableSearchRows: number[] = [10, 25, 50, 100];
+    private readonly availableSearchSorts: string[] = ['score desc', 'date asc', 'date desc'];
 
     getSplitterWidth(folded: boolean) {
 
@@ -164,6 +168,14 @@ class Config {
 
     getSolrFieldConfig() {
         return this.solrFieldConfig;
+    }
+
+    getAvailableSearchRows() {
+        return this.availableSearchRows;
+    }
+
+    getAvailableSearchSorts() {
+        return this.availableSearchSorts;
     }
 }
 

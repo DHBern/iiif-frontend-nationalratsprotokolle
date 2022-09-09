@@ -24,7 +24,7 @@ interface IState {
     filterRange: number[];
 }
 
-class SearchForm extends React.Component<IProps, IState> {
+class SearchFormAdvanced extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         const queryParams = Object.fromEntries(new URLSearchParams(props.location.search));
@@ -49,7 +49,7 @@ class SearchForm extends React.Component<IProps, IState> {
                     yearsArray: yearsArr,
                     filterRange: [parseInt(yearsArr[0]), parseInt(yearsArr[yearsArr.length - 1])]
                 });
-                if (this.state.query) {
+                if (this.state.query !== '') {
                     this.onSubmit();
                 }
             })
@@ -57,10 +57,11 @@ class SearchForm extends React.Component<IProps, IState> {
     }
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
+        const queryIsSet = this.state.query || (prevState.query !== this.state.query && prevState.query !== '');
         const filterRangeChanges = prevState.filterRange !== this.state.filterRange && prevState.filterRange[0] !== 0;
         const queryParamsChanges = JSON.stringify(prevProps.queryParams) !== JSON.stringify(this.props.queryParams);
 
-        if (filterRangeChanges || queryParamsChanges) {
+        if (queryIsSet && (filterRangeChanges || queryParamsChanges)) {
             this.onSubmit();
         }
     }
@@ -68,6 +69,7 @@ class SearchForm extends React.Component<IProps, IState> {
     onSubmit(evt?: React.SyntheticEvent) {
         const { sources, query, filterRange } = this.state;
         const start = this.props.queryParams?.start || '1';
+        const sort = this.props.queryParams?.sort || '';
         const fq = [];
         if (evt) {
             evt.preventDefault();
@@ -91,6 +93,11 @@ class SearchForm extends React.Component<IProps, IState> {
         }
         if (start !== '0') {
             params.start = start;
+        }
+        if (!['relevance', 'null', null].includes(sort)) {
+            params.sort = sort;
+        } else {
+            delete(params.sort);
         }
 
         fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
@@ -176,4 +183,4 @@ class SearchForm extends React.Component<IProps, IState> {
     }
 }
 
-export default withRouter(SearchForm);
+export default withRouter(SearchFormAdvanced);

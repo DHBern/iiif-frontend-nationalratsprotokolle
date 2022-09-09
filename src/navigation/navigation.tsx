@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
-import { NavLink } from "react-router-dom";
+import { withRouter, NavLink } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import Main from '../main/main';
 import logoMobile from '../images/swiss.svg';
@@ -12,6 +11,10 @@ class Navigation extends React.Component<any> {
         {
             to: '/search',
             name: 'Search',
+        },
+        {
+            to: '/searchadvanced',
+            name: 'SearchAdvanced',
         },
         {
             to: '/browser',

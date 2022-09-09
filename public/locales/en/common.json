@@ -34,6 +34,7 @@
 
   "navItemOverview": "Search by date",
   "navItemSearch": "Simple search",
+  "navItemSearchAdvanced": "Advanced search",
   "navItemInformation": "Information",
 
   "pageOverviewH1": "Minutes of the Federal Council",
@@ -65,6 +66,10 @@
   "pageSearchH1": "Search",
   "searchFormInputLabel": "Enter search term",
   "searchFormFoundMatches": "Matches found in {{numFound}} documents in {{QTime}}ms.",
+  "searchFormRowsPerPage": "[EN] Anzahl Treffer pro Seite",
+  "searchFormOrderBy": "[EN] Sortierung",
+  "searchFormOrderBy_date": "Date",
+  "searchFormOrderBy_relevance": "Relevance",
   "searchResultsMatchingPassages": "Found {{amount}} matching passages in the document.",
   "searchIntroductionText":"On the “Minutes of the Federal Council (1848–1963)” page, you can search both the handwritten and typewritten minutes of Federal Council decisions using search terms. ",
 

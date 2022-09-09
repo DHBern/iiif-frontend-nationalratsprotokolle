@@ -34,6 +34,7 @@
 
   "navItemOverview": "Recherche par date",
   "navItemSearch": "Recherche simple",
+  "navItemSearchAdvanced": "[EN] Erweiterte Suche",
   "navItemInformation": "Information",
 
   "pageOverviewH1": "Procès-verbaux du Conseil fédéral",
@@ -65,6 +66,10 @@
   "pageSearchH1": "Recherche",
   "searchFormInputLabel": "Saisir le terme de recherche",
   "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}}. documents trouvés dans {{QTime}}ms.",
+  "searchFormRowsPerPage": "[FR] Anzahl Treffer pro Seite",
+  "searchFormOrderBy": "[FR] Sortierung",
+  "searchFormOrderBy_date": "[FR] Datum",
+  "searchFormOrderBy_relevance": "[FR] Relevanz",
   "searchResultsMatchingPassages": "{{amount}} passages concordants trouvés dans le texte",
   "searchIntroductionText":"La page <span class=\"italic\">Procès-verbaux du Conseil fédéral (1848-1963)</span> vous permet d’effectuer une recherche par mot-clé dans les procès-verbaux manuscrits et dactylographiés du Conseil fédéral. ",
 

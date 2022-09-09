@@ -34,6 +34,7 @@
 
   "navItemOverview": "Suche nach Datum",
   "navItemSearch": "Einfache Suche",
+  "navItemSearchAdvanced": "Erweiterte Suche",
   "navItemInformation": "Information",
 
   "pageOverviewH1": "Bundesratsprotokolle",
@@ -65,6 +66,11 @@
   "pageSearchH1": "Suche",
   "searchFormInputLabel": "Suchbegriff eingeben",
   "searchFormFoundMatches": "Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
+  "searchFormRowsPerPage": "Anzahl Treffer pro Seite",
+  "searchFormOrderBy": "Sortierung",
+  "searchFormOrderBy_date asc": "Datum aufsteigend",
+  "searchFormOrderBy_date desc": "Datum absteigend",
+  "searchFormOrderBy_score desc": "Relevanz",
   "searchResultsMatchingPassages": "{{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
 

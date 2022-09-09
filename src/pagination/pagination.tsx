@@ -6,6 +6,7 @@ import './pagination.css';
 
 interface IProps extends UsePaginationProps {
     rowsPerPage: number,
+    numFound: number,
     scrollToRefOnClick?: React.RefObject<HTMLElement>,
 }
 
@@ -30,12 +31,12 @@ const PaginationLink = (props: any) => {
 };
 
 const Pagination = (props: IProps) => {
-    const { rowsPerPage, page = 1, count = 1, scrollToRefOnClick, ...otherPaginationProps } = props;
+    const { rowsPerPage, numFound, page = 1, count = 1, scrollToRefOnClick, ...otherPaginationProps } = props;
 
     // Needed to retrieve correct numeration of results (for labels)
     const start = (page * rowsPerPage) - (rowsPerPage - 1);
-    const end = page * rowsPerPage;
-    const total = count * rowsPerPage;
+    const end = Math.min(page * rowsPerPage, numFound);
+    const total = numFound;
 
     const { items } = usePagination({ page, count, ...otherPaginationProps });
 
