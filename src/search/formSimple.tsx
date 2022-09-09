@@ -1,8 +1,9 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import { Icon, LinearProgress, TextField } from '@material-ui/core';
 import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
+import { menuItems } from '../navigation/navigation';
 import { replaceSearchParameters } from '../util/url';
 
 interface IProps extends RouteComponentProps<any> {
@@ -70,7 +71,7 @@ class SearchFormSimple extends React.Component<IProps, IState> {
         if (!['relevance', 'null', null].includes(sort)) {
             params.sort = sort;
         } else {
-            delete(params.sort);
+            delete (params.sort);
         }
 
         fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
@@ -98,8 +99,11 @@ class SearchFormSimple extends React.Component<IProps, IState> {
         } = this.state;
 
         const {
-            searchResults
+            searchResults,
+            queryParams
         } = this.props
+
+        const advancedSearchMenuItem = menuItems.find((item) => item.name === 'SearchAdvanced');
 
         return (
             <Translation ns="common">
@@ -123,13 +127,21 @@ class SearchFormSimple extends React.Component<IProps, IState> {
                                 <div className="mdc-linear-progress-wrap">
                                     {isSearchPending && <LinearProgress className="mdc-linear-progress" />}
                                 </div>
-
-                                <p className="mdc-typography" style={{ opacity: (!isSearchPending && searchResults) ? '1' : '0' }}>
-                                    {t('searchFormFoundMatches', {
-                                        numFound: searchResults?.response?.numFound,
-                                        QTime: searchResults?.responseHeader?.QTime,
-                                    })}
-                                </p>
+                                <div className="search-form-info">
+                                    <p className="mdc-typography search-form-info__text" style={{ opacity: (!isSearchPending && searchResults && queryParams.q) ? '1' : '0' }}>
+                                        {t('searchFormFoundMatches', {
+                                            numFound: searchResults?.response?.numFound,
+                                            QTime: searchResults?.responseHeader?.QTime,
+                                        })}
+                                    </p>
+                                    {advancedSearchMenuItem && (
+                                        <p className="mdc-typography search-form-info__link">
+                                            <Link to={`${advancedSearchMenuItem.to}${query && `?q=${query}`}`}>
+                                                {t(`navItem${advancedSearchMenuItem.name}`)}
+                                            </Link>
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                         </form>
                     </>

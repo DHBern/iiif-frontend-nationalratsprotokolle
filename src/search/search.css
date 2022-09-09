@@ -35,6 +35,15 @@
     margin-top: 0.5em;
 }
 
+.search-form-info {
+    display: flex;
+    align-items: center;
+}
+
+.search-form-info__link {
+    margin-left: auto;
+}
+
 .results {
     text-align: center;
 }
