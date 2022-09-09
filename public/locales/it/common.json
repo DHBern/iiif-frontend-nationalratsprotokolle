@@ -34,6 +34,7 @@
 
   "navItemOverview": "Ricerca per data",
   "navItemSearch": "Ricerca semplice",
+  "navItemSearchAdvanced": "[IT] Erweiterte Suche",
   "navItemInformation": "Informazioni",
 
   "pageOverviewH1": "Verbali del Consiglio federale",
@@ -65,6 +66,10 @@
   "pageSearchH1": "Ricerca",
   "searchFormInputLabel": "Inserisci il termine di ricerca",
   "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
+  "searchFormRowsPerPage": "[IT] Anzahl Treffer pro Seite",
+  "searchFormOrderBy": "[IT] Sortierung",
+  "searchFormOrderBy_date": "[IT] Datum",
+  "searchFormOrderBy_relevance": "[IT] Relevanz",
   "searchResultsMatchingPassages": "{{amount}} che corrisponde a passaggi trovati nel testo",
   "searchIntroductionText": "Sulla pagina «Verbali del Consiglio federale (1848-1963)» si possono effettuare ricerche mediante parole chiave nei verbali manoscritti e dattiloscritti delle decisioni del Consiglio federale.",
 

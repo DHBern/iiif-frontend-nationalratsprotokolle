@@ -56,5 +56,6 @@ export interface ISolrRequest {
     'hl.snippets': string,
     'hl.weightMatches': string,
     'rows': string,
+    'sort'?:string,
     'start'?: string,
 }

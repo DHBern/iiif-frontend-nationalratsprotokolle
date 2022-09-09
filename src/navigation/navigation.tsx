@@ -1,28 +1,30 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
-import { NavLink } from "react-router-dom";
+import { withRouter, NavLink } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import Main from '../main/main';
 import logoMobile from '../images/swiss.svg';
 
 require('./navigation.css');
 
+export const menuItems = [
+    {
+        to: '/search',
+        name: 'Search',
+    },
+    {
+        to: '/searchadvanced',
+        name: 'SearchAdvanced',
+    },
+    {
+        to: '/browser',
+        name: 'Overview'
+    },
+    {
+        to: '/information',
+        name: 'Information'
+    },
+];
 class Navigation extends React.Component<any> {
-    menuItems = [
-        {
-            to: '/search',
-            name: 'Search',
-        },
-        {
-            to: '/browser',
-            name: 'Overview'
-        },
-        {
-            to: '/information',
-            name: 'Information'
-        },
-    ];
-
     getNavLinkClass = (path: string) => {
         return this.props.location.pathname === path ? 'current' : '';
     }
@@ -49,7 +51,7 @@ class Navigation extends React.Component<any> {
                                     <div className="drilldown-container">
                                         <nav className="nav-page-list">
                                             <ul>
-                                                {this.menuItems.map((item) => (
+                                                {menuItems.map((item) => (
                                                     <React.Fragment key={item.name}>
                                                         {(item.to) && (
                                                             <li className={this.getNavLinkClass(item.to)}>
@@ -71,7 +73,7 @@ class Navigation extends React.Component<any> {
                     </section>
                     <Main>
                         <ul className="nav navbar-nav nomargin">
-                            {this.menuItems.map((item) => (
+                            {menuItems.map((item) => (
                                 <React.Fragment key={item.name}>
                                     {(item.to) && (
                                         <li className={`dropdown yamm-fw ${this.getNavLinkClass(item.to)}`}>

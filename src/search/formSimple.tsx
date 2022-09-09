@@ -1,12 +1,9 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import { Icon, LinearProgress, TextField } from '@material-ui/core';
-import RangeSlider from 'rangeSlider/rangeSlider';
-import PresentationApi from "../fetch/PresentationApi";
 import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
-import IManifestData from "../interface/IManifestData";
-import { buildManifest } from '../timeline/util';
+import { menuItems } from '../navigation/navigation';
 import { replaceSearchParameters } from '../util/url';
 
 interface IProps extends RouteComponentProps<any> {
@@ -20,11 +17,9 @@ interface IState {
     query: string,
     isSearchPending: boolean,
     sources: string[],
-    yearsArray: string[] | undefined,
-    filterRange: number[];
 }
 
-class SearchForm extends React.Component<IProps, IState> {
+class SearchFormSimple extends React.Component<IProps, IState> {
     constructor(props: IProps) {
         super(props);
         const queryParams = Object.fromEntries(new URLSearchParams(props.location.search));
@@ -33,41 +28,28 @@ class SearchForm extends React.Component<IProps, IState> {
             query: queryParams.q || '',
             isSearchPending: false,
             sources: ['gbooks', 'lunion'],
-            yearsArray: undefined,
-            filterRange: [0, 0],
         };
     }
 
-    url = process.env.REACT_APP_DEFAULT_COLLECTION_MANIFEST;
-
     componentDidMount() {
-        if (this.url) {
-            PresentationApi.get(this.url).then(async (fetchedManifest: IManifestData) => {
-                const grpManifest = buildManifest(fetchedManifest);
-                const yearsArr = Object.keys(grpManifest);
-                this.setState({
-                    yearsArray: yearsArr,
-                    filterRange: [parseInt(yearsArr[0]), parseInt(yearsArr[yearsArr.length - 1])]
-                });
-                if (this.state.query) {
-                    this.onSubmit();
-                }
-            })
+        if (this.state.query !== '') {
+            this.onSubmit();
         }
     }
 
     componentDidUpdate(prevProps: IProps, prevState: IState) {
-        const filterRangeChanges = prevState.filterRange !== this.state.filterRange && prevState.filterRange[0] !== 0;
+        const queryIsSet = this.state.query || (prevState.query !== this.state.query && prevState.query !== '');
         const queryParamsChanges = JSON.stringify(prevProps.queryParams) !== JSON.stringify(this.props.queryParams);
 
-        if (filterRangeChanges || queryParamsChanges) {
+        if (queryIsSet && queryParamsChanges) {
             this.onSubmit();
         }
     }
 
     onSubmit(evt?: React.SyntheticEvent) {
-        const { sources, query, filterRange } = this.state;
+        const { sources, query } = this.state;
         const start = this.props.queryParams?.start || '1';
+        const sort = this.props.queryParams?.sort || '';
         const fq = [];
         if (evt) {
             evt.preventDefault();
@@ -80,17 +62,16 @@ class SearchForm extends React.Component<IProps, IState> {
         if (Array.isArray(sources) && sources.length === 1) {
             fq.push(`source:${sources[0]}`);
         }
-        if (Array.isArray(filterRange)) {
-            const from = `${filterRange[0]}-01-01T00:00:00Z`;
-            const to = `${filterRange[1]}-12-31T23:59:59Z`;
-
-            fq.push(`date:[${from} TO ${to}]`);
-        }
         if (fq.length > 0) {
             params.fq = fq.join(' AND ');
         }
         if (start !== '0') {
             params.start = start;
+        }
+        if (!['relevance', 'null', null].includes(sort)) {
+            params.sort = sort;
+        } else {
+            delete (params.sort);
         }
 
         fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
@@ -115,13 +96,14 @@ class SearchForm extends React.Component<IProps, IState> {
             isSearchPending,
             sources,
             query,
-            yearsArray,
-            filterRange,
         } = this.state;
 
         const {
-            searchResults
+            searchResults,
+            queryParams
         } = this.props
+
+        const advancedSearchMenuItem = menuItems.find((item) => item.name === 'SearchAdvanced');
 
         return (
             <Translation ns="common">
@@ -145,28 +127,21 @@ class SearchForm extends React.Component<IProps, IState> {
                                 <div className="mdc-linear-progress-wrap">
                                     {isSearchPending && <LinearProgress className="mdc-linear-progress" />}
                                 </div>
-
-                                {yearsArray && (
-                                    <React.Fragment>
-                                        <h4>{t('pageOverviewH2')}</h4>
-                                        <RangeSlider
-                                            marks={yearsArray.map((value: string) => ({ value: parseInt(value) }))}
-                                            value={filterRange}
-                                            setValue={(value) => {
-                                                this.setState({ filterRange: value });
-                                            }}
-                                            min={parseInt(yearsArray[0])}
-                                            max={parseInt(yearsArray[yearsArray.length - 1])}
-                                            valueLabelDisplay="on"
-                                        />
-                                    </React.Fragment>
-                                )}
-                                <p className="mdc-typography" style={{ opacity: (!isSearchPending && searchResults) ? '1' : '0' }}>
-                                    {t('searchFormFoundMatches', {
-                                        numFound: searchResults?.response?.numFound,
-                                        QTime: searchResults?.responseHeader?.QTime,
-                                    })}
-                                </p>
+                                <div className="search-form-info">
+                                    <p className="mdc-typography search-form-info__text" style={{ opacity: (!isSearchPending && searchResults && queryParams.q) ? '1' : '0' }}>
+                                        {t('searchFormFoundMatches', {
+                                            numFound: searchResults?.response?.numFound,
+                                            QTime: searchResults?.responseHeader?.QTime,
+                                        })}
+                                    </p>
+                                    {advancedSearchMenuItem && (
+                                        <p className="mdc-typography search-form-info__link">
+                                            <Link to={`${advancedSearchMenuItem.to}${query && `?q=${query}`}`}>
+                                                {t(`navItem${advancedSearchMenuItem.name}`)}
+                                            </Link>
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                         </form>
                     </>
@@ -176,4 +151,4 @@ class SearchForm extends React.Component<IProps, IState> {
     }
 }
 
-export default withRouter(SearchForm);
+export default withRouter(SearchFormSimple);

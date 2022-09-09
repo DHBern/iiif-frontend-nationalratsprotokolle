@@ -35,6 +35,15 @@
     margin-top: 0.5em;
 }
 
+.search-form-info {
+    display: flex;
+    align-items: center;
+}
+
+.search-form-info__link {
+    margin-left: auto;
+}
+
 .results {
     text-align: center;
 }
@@ -96,15 +105,24 @@ p.highlightable {
 }
 
 .simple-filters__rows {
-    margin-left: auto;
+    width: 100%;
+    display: flex;
 }
 
-.simple-filters__rows label {
+.simple-filters__row {
     display: flex;
     align-items: center;
     margin: 0;
 }
 
-.simple-filters__rows label > span {
+.simple-filters__row--left {
+    margin: 0 auto 0 0;
+}
+
+.simple-filters__row--right {
+    margin: 0 0 0 auto;
+}
+
+.simple-filters__row > label {
     margin: 0 1em 0 0;
 }
