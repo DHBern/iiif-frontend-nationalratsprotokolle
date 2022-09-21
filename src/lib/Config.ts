@@ -39,6 +39,8 @@ class Config {
 
     private readonly overviewYearSliderDefaultRange: number[];
 
+    private readonly fuzzySearchDefault: '0' | '1' | '2';
+
     private readonly solrFieldConfig: ISolrRequest;
 
     constructor(config: IConfigParameter) {
@@ -53,6 +55,7 @@ class Config {
         this.hideUnbranchedTrees = config.hideUnbranchedTrees ? config.hideUnbranchedTrees : false;
         this.externalSearchUrl = config.externalSearchUrl;
         this.overviewYearSliderDefaultRange = config.overviewYearSliderDefaultRange ? config.overviewYearSliderDefaultRange : [1874, 1900];
+        this.fuzzySearchDefault = config.fuzzySearchDefault ? config.fuzzySearchDefault : '0';
         this.solrFieldConfig = config.solrFieldConfig ? config.solrFieldConfig : {
             'q': '',
             'fl': 'id,source,title,date,ocr_text',
@@ -168,6 +171,10 @@ class Config {
 
     getSolrFieldConfig() {
         return this.solrFieldConfig;
+    }
+
+    getFuzzySearchDefault() {
+        return this.fuzzySearchDefault;
     }
 
     getAvailableSearchRows() {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider, { Mark } from '@material-ui/core/Slider';
 import Cookie from 'universal-cookie';
@@ -6,7 +6,7 @@ import Cookie from 'universal-cookie';
 const useStyles = makeStyles({
   root: {
     width: '100%',
-    margin: '50px 0 20px'
+    margin: '50px 8px -10px 0'
   },
 });
 
@@ -29,6 +29,10 @@ export default function RangeSlider(props: IProps & typeof defaultProps) {
   const classes = useStyles();
   const [innerValue, setInnerValue] = useState<number[]>(value)
   const cookie = new Cookie();
+
+  useEffect(() => {
+    setInnerValue(value);
+  }, [value]);
 
   const handleChange = (event: any, newValue: number | number[]) => {
     setInnerValue(newValue as number[]);

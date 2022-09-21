@@ -73,8 +73,18 @@
   "searchResultsMatchingPassages": "{{amount}} passages concordants trouvés dans le texte",
   "searchIntroductionText":"La page <span class=\"italic\">Procès-verbaux du Conseil fédéral (1848-1963)</span> vous permet d’effectuer une recherche par mot-clé dans les procès-verbaux manuscrits et dactylographiés du Conseil fédéral. ",
 
+  "searchAdvancedInputLabel": "[FR] Suchtext",
+  "searchAdvancedInputTooltip": "<h4>[FR] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedFuzzyFrom": "[FR] Exakt",
+  "searchAdvancedFuzzyTo": "[FR] Unscharf",
+  "searchAdvancedFuzzyTooltip": "<h4>[FR] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedYears": "[FR] Zeitraum",
+  "searchAdvancedButton": "[FR] Suchen",
+
   "timelineResultsDate": "Date",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Protocole",
-  "timelineResultsArchiveLink": "Archives"
+  "timelineResultsArchiveLink": "Archives",
+
+  "errors.1663765178": "[FR] Die Suche konnte nicht ausgeführt werden."
 }

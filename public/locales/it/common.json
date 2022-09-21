@@ -73,8 +73,18 @@
   "searchResultsMatchingPassages": "{{amount}} che corrisponde a passaggi trovati nel testo",
   "searchIntroductionText": "Sulla pagina «Verbali del Consiglio federale (1848-1963)» si possono effettuare ricerche mediante parole chiave nei verbali manoscritti e dattiloscritti delle decisioni del Consiglio federale.",
 
+  "searchAdvancedInputLabel": "[IT] Suchtext",
+  "searchAdvancedInputTooltip": "<h4>[IT] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedFuzzyFrom": "[IT] Exakt",
+  "searchAdvancedFuzzyTo": "[IT] Unscharf",
+  "searchAdvancedFuzzyTooltip": "<h4>[IT] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedYears": "[IT] Zeitraum",
+  "searchAdvancedButton": "[IT] Suchen",
+
   "timelineResultsDate": "Data",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Protocollo",
-  "timelineResultsArchiveLink": "Archivio"
+  "timelineResultsArchiveLink": "Archivio",
+
+  "errors.1663765178": "[IT] Die Suche konnte nicht ausgeführt werden."
 }
