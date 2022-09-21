@@ -67,7 +67,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                     const yearsArr = Object.keys(grpManifest);
                     const yearRange = stringToNumberArray(this.props.yearRange);
                     const isYearRangeSet = yearRange && yearRange.length === 2 && yearsArr.includes(yearRange[0].toString()) && yearsArr.includes(yearRange[1].toString()) && yearRange[0] <= yearRange[1];
-                    
+
                     this.initialFuzzyFilter = this.state.fuzzyFilter;
                     this.setState({
                         yearsArray: yearsArr,
@@ -132,11 +132,12 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
         if (Array.isArray(sources) && sources.length === 1) {
             fq.push(`source:${sources[0]}`);
         }
-        if (Array.isArray(yearsFilter)) {
+        if (Array.isArray(yearsFilter) && yearsFilter[0] <= yearsFilter[1] && numberArrayToString(yearsFilter) !== '0,0') {
             const from = `${yearsFilter[0]}-01-01T00:00:00Z`;
             const to = `${yearsFilter[1]}-12-31T23:59:59Z`;
 
             fq.push(`date:[${from} TO ${to}]`);
+            setYearRange(numberArrayToString(yearsFilter));
         }
         if (fq.length > 0) {
             params.fq = fq.join(' AND ');
@@ -149,6 +150,12 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
         } else {
             delete (params.sort);
         }
+
+        this.setState({
+            isSearchPending: true
+        });
+
+        setQueryParams(params);
 
         fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
             .then((resp) => resp.json())
@@ -163,11 +170,6 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                 setSearchResults(undefined as any);
                 setErrors([...errors, '400BadSolrRequest']);
             });
-        this.setState({
-            isSearchPending: true
-        });
-        setQueryParams(params);
-        setYearRange(numberArrayToString(yearsFilter));
     }
 
     render() {
