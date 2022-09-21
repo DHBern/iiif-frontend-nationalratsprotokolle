@@ -24,6 +24,8 @@ const Search = ({ mode = 'simple' }: IProps) => {
     const [page, setPage] = useQueryState('page', '1');
     const [rows, setRows] = useQueryState('rows', global.config.getSolrFieldConfig().rows);
     const [sort, setSort] = useQueryState('sort', global.config.getSolrFieldConfig().sort);
+    const [yearRange, setYearRange] = useQueryState('yearRange', '');
+    const [errors, setErrors] = useState<string[]>([]);
     const searchRef = useRef(null);
 
     const numFound = parseInt((searchResults?.response?.numFound || '0').toString());
@@ -43,8 +45,8 @@ const Search = ({ mode = 'simple' }: IProps) => {
         <Translation ns="common">
             {(t) => (
                 <div className="search" ref={searchRef}>
-                    {mode === 'simple' && <SearchFormSimple queryParams={queryParams} setQueryParams={setQueryParams} searchResults={searchResults} setSearchResults={setSearchResults} />}
-                    {mode === 'advanced' && <SearchFormAdvanced queryParams={queryParams} setQueryParams={setQueryParams} searchResults={searchResults} setSearchResults={setSearchResults} />}
+                    {mode === 'simple' && <SearchFormSimple queryParams={queryParams} setQueryParams={setQueryParams} searchResults={searchResults} setSearchResults={setSearchResults} errors={errors} setErrors={setErrors} />}
+                    {mode === 'advanced' && <SearchFormAdvanced queryParams={queryParams} setQueryParams={setQueryParams} searchResults={searchResults} setSearchResults={setSearchResults} yearRange={yearRange} setYearRange={setYearRange} errors={errors} setErrors={setErrors} />}
                     {numFound > 0 && <SearchSorting rows={Number(rows)} setRows={setRows} sort={sort} setSort={setSort} />}
                     {totalPages > 1 && <Pagination page={Number(page)} count={totalPages} numFound={numFound} rowsPerPage={Number(rows)} showFirstButton showLastButton />}
                     {numFound > 0 && <SearchResults queryParams={queryParams} searchResults={searchResults} />}

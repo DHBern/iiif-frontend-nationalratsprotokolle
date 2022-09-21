@@ -73,6 +73,14 @@
   "searchFormOrderBy_score desc": "Relevanz",
   "searchResultsMatchingPassages": "{{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
+  
+  "searchAdvancedInputLabel": "Suchtext",
+  "searchAdvancedInputTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedFuzzyFrom": "Exakt",
+  "searchAdvancedFuzzyTo": "Unscharf",
+  "searchAdvancedFuzzyTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedYears": "Zeitraum",
+  "searchAdvancedButton": "Suchen",
 
   "paginationResults": "Ergebnisse {{start}} - {{end}} von {{total}}",
   "paginationFirstPage": "Zur ersten Seite",
@@ -83,5 +91,8 @@
   "timelineResultsDate": "Datum",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Protokoll",
-  "timelineResultsArchiveLink": "Archiv"
+  "timelineResultsArchiveLink": "Archiv",
+
+
+  "errors.1663765178": "Die Suche konnte nicht ausgeführt werden."
 }

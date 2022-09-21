@@ -269,6 +269,6 @@ const rootline = {
     }
 }
 
-export const getRootline = (language: string) => rootline[language]
+export const getRootline = (language: string) => rootline[language] || rootline['de']
 
 export default rootline;
