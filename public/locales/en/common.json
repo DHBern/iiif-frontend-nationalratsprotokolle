@@ -68,8 +68,10 @@
   "searchFormFoundMatches": "Matches found in {{numFound}} documents in {{QTime}}ms.",
   "searchFormRowsPerPage": "[EN] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[EN] Sortierung",
-  "searchFormOrderBy_date": "Date",
-  "searchFormOrderBy_relevance": "Relevance",
+  "searchFormOrderBy_date asc": "[EN] Datum aufsteigend",
+  "searchFormOrderBy_date desc": "[EN] Datum absteigend",
+  "searchFormOrderBy_score desc": "[EN] Relevanz",
+  "searchFormOrderBy_frequency": "[EN] Anzahl Treffer",
   "searchResultsMatchingPassages": "Found {{amount}} matching passages in the document.",
   "searchIntroductionText":"On the “Minutes of the Federal Council (1848–1963)” page, you can search both the handwritten and typewritten minutes of Federal Council decisions using search terms. ",
 

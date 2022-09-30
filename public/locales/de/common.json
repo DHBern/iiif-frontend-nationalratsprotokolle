@@ -71,6 +71,7 @@
   "searchFormOrderBy_date asc": "Datum aufsteigend",
   "searchFormOrderBy_date desc": "Datum absteigend",
   "searchFormOrderBy_score desc": "Relevanz",
+  "searchFormOrderBy_frequency": "Anzahl Treffer",
   "searchResultsMatchingPassages": "{{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
   

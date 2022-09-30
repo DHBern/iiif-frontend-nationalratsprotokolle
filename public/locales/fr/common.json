@@ -68,8 +68,10 @@
   "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}}. documents trouvés dans {{QTime}}ms.",
   "searchFormRowsPerPage": "[FR] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[FR] Sortierung",
-  "searchFormOrderBy_date": "[FR] Datum",
-  "searchFormOrderBy_relevance": "[FR] Relevanz",
+  "searchFormOrderBy_date asc": "[FR] Datum aufsteigend",
+  "searchFormOrderBy_date desc": "[FR] Datum absteigend",
+  "searchFormOrderBy_score desc": "[FR] Relevanz",
+  "searchFormOrderBy_frequency": "[FR] Anzahl Treffer",
   "searchResultsMatchingPassages": "{{amount}} passages concordants trouvés dans le texte",
   "searchIntroductionText":"La page <span class=\"italic\">Procès-verbaux du Conseil fédéral (1848-1963)</span> vous permet d’effectuer une recherche par mot-clé dans les procès-verbaux manuscrits et dactylographiés du Conseil fédéral. ",
 

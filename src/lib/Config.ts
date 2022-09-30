@@ -59,7 +59,7 @@ class Config {
         this.solrFieldConfig = config.solrFieldConfig ? config.solrFieldConfig : {
             'q': '',
             'fl': 'id,source,title,date,ocr_text',
-            'qf': 'title^20.0 subtitle^16.0 author^10.0 newspaper_part^5.0 publisher^5.0 ocr_text^0.3',
+            'qf': 'title^20.0 subtitle^16.0 ocr_text^0.3',
             'df': 'ocr_text',
             'hl': 'on',
             'hl.ocr.fl': 'ocr_text',
@@ -71,7 +71,7 @@ class Config {
     }
 
     private readonly availableSearchRows: number[] = [10, 25, 50, 100];
-    private readonly availableSearchSorts: string[] = ['score desc', 'date asc', 'date desc'];
+    private readonly availableSearchSorts: string[] = ['score desc', 'date asc', 'date desc', 'frequency'];
 
     getSplitterWidth(folded: boolean) {
 

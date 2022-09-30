@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import { Icon, LinearProgress, TextField } from '@material-ui/core';
 import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
 import { menuItems } from '../navigation/navigation';
 import { replaceSearchParameters } from '../util/url';
+import { isSolrFrequencySortable } from 'util/solr';
+import Config from '../lib/Config';
+
+declare let global: {
+    config: Config;
+};
 
 interface IProps extends RouteComponentProps<any> {
     queryParams: ISolrRequest,
     setQueryParams: (qp: ISolrRequest) => void,
     searchResults: ISearchResults | undefined,
     setSearchResults: (sr: ISearchResults) => void,
+    sort: string,
+    setSort: Dispatch<SetStateAction<string | null>>,
     errors: string[],
     setErrors: (e: string[]) => void,
 }
@@ -33,6 +41,8 @@ class SearchFormSimple extends React.Component<IProps, IState> {
         };
     }
 
+    defaultQueryParams: ISolrRequest = global.config.getSolrFieldConfig();
+
     componentDidMount() {
         if (this.state.query !== '') {
             this.onSubmit();
@@ -50,9 +60,9 @@ class SearchFormSimple extends React.Component<IProps, IState> {
 
     onSubmit(evt?: React.SyntheticEvent) {
         const { sources, query } = this.state;
-        const { queryParams, history, setQueryParams, setSearchResults, errors, setErrors } = this.props;
+        const { queryParams, history, setQueryParams, setSearchResults, errors, setErrors, sort, setSort } = this.props;
+        const trimmedQuery = query.trim();
         const start = queryParams?.start || '1';
-        const sort = queryParams?.sort || '';
         const fq = [];
         if (query === '') {
             evt?.preventDefault();
@@ -65,6 +75,7 @@ class SearchFormSimple extends React.Component<IProps, IState> {
         const params = {
             ...queryParams,
             q: query,
+            fl: this.defaultQueryParams.fl
         };
         if (Array.isArray(sources) && sources.length === 1) {
             fq.push(`source:${sources[0]}`);
@@ -75,10 +86,21 @@ class SearchFormSimple extends React.Component<IProps, IState> {
         if (start !== '0') {
             params.start = start;
         }
-        if (!['relevance', 'null', null].includes(sort)) {
+        if(sort === 'frequency') {
+            const termfrequency = `termfreq(ocr_text,'${trimmedQuery}')`
+
+            if (isSolrFrequencySortable(trimmedQuery)) {
+                params.fl = `${this.defaultQueryParams.fl},freq:${termfrequency}`;
+                params.sort = `${termfrequency} desc`;
+            } else {
+                delete (params.sort);
+                setSort(null);
+            }
+        } else if (!['relevance'].includes(sort)) {
             params.sort = sort;
         } else {
             delete (params.sort);
+            setSort(null);
         }
 
         fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)

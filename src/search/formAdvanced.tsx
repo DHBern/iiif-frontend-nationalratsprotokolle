@@ -13,7 +13,14 @@ import { replaceSearchParameters } from '../util/url';
 import { menuItems } from '../navigation/navigation';
 import Tooltip from '../tooltip/tooltip';
 import { numberArrayToString, stringToNumberArray } from '../util/misc';
-import { isSolrExpertQuery } from 'util/solr';
+import { isSolrExpertQuery, isSolrFrequencySortable } from 'util/solr';
+
+import Config from '../lib/Config';
+
+declare let global: {
+    config: Config;
+};
+
 
 interface IProps extends RouteComponentProps<any> {
     queryParams: ISolrRequest,
@@ -24,6 +31,8 @@ interface IProps extends RouteComponentProps<any> {
     setYearRange: Dispatch<SetStateAction<string | null>>,
     errors: string[],
     setErrors: (errors: string[]) => void,
+    sort: string,
+    setSort: Dispatch<SetStateAction<string | null>>,
     autosubmit?: boolean;
 }
 
@@ -53,6 +62,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
 
     url = process.env.REACT_APP_DEFAULT_COLLECTION_MANIFEST;
     initialFuzzyFilter: number = 0;
+    defaultQueryParams: ISolrRequest = global.config.getSolrFieldConfig();
 
     static defaultProps = {
         autosubmit: false,
@@ -106,7 +116,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
 
     onSubmit(evt?: React.SyntheticEvent) {
         const { sources, query, yearsFilter, fuzzyFilter } = this.state;
-        const { queryParams, history, setSearchResults, setQueryParams, setYearRange, errors, setErrors } = this.props;
+        const { queryParams, history, setSearchResults, setQueryParams, setYearRange, sort = '', setSort, errors, setErrors } = this.props;
         const trimmedQuery = query.trim();
 
         if (evt) {
@@ -115,11 +125,12 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
         }
         
         const start = queryParams?.start || '1';
-        const sort = queryParams?.sort || '';
         const fq = [];
         
         const params = {
             ...queryParams,
+            q: query,
+            fl: this.defaultQueryParams.fl
         };
             
         if(!isSolrExpertQuery(trimmedQuery)){
@@ -145,10 +156,21 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
         if (start !== '0') {
             params.start = start;
         }
-        if (!['relevance', 'null', null].includes(sort)) {
+        if(sort === 'frequency') {
+            const termfrequency = `termfreq(ocr_text,'${trimmedQuery}')`
+
+            if (isSolrFrequencySortable(trimmedQuery)) {
+                params.fl = `${this.defaultQueryParams.fl},freq:${termfrequency}`;
+                params.sort = `${termfrequency} desc`;
+            } else {
+                delete (params.sort);
+                setSort(null);
+            }
+        } else if (!['relevance'].includes(sort)) {
             params.sort = sort;
         } else {
             delete (params.sort);
+            setSort(null);
         }
 
         this.setState({
