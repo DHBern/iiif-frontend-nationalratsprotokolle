@@ -41,12 +41,36 @@ const Search = ({ mode = 'simple' }: IProps) => {
         setQueryParams({ ...queryParams, rows: rows, sort: sort, start: String(newStart) });
     }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
+    const simpleSearchProps = {
+        queryParams,
+        setQueryParams,
+        searchResults,
+        setSearchResults,
+        sort,
+        setSort,
+        errors,
+        setErrors,
+    };
+
+    const advancedSearchProps = {
+        queryParams,
+        setQueryParams,
+        searchResults,
+        setSearchResults,
+        sort,
+        setSort,
+        yearRange,
+        setYearRange,
+        errors,
+        setErrors,
+    };
+
     return (
         <Translation ns="common">
             {(t) => (
                 <div className="search" ref={searchRef}>
-                    {mode === 'simple' && <SearchFormSimple queryParams={queryParams} setQueryParams={setQueryParams} searchResults={searchResults} setSearchResults={setSearchResults} errors={errors} setErrors={setErrors} />}
-                    {mode === 'advanced' && <SearchFormAdvanced queryParams={queryParams} setQueryParams={setQueryParams} searchResults={searchResults} setSearchResults={setSearchResults} yearRange={yearRange} setYearRange={setYearRange} errors={errors} setErrors={setErrors} />}
+                    {mode === 'simple' && <SearchFormSimple {...simpleSearchProps} />}
+                    {mode === 'advanced' && <SearchFormAdvanced {...advancedSearchProps} />}
                     {numFound > 0 && <SearchSorting rows={Number(rows)} setRows={setRows} sort={sort} setSort={setSort} />}
                     {totalPages > 1 && <Pagination page={Number(page)} count={totalPages} numFound={numFound} rowsPerPage={Number(rows)} showFirstButton showLastButton />}
                     {numFound > 0 && <SearchResults queryParams={queryParams} searchResults={searchResults} />}

@@ -68,8 +68,10 @@
   "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
   "searchFormRowsPerPage": "[IT] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[IT] Sortierung",
-  "searchFormOrderBy_date": "[IT] Datum",
-  "searchFormOrderBy_relevance": "[IT] Relevanz",
+  "searchFormOrderBy_date asc": "[IT] Datum aufsteigend",
+  "searchFormOrderBy_date desc": "[IT] Datum absteigend",
+  "searchFormOrderBy_score desc": "[IT] Relevanz",
+  "searchFormOrderBy_frequency": "[IT] Anzahl Treffer",
   "searchResultsMatchingPassages": "{{amount}} che corrisponde a passaggi trovati nel testo",
   "searchIntroductionText": "Sulla pagina «Verbali del Consiglio federale (1848-1963)» si possono effettuare ricerche mediante parole chiave nei verbali manoscritti e dattiloscritti delle decisioni del Consiglio federale.",
 
