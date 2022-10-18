@@ -151,7 +151,7 @@ export default function ReactMirador() {
                 )
 
                 // Info: Unfortunately, there is no other way to listen if the search has been performed...
-                //Subscribe to the redux store to get notified when the search results are available
+                // Subscribe to the redux store to get notified when the search results are available
                 const unsubscribe: Function = store.subscribe(async () => {
                     const searchIsCompleted = Object.values(store.getState().searches).some((search: any) => Object.values(search).some((s: any) => !s?.data[searchUrl]?.isFetching && !!s?.selectedContentSearchAnnotationIds));
 

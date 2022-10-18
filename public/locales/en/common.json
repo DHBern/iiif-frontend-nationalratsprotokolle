@@ -83,6 +83,12 @@
   "searchAdvancedYears": "[EN] Zeitraum",
   "searchAdvancedButton": "[EN] Suchen",
 
+  "paginationResults": "[EN] Ergebnisse {{start}} - {{end}} von {{total}}",
+  "paginationFirstPage": "[EN] Zur ersten Seite",
+  "paginationBack": "[EN] Eine Seite zurück",
+  "paginationForward": "[EN] Eine Seite vor",
+  "paginationLastPage": "[EN] Zur letzten Seite",
+
   "timelineResultsDate": "Date",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Protocol",

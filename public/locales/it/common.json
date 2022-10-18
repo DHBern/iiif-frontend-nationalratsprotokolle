@@ -83,6 +83,12 @@
   "searchAdvancedYears": "[IT] Zeitraum",
   "searchAdvancedButton": "[IT] Suchen",
 
+  "paginationResults": "[IT] Ergebnisse {{start}} - {{end}} von {{total}}",
+  "paginationFirstPage": "[IT] Zur ersten Seite",
+  "paginationBack": "[IT] Eine Seite zurück",
+  "paginationForward": "[IT] Eine Seite vor",
+  "paginationLastPage": "[IT] Zur letzten Seite",
+
   "timelineResultsDate": "Data",
   "timelineResultsDateFormat": "DD.MM.YYYY",
   "timelineResultsTitle": "Protocollo",

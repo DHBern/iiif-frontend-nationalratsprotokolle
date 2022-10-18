@@ -34,7 +34,7 @@
 
   "navItemOverview": "Recherche par date",
   "navItemSearch": "Recherche simple",
-  "navItemSearchAdvanced": "[EN] Erweiterte Suche",
+  "navItemSearchAdvanced": "[FR] Erweiterte Suche",
   "navItemInformation": "Information",
 
   "pageOverviewH1": "Procès-verbaux du Conseil fédéral",
@@ -82,6 +82,12 @@
   "searchAdvancedFuzzyTooltip": "<h4>[FR] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "[FR] Zeitraum",
   "searchAdvancedButton": "[FR] Suchen",
+
+  "paginationResults": "[FR] Ergebnisse {{start}} - {{end}} von {{total}}",
+  "paginationFirstPage": "[FR] Zur ersten Seite",
+  "paginationBack": "[FR] Eine Seite zurück",
+  "paginationForward": "[FR] Eine Seite vor",
+  "paginationLastPage": "[FR] Zur letzten Seite",
 
   "timelineResultsDate": "Date",
   "timelineResultsDateFormat": "DD.MM.YYYY",
