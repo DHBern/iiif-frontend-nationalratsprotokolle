@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@4eyes/mirador-ocr-helper@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@4eyes/mirador-ocr-helper/-/mirador-ocr-helper-1.0.12.tgz#d62f725361023b752da1ede62c27d427cfd68cfc"
-  integrity sha512-id79zk3s3UZShx5JpyKX07buXhibJGJZ09mwZol1JUW1t5YW44phn5HdmiJkVKjKasbw96JGWSrH4eNsSekOBg==
+"@4eyes/mirador-ocr-helper@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@4eyes/mirador-ocr-helper/-/mirador-ocr-helper-1.1.1.tgz#1c05575b675a6b13eb755cb6a48a9dcc5313ed62"
+  integrity sha512-apUquXliITsNJOvPE/hldunie2VFBTsVksbBpAXNGxebGeCCDK1QV8iRVoyPdypO7mVT5TMsIP5TxIKAQ4EgWA==
 
 "@babel/code-frame@7.10.4":
   version "7.10.4"
@@ -2129,6 +2129,11 @@
   version "1.5.5"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
   integrity sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==
+
+"@types/qs@^6.9.7":
+  version "6.9.7"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.7.tgz#63bb7d067db107cc1e457c303bc25d511febf6cb"
+  integrity sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==
 
 "@types/react-dom@17.0.3":
   version "17.0.3"
@@ -10061,6 +10066,13 @@ qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
+
+qs@^6.11.0:
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.11.0.tgz#fd0d963446f7a65e1367e01abd85429453f0c37a"
+  integrity sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==
+  dependencies:
+    side-channel "^1.0.4"
 
 qs@^6.5.2:
   version "6.10.1"

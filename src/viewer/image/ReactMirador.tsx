@@ -50,6 +50,12 @@ export default function ReactMirador() {
                 textOverlay: {
                     enabled: !isMobile,
                     visible: !isMobile,
+                    skipEmptyLines: true,
+                    correction: {
+                        enabled: true,
+                        emailUrlKeepParams: ['manifest'],
+                        emailRecipient: null,
+                    }
                 },
                 sideBarOpenByDefault: !isMobile,
                 panels: {
@@ -70,7 +76,7 @@ export default function ReactMirador() {
         /**
          * This method is executed when the component is unmounted (=destructor)
          */
-         return () => {
+        return () => {
             setViewerInstance(null);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -147,7 +153,7 @@ export default function ReactMirador() {
                         companionWindowId,
                         searchUrl,
                         searchParams.get('q')
-                    )    
+                    )
                 )
 
                 // Info: Unfortunately, there is no other way to listen if the search has been performed...
@@ -196,7 +202,7 @@ export default function ReactMirador() {
     /**
      * This method is executed as a callback when the i18next language changes
      */
-     const changeLanguage = () => {
+    const changeLanguage = () => {
         if (viewerInstance) {
             const { store } = viewerInstance;
             store.dispatch(
