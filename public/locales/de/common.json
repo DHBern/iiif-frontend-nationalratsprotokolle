@@ -30,7 +30,7 @@
   "footerTermsAndConditionsLabel": "Rechtliche Hinweise",
   "footerTermsAndConditionsLink": "http://www.disclaimer.admin.ch/terms_and_conditions.html",
   "footerContactLabel": "Kontakt",
-  "footerContactLink": "mailto:bundesratsprotokolle@bar.admin.ch",
+  "footerContactLink": "mailto:info@bar.admin.ch",
 
   "navItemOverview": "Suche nach Datum",
   "navItemSearch": "Einfache Suche",
@@ -75,6 +75,8 @@
   "searchResultsMatchingPassages": "{{amount}} übereinstimmende Passagen im Text gefunden",
   "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
   
+  "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
+
   "searchAdvancedInputLabel": "Suchtext",
   "searchAdvancedInputTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedFuzzyFrom": "Exakt",

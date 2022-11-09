@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@4eyes/mirador-ocr-helper@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@4eyes/mirador-ocr-helper/-/mirador-ocr-helper-1.1.1.tgz#1c05575b675a6b13eb755cb6a48a9dcc5313ed62"
-  integrity sha512-apUquXliITsNJOvPE/hldunie2VFBTsVksbBpAXNGxebGeCCDK1QV8iRVoyPdypO7mVT5TMsIP5TxIKAQ4EgWA==
+"@4eyes/mirador-ocr-helper@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@4eyes/mirador-ocr-helper/-/mirador-ocr-helper-1.1.2.tgz#3240ae7f2030f76252987bae2e6d915ad28f2093"
+  integrity sha512-NQk0Vouj3+CYSxRHjXMhFEADD/huPQBeQe0gNEva9K29rhQYJ0cSIsWz4+Ux1DvEHxfxP7Ql+E6zcxP8sLe6cg==
 
 "@babel/code-frame@7.10.4":
   version "7.10.4"

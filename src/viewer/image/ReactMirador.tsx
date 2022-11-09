@@ -54,7 +54,7 @@ export default function ReactMirador() {
                     correction: {
                         enabled: true,
                         emailUrlKeepParams: ['manifest'],
-                        emailRecipient: null,
+                        emailRecipient: i18next.t('protocolMiradorOcrPluginEmailRecipient'),
                     }
                 },
                 sideBarOpenByDefault: !isMobile,
