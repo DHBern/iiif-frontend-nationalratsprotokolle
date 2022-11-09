@@ -30,7 +30,7 @@
   "footerTermsAndConditionsLabel": "Legal framework",
   "footerTermsAndConditionsLink": "https://www.admin.ch/gov/en/start/terms-and-conditions.html",
   "footerContactLabel": "Contact",
-  "footerContactLink": "mailto:bundesratsprotokolle@bar.admin.ch",
+  "footerContactLink": "mailto:info@bar.admin.ch",
 
   "navItemOverview": "Search by date",
   "navItemSearch": "Simple search",
@@ -82,6 +82,8 @@
   "searchAdvancedFuzzyTooltip": "<h4>[EN] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "[EN] Zeitraum",
   "searchAdvancedButton": "[EN] Suchen",
+
+  "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
 
   "paginationResults": "[EN] Ergebnisse {{start}} - {{end}} von {{total}}",
   "paginationFirstPage": "[EN] Zur ersten Seite",
