@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
     Switch,
     Route,
-    Redirect
+    Redirect,
+    useLocation,
 } from "react-router-dom";
+import { useMatomo } from '@jonkoops/matomo-tracker-react';
 import Alert from "../Alert";
 import Login from "../Login";
 import FederationHeader from '../federation/header';
@@ -15,12 +17,17 @@ import PageInformation from "../page/information";
 import PageProtocolVariant3 from "../page/protocol/protocol";
 import PageNotFound from "../page/notfound";
 
-
 require('../topBar/topbar.css');
 
 export default function Main() {
+    const {pathname, search, hash} = useLocation();
+    const { enableLinkTracking, trackPageView } = useMatomo()
 
+    enableLinkTracking()
 
+    useEffect(() => {
+        trackPageView();
+    }, [pathname, search, hash]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return <>
         <Alert />
