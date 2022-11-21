@@ -37,6 +37,13 @@
   "navItemSearchAdvanced": "[IT] Erweiterte Suche",
   "navItemInformation": "Informazioni",
 
+  "pageTitle": "Verbali del Consiglio federale (1848-1963) - {{individual}}",
+  "pageTitleIndividualBrowser": "Ricerca per data",
+  "pageTitleIndividualSearch": "Ricerca semplice",
+  "pageTitleIndividualSearchadvanced": "[IT] Erweiterte Suche",
+  "pageTitleIndividualInformation": "Informazioni",
+  "pageTitleIndividualProtocol": "{{signature}}",
+
   "pageOverviewH1": "Verbali del Consiglio federale",
   "pageOverviewH2": "Periodo di tempo",
   "pageOverviewManifestUndefined": "Nessun manifesto è stato configurato.",

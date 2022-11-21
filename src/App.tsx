@@ -115,8 +115,6 @@ export default function App(props: IProps) {
                     setCurrentFolder(currentFolder);
                     resolve(currentManifest);
                 }
-
-                document.title = getLocalized(currentManifest.label);
             }).catch(r => {
                 setAlert(r);
                 reject(r);

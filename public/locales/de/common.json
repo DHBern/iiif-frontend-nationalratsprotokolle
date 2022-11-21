@@ -37,6 +37,13 @@
   "navItemSearchAdvanced": "Erweiterte Suche",
   "navItemInformation": "Information",
 
+  "pageTitle": "Protokolle des Bundesrates (1848-1963) - {{individual}}",
+  "pageTitleIndividualBrowser": "Suche nach Datum",
+  "pageTitleIndividualSearch": "Einfache Suche",
+  "pageTitleIndividualSearchadvanced": "Erweiterte Suche",
+  "pageTitleIndividualInformation": "Information",
+  "pageTitleIndividualProtocol": "{{signature}}",
+
   "pageOverviewH1": "Bundesratsprotokolle",
   "pageOverviewH2": "Zeitspanne",
   "pageOverviewManifestUndefined": "Es wurde kein Manifest konfiguriert.",

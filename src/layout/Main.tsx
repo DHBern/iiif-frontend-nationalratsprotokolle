@@ -16,6 +16,9 @@ import PageSearchAdvanced from 'page/searchAdvanced';
 import PageInformation from "../page/information";
 import PageProtocolVariant3 from "../page/protocol/protocol";
 import PageNotFound from "../page/notfound";
+import { getLocalized } from 'lib/ManifestHelpers';
+import { capitalizeFirstLetter, setPageTitle } from 'util/misc';
+import PresentationApi from "../fetch/PresentationApi";
 
 require('../topBar/topbar.css');
 
@@ -26,7 +29,17 @@ export default function Main() {
     enableLinkTracking()
 
     useEffect(() => {
-        trackPageView();
+        const manifest = new URLSearchParams(search).get('manifest');
+        const firstSlug = pathname.split('/')[1];
+        if (manifest) {
+            PresentationApi.fetchFromUrl(manifest).then((manifestData) => {
+                setPageTitle(capitalizeFirstLetter(firstSlug), { signature: getLocalized(manifestData.label) });
+                trackPageView();
+            })
+        } else {
+            setPageTitle(capitalizeFirstLetter(firstSlug));
+            trackPageView();
+        }
     }, [pathname, search, hash]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return <>
