@@ -37,6 +37,13 @@
   "navItemSearchAdvanced": "Advanced search",
   "navItemInformation": "Information",
 
+  "pageTitle": "Minutes of the Federal Council (1848-1963) - {{individual}}",
+  "pageTitleIndividualBrowser": "Search by date",
+  "pageTitleIndividualSearch": "Simple search",
+  "pageTitleIndividualSearchadvanced": "Advanced search",
+  "pageTitleIndividualInformation": "Information",
+  "pageTitleIndividualProtocol": "{{signature}}",
+
   "pageOverviewH1": "Minutes of the Federal Council",
   "pageOverviewH2": "Time span",
   "pageOverviewManifestUndefined": "No manifest has been configured.",

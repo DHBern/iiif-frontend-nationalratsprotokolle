@@ -37,6 +37,13 @@
   "navItemSearchAdvanced": "[FR] Erweiterte Suche",
   "navItemInformation": "Information",
 
+  "pageTitle": "Procès-verbaux du Conseil fédéral (1848-1963) - {{individual}}",
+  "pageTitleIndividualBrowser": "Recherche par date",
+  "pageTitleIndividualSearch": "Simple search",
+  "pageTitleIndividualSearchadvanced": "[FR] Erweiterte Suche",
+  "pageTitleIndividualInformation": "Information",
+  "pageTitleIndividualProtocol": "{{signature}}",
+
   "pageOverviewH1": "Procès-verbaux du Conseil fédéral",
   "pageOverviewH2": "Période",
   "pageOverviewManifestUndefined": "Aucun manifeste n'a été configuré.",
