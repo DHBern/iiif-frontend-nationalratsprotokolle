@@ -61,6 +61,7 @@
   "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
   
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
+  "protocolMiradorSearchTitle": "Suche im Dokument",
 
   "searchAdvancedInputLabel": "Suchtext",
   "searchAdvancedInputTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",

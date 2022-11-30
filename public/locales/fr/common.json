@@ -69,6 +69,7 @@
   "searchAdvancedButton": "[FR] Suchen",
 
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
+  "protocolMiradorSearchTitle": "[FR] Suche im Dokument",
 
   "paginationResults": "[FR] Ergebnisse {{start}} - {{end}} von {{total}}",
   "paginationFirstPage": "[FR] Zur ersten Seite",

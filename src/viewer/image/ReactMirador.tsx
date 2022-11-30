@@ -43,10 +43,11 @@ export default function ReactMirador() {
             workspace: {
                 allowNewWindows: false,
                 isWorkspaceAddVisible: false,
+                showZoomControls: true,
             },
             window: {
                 allowFullscreen: true,
-                allowClose: true,
+                allowClose: false,
                 textOverlay: {
                     enabled: !isMobile,
                     visible: !isMobile,
@@ -61,7 +62,14 @@ export default function ReactMirador() {
                 panels: {
                     info: true,
                     annotations: false,
+                    attribution: false,
+                    canvas: false,
                 },
+                views: [
+                    { key: 'single', behaviors: ['individuals'] },
+                    { key: 'book', behaviors: ['paged'] },
+                    { key: 'scroll', behaviors: ['continuous'] },
+                ],
             },
             windows: [],
             thumbnailNavigation: {
@@ -69,6 +77,20 @@ export default function ReactMirador() {
             },
             language: i18next.language,
             availableLanguages: false, // Workaround: Needs to be 'false' on init, otherwise restrictions won't be applied...
+            locales: {
+                de: {
+                    searchTitle: i18next.t('protocolMiradorSearchTitle'),
+                }
+            },
+            theme: {
+                overrides: {
+                    MuiButtonBase: {
+                        selected: {
+                            backgroundColor: 'transparent',
+                        }
+                    }
+                }
+            }
         };
 
         setViewerInstance(Mirador.viewer(config, [...ocrHelperPlugin]));
