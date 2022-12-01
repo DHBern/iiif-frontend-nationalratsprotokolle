@@ -20,6 +20,10 @@ export const menuItems = [
         name: 'Overview'
     },
     {
+        to: '/manual',
+        name: 'Manual'
+    },
+    {
         to: '/information',
         name: 'Information'
     },

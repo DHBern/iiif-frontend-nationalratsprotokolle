@@ -32,15 +32,17 @@
   "footerContactLabel": "Contatto",
   "footerContactLink": "mailto:info@bar.admin.ch",
 
-  "navItemOverview": "Ricerca per data",
+  "navItemOverview": "[IT] Chronologisches Verzeichnis",
   "navItemSearch": "Ricerca semplice",
   "navItemSearchAdvanced": "[IT] Erweiterte Suche",
+  "navItemManual": "[IT] Anleitung",
   "navItemInformation": "Informazioni",
 
   "pageTitle": "Verbali del Consiglio federale (1848-1963) - {{individual}}",
-  "pageTitleIndividualBrowser": "Ricerca per data",
+  "pageTitleIndividualBrowser": "[IT] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Ricerca semplice",
   "pageTitleIndividualSearchadvanced": "[IT] Erweiterte Suche",
+  "pageTitleIndividualManual": "[IT] Anleitung",
   "pageTitleIndividualInformation": "Informazioni",
   "pageTitleIndividualProtocol": "{{signature}}",
 

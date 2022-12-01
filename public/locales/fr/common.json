@@ -32,15 +32,17 @@
   "footerContactLabel": "Contactez",
   "footerContactLink": "mailto:info@bar.admin.ch",
 
-  "navItemOverview": "Recherche par date",
+  "navItemOverview": "[FR] Chronologisches Verzeichnis",
   "navItemSearch": "Recherche simple",
   "navItemSearchAdvanced": "[FR] Erweiterte Suche",
+  "navItemManual": "[FR] Anleitung",
   "navItemInformation": "Information",
 
   "pageTitle": "Procès-verbaux du Conseil fédéral (1848-1963) - {{individual}}",
-  "pageTitleIndividualBrowser": "Recherche par date",
+  "pageTitleIndividualBrowser": "[FR] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Simple search",
   "pageTitleIndividualSearchadvanced": "[FR] Erweiterte Suche",
+  "pageTitleIndividualManual": "[FR] Anleitung",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 

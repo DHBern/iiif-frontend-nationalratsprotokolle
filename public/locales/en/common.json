@@ -32,15 +32,17 @@
   "footerContactLabel": "Contact",
   "footerContactLink": "mailto:info@bar.admin.ch",
 
-  "navItemOverview": "Search by date",
+  "navItemOverview": "[EN] Chronologisches Verzeichnis",
   "navItemSearch": "Simple search",
   "navItemSearchAdvanced": "Advanced search",
+  "navItemManual": "[EN] Anleitung",
   "navItemInformation": "Information",
 
   "pageTitle": "Minutes of the Federal Council (1848-1963) - {{individual}}",
-  "pageTitleIndividualBrowser": "Search by date",
+  "pageTitleIndividualBrowser": "[EN] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Simple search",
   "pageTitleIndividualSearchadvanced": "Advanced search",
+  "pageTitleIndividualManual": "[EN] Anleitung",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 
