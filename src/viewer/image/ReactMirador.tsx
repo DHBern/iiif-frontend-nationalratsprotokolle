@@ -56,7 +56,8 @@ export default function ReactMirador() {
                         enabled: true,
                         emailUrlKeepParams: ['manifest'],
                         emailRecipient: i18next.t('protocolMiradorOcrPluginEmailRecipient'),
-                    }
+                    },
+                    optionsRenderMode: 'simple'
                 },
                 sideBarOpenByDefault: !isMobile,
                 panels: {
