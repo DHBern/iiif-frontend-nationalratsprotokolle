@@ -100,14 +100,17 @@ const Timeline = function () {
                     {manifest && yearsArray && (
                         <>
                             <h2>{t('pageOverviewH2')}</h2>
-                            <RangeSlider
-                                marks={Object.keys(manifest).map((value: string) => ({ value: parseInt(value) }))}
-                                value={filterRange}
-                                setValue={setFilterRange}
-                                min={parseInt(yearsArray[0])}
-                                max={parseInt(yearsArray[yearsArray.length - 1])}
-                                valueLabelDisplay="on"
-                            />
+                            <div className="aiiif-timeline-years">
+                                <RangeSlider
+                                    marks={Object.keys(manifest).map((value: string) => ({ value: parseInt(value) }))}
+                                    value={filterRange}
+                                    setValue={setFilterRange}
+                                    min={parseInt(yearsArray[0])}
+                                    max={parseInt(yearsArray[yearsArray.length - 1])}
+                                    valueLabelDisplay="on"
+                                    size="medium"
+                                />
+                            </div>
                         </>
                     )}
                     {filteredManifests && (

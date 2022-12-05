@@ -1,12 +1,14 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { Translation } from 'react-i18next';
-import { Icon, LinearProgress, TextField } from '@material-ui/core';
+import { LinearProgress } from '@material-ui/core';
 import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
 import { menuItems } from '../navigation/navigation';
 import { replaceSearchParameters } from '../util/url';
 import { isSolrFrequencySortable } from 'util/solr';
+import Tooltip from '../tooltip/tooltip';
 import Config from '../lib/Config';
+import DOMPurify from 'dompurify';
 
 declare let global: {
     config: Config;
@@ -141,43 +143,53 @@ class SearchFormSimple extends React.Component<IProps, IState> {
             <Translation ns="common">
                 {(t) => (
                     <>
-                        <form className="search-form" onSubmit={this.onSubmit.bind(this)}>
-                            <div className="search-form-inner">
+                    <form className="search-form" onSubmit={this.onSubmit.bind(this)}>
+                        <div className="search-form-inner search-form-inner--advanced">
+                            <div className="search-form-input">
+                                <label>{ t('searchAdvancedInputLabel') }</label>
                                 <div className="search-form-input-wrap">
-                                    <TextField
-                                        className={`mdc-text-field ${this.props.errors.find((err) => err === '400BadSolrRequest') ? 'is-invalid' : ''}`}
-                                        disabled={isSearchPending || sources.length === 0}
-                                        label={t('searchFormInputLabel')}
-                                        value={query}
-                                        variant="outlined"
-                                        onChange={(ev) => this.setState({ query: ev.currentTarget.value })}
-                                        fullWidth
-                                        InputProps={{
-                                            endAdornment: <Icon>search</Icon>
-                                        }}
+                                    <div className="search-form-input-inner">
+                                        <input type="text" className={`form-control ${this.props.errors.find((err) => err === '400BadSolrRequest') ? 'is-invalid' : ''}`} disabled={isSearchPending || sources.length === 0} value={query} onChange={(ev) => this.setState({ query: ev.currentTarget.value })} ></input>
+                                        <div className="mdc-linear-progress-wrap">
+                                            {isSearchPending && <LinearProgress className="mdc-linear-progress" />}
+                                        </div>
+                                    </div>
+                                    <Tooltip
+                                        className="search-form-tooltip"
+                                        title={
+                                            <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                                                __html: DOMPurify.sanitize(t('searchAdvancedInputTooltip'))
+                                            }} />
+                                        }
                                     />
-                                    <div className="mdc-linear-progress-wrap">
-                                        {isSearchPending && <LinearProgress className="mdc-linear-progress" />}
-                                    </div>
                                 </div>
-                                <div className="search-form-info">
-                                        <p className="mdc-typography search-form-info__text" style={{ opacity: (!isSearchPending && searchResults && queryParams.q) ? '1' : '0' }}>
-                                            {t('searchFormFoundMatches', {
-                                                numFound: searchResults?.response?.numFound,
-                                                QTime: searchResults?.responseHeader?.QTime,
-                                            })}
-                                        </p>
-                                        {advancedSearchMenuItem && (
-                                            <p className="mdc-typography search-form-info__link">
-                                                <Link to={`${advancedSearchMenuItem.to}${query && `?q=${query}`}`}>
-                                                    {t(`navItem${advancedSearchMenuItem.name}`)}
-                                                </Link>
-                                            </p>
-                                        )}
-                                    </div>
                             </div>
-                        </form>
-                    </>
+                            <div className="search-form-controls">
+                                <button type="submit" className="btn btn-primary" disabled={query === ''}>{ t('searchAdvancedButton') }</button>
+                            </div>
+                        </div>
+                        <div className="search-form-info">
+                            {advancedSearchMenuItem && (
+                                <p className="mdc-typography search-form-info__link">
+                                    <Link to={`${advancedSearchMenuItem.to}${query && `?q=${query}`}`}>
+                                        {t(`searchAdvancedOpen`)}
+                                    </Link>
+                                </p>
+                            )}
+                            {(!isSearchPending && searchResults && queryParams.q) && (
+                                <p  className="mdc-typography search-form-info__text"
+                                    dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                                        __html: DOMPurify.sanitize(t('searchFormFoundMatches', {
+                                            numFound: searchResults?.response?.numFound,
+                                            q: this.state.query,
+                                            QTime: searchResults?.responseHeader?.QTime,
+                                        }))
+                                    }} 
+                                />
+                            )}
+                        </div>
+                    </form>
+                </>
                 )}
             </Translation>
         )

@@ -46,13 +46,13 @@
   "pageTitleIndividualInformation": "Informazioni",
   "pageTitleIndividualProtocol": "{{signature}}",
 
-  "pageOverviewH1": "Verbali del Consiglio federale",
+  "pageOverviewH1": "[IT] Chronologisches Verzeichnis",
   "pageOverviewH2": "Periodo di tempo",
   "pageOverviewManifestUndefined": "Nessun manifesto è stato configurato.",
 
   "pageSearchH1": "Ricerca",
   "searchFormInputLabel": "Inserisci il termine di ricerca",
-  "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
+  "searchFormFoundMatches": "[IT] Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
   "searchFormRowsPerPage": "[IT] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[IT] Sortierung",
   "searchFormOrderBy_date asc": "[IT] Datum aufsteigend",
@@ -69,6 +69,8 @@
   "searchAdvancedFuzzyTooltip": "<h4>[IT] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "[IT] Zeitraum",
   "searchAdvancedButton": "[IT] Suchen",
+  "searchAdvancedOpen": "[IT] Erweiterte Suche",
+  "searchAdvancedClose": "[IT] Erweiterte Suche schliessen",
 
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
   "protocolMiradorSearchTitle": "[IT] Suche im Dokument",

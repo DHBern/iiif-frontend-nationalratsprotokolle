@@ -89,6 +89,11 @@ export default function ReactMirador() {
                         selected: {
                             backgroundColor: 'transparent',
                         }
+                    },
+                    MuiListItem: {
+                        root: {
+                            margin: 0,
+                        }
                     }
                 }
             }
@@ -151,6 +156,8 @@ export default function ReactMirador() {
             // If there is no window yet, we need to create one
             if (!firstWindow) {
                 store.dispatch(actions.addWindow({ manifestId: currentManifest.id }));
+                firstWindow = Object.values(store.getState().windows)[0];
+                store.dispatch(actions.maximizeWindow(firstWindow.id));
             } else {
                 store.dispatch(actions.updateWindow(firstWindow.id, { manifestId: currentManifest.id }));
             }

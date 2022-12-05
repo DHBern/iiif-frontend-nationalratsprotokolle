@@ -46,13 +46,13 @@
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 
-  "pageOverviewH1": "Procès-verbaux du Conseil fédéral",
+  "pageOverviewH1": "[FR] Chronologisches Verzeichnis",
   "pageOverviewH2": "Période",
   "pageOverviewManifestUndefined": "Aucun manifeste n'a été configuré.",
 
   "pageSearchH1": "Recherche",
   "searchFormInputLabel": "Saisir le terme de recherche",
-  "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}}. documents trouvés dans {{QTime}}ms.",
+  "searchFormFoundMatches": "[FR] Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
   "searchFormRowsPerPage": "[FR] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[FR] Sortierung",
   "searchFormOrderBy_date asc": "[FR] Datum aufsteigend",
@@ -69,6 +69,8 @@
   "searchAdvancedFuzzyTooltip": "<h4>[FR] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "[FR] Zeitraum",
   "searchAdvancedButton": "[FR] Suchen",
+  "searchAdvancedOpen": "[FR] Erweiterte Suche",
+  "searchAdvancedClose": "[FR] Erweiterte Suche schliessen",
 
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
   "protocolMiradorSearchTitle": "[FR] Suche im Dokument",
