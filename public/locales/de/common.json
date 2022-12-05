@@ -32,25 +32,27 @@
   "footerContactLabel": "Kontakt",
   "footerContactLink": "mailto:info@bar.admin.ch",
 
-  "navItemOverview": "Suche nach Datum",
+  "navItemOverview": "Chronologisches Verzeichnis",
   "navItemSearch": "Einfache Suche",
   "navItemSearchAdvanced": "Erweiterte Suche",
+  "navItemManual": "Anleitung",
   "navItemInformation": "Information",
 
   "pageTitle": "Protokolle des Bundesrates (1848-1963) - {{individual}}",
-  "pageTitleIndividualBrowser": "Suche nach Datum",
+  "pageTitleIndividualBrowser": "Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Einfache Suche",
   "pageTitleIndividualSearchadvanced": "Erweiterte Suche",
+  "pageTitleIndividualManual": "Anleitung",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 
-  "pageOverviewH1": "Bundesratsprotokolle",
+  "pageOverviewH1": "Chronologisches Verzeichnis",
   "pageOverviewH2": "Zeitspanne",
   "pageOverviewManifestUndefined": "Es wurde kein Manifest konfiguriert.",
 
   "pageSearchH1": "Suche",
   "searchFormInputLabel": "Suchbegriff eingeben",
-  "searchFormFoundMatches": "Übereinstimmungen in {{numFound}} Dokumenten in {{QTime}}ms gefunden.",
+  "searchFormFoundMatches": "Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
   "searchFormRowsPerPage": "Anzahl Treffer pro Seite",
   "searchFormOrderBy": "Sortierung",
   "searchFormOrderBy_date asc": "Datum aufsteigend",
@@ -61,6 +63,7 @@
   "searchIntroductionText": "Auf der Seite Protokolle des Bundesrates (1848-1963) können Sie sowohl die handschriftlichen als auch die maschinengeschriebenen Beschlussprotokolle des Bundesrates nach Suchbegriffen durchsuchen.",
   
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
+  "protocolMiradorSearchTitle": "Suche im Dokument",
 
   "searchAdvancedInputLabel": "Suchtext",
   "searchAdvancedInputTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
@@ -69,6 +72,8 @@
   "searchAdvancedFuzzyTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "Zeitraum",
   "searchAdvancedButton": "Suchen",
+  "searchAdvancedOpen": "Erweiterte Suche",
+  "searchAdvancedClose": "Erweiterte Suche schliessen",
 
   "paginationResults": "Ergebnisse {{start}} - {{end}} von {{total}}",
   "paginationFirstPage": "Zur ersten Seite",

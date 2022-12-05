@@ -32,25 +32,27 @@
   "footerContactLabel": "Contact",
   "footerContactLink": "mailto:info@bar.admin.ch",
 
-  "navItemOverview": "Search by date",
+  "navItemOverview": "[EN] Chronologisches Verzeichnis",
   "navItemSearch": "Simple search",
   "navItemSearchAdvanced": "Advanced search",
+  "navItemManual": "[EN] Anleitung",
   "navItemInformation": "Information",
 
   "pageTitle": "Minutes of the Federal Council (1848-1963) - {{individual}}",
-  "pageTitleIndividualBrowser": "Search by date",
+  "pageTitleIndividualBrowser": "[EN] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Simple search",
   "pageTitleIndividualSearchadvanced": "Advanced search",
+  "pageTitleIndividualManual": "[EN] Anleitung",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 
-  "pageOverviewH1": "Minutes of the Federal Council",
+  "pageOverviewH1": "[EN]: Chronologisches Verzeichnis",
   "pageOverviewH2": "Time span",
   "pageOverviewManifestUndefined": "No manifest has been configured.",
 
   "pageSearchH1": "Search",
   "searchFormInputLabel": "Enter search term",
-  "searchFormFoundMatches": "Matches found in {{numFound}} documents in {{QTime}}ms.",
+  "searchFormFoundMatches": "[EN] Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
   "searchFormRowsPerPage": "[EN] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[EN] Sortierung",
   "searchFormOrderBy_date asc": "[EN] Datum aufsteigend",
@@ -67,8 +69,11 @@
   "searchAdvancedFuzzyTooltip": "<h4>[EN] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "[EN] Zeitraum",
   "searchAdvancedButton": "[EN] Suchen",
+  "searchAdvancedOpen": "[EN] Erweiterte Suche",
+  "searchAdvancedClose": "[EN] Erweiterte Suche schliessen",
 
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
+  "protocolMiradorSearchTitle": "[EN] Suche im Dokument",
 
   "paginationResults": "[EN] Ergebnisse {{start}} - {{end}} von {{total}}",
   "paginationFirstPage": "[EN] Zur ersten Seite",

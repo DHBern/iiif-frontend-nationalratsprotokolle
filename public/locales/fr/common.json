@@ -32,25 +32,27 @@
   "footerContactLabel": "Contactez",
   "footerContactLink": "mailto:info@bar.admin.ch",
 
-  "navItemOverview": "Recherche par date",
+  "navItemOverview": "[FR] Chronologisches Verzeichnis",
   "navItemSearch": "Recherche simple",
   "navItemSearchAdvanced": "[FR] Erweiterte Suche",
+  "navItemManual": "[FR] Anleitung",
   "navItemInformation": "Information",
 
   "pageTitle": "Procès-verbaux du Conseil fédéral (1848-1963) - {{individual}}",
-  "pageTitleIndividualBrowser": "Recherche par date",
+  "pageTitleIndividualBrowser": "[FR] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Simple search",
   "pageTitleIndividualSearchadvanced": "[FR] Erweiterte Suche",
+  "pageTitleIndividualManual": "[FR] Anleitung",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 
-  "pageOverviewH1": "Procès-verbaux du Conseil fédéral",
+  "pageOverviewH1": "[FR] Chronologisches Verzeichnis",
   "pageOverviewH2": "Période",
   "pageOverviewManifestUndefined": "Aucun manifeste n'a été configuré.",
 
   "pageSearchH1": "Recherche",
   "searchFormInputLabel": "Saisir le terme de recherche",
-  "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}}. documents trouvés dans {{QTime}}ms.",
+  "searchFormFoundMatches": "[FR] Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
   "searchFormRowsPerPage": "[FR] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[FR] Sortierung",
   "searchFormOrderBy_date asc": "[FR] Datum aufsteigend",
@@ -67,8 +69,11 @@
   "searchAdvancedFuzzyTooltip": "<h4>[FR] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "[FR] Zeitraum",
   "searchAdvancedButton": "[FR] Suchen",
+  "searchAdvancedOpen": "[FR] Erweiterte Suche",
+  "searchAdvancedClose": "[FR] Erweiterte Suche schliessen",
 
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
+  "protocolMiradorSearchTitle": "[FR] Suche im Dokument",
 
   "paginationResults": "[FR] Ergebnisse {{start}} - {{end}} von {{total}}",
   "paginationFirstPage": "[FR] Zur ersten Seite",

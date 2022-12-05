@@ -3,8 +3,10 @@ import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import { LinearProgress } from '@material-ui/core';
 import Slider from '@material-ui/core/Slider';
-import RangeSlider from 'rangeSlider/rangeSlider';
 import * as DOMPurify from 'dompurify';
+import CancelIcon from '@material-ui/icons/Cancel';
+
+import RangeSlider from 'rangeSlider/rangeSlider';
 import PresentationApi from "../fetch/PresentationApi";
 import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
 import IManifestData from "../interface/IManifestData";
@@ -259,16 +261,19 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                     {yearsArray && (
                                         <>
                                             <label>{ t('searchAdvancedYears') }</label>
-                                            <RangeSlider
-                                                marks={yearsArray.map((value: string) => ({ value: parseInt(value) }))}
-                                                value={yearsFilter}
-                                                setValue={(value) => {
-                                                    this.setState({ yearsFilter: value });
-                                                }}
-                                                min={parseInt(yearsArray[0])}
-                                                max={parseInt(yearsArray[yearsArray.length - 1])}
-                                                valueLabelDisplay="on"
-                                            />
+                                            <div className="search-form-years-wrap">
+                                                <RangeSlider
+                                                    marks={yearsArray.map((value: string) => ({ value: parseInt(value) }))}
+                                                    value={yearsFilter}
+                                                    setValue={(value) => {
+                                                        this.setState({ yearsFilter: value });
+                                                    }}
+                                                    min={parseInt(yearsArray[0])}
+                                                    max={parseInt(yearsArray[yearsArray.length - 1])}
+                                                    valueLabelDisplay="on"
+                                                    size="small"
+                                                />
+                                            </div>
                                         </>
                                     )}
                                 </div>
@@ -277,18 +282,23 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                 </div>
                             </div>
                             <div className="search-form-info">
-                                <p className="mdc-typography search-form-info__text" style={{ opacity: (!isSearchPending && searchResults && queryParams.q) ? '1' : '0' }}>
-                                    {t('searchFormFoundMatches', {
-                                        numFound: searchResults?.response?.numFound,
-                                        QTime: searchResults?.responseHeader?.QTime,
-                                    })}
-                                </p>
                                 {simpleSearchMenuItem && (
                                     <p className="mdc-typography search-form-info__link">
                                         <Link to={`${simpleSearchMenuItem.to}${query && `?q=${query}`}`}>
-                                            {t(`navItem${simpleSearchMenuItem.name}`)}
+                                            <><CancelIcon /> <span>{t(`searchAdvancedClose`)}</span></>
                                         </Link>
                                     </p>
+                                )}
+                                {(!isSearchPending && searchResults && queryParams.q) && (
+                                    <p  className="mdc-typography search-form-info__text"
+                                        dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                                            __html: DOMPurify.sanitize(t('searchFormFoundMatches', {
+                                                numFound: searchResults?.response?.numFound,
+                                                q: this.state.query,
+                                                QTime: searchResults?.responseHeader?.QTime,
+                                            }))
+                                        }} 
+                                    />
                                 )}
                             </div>
                         </form>

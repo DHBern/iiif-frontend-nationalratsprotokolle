@@ -32,25 +32,27 @@
   "footerContactLabel": "Contatto",
   "footerContactLink": "mailto:info@bar.admin.ch",
 
-  "navItemOverview": "Ricerca per data",
+  "navItemOverview": "[IT] Chronologisches Verzeichnis",
   "navItemSearch": "Ricerca semplice",
   "navItemSearchAdvanced": "[IT] Erweiterte Suche",
+  "navItemManual": "[IT] Anleitung",
   "navItemInformation": "Informazioni",
 
   "pageTitle": "Verbali del Consiglio federale (1848-1963) - {{individual}}",
-  "pageTitleIndividualBrowser": "Ricerca per data",
+  "pageTitleIndividualBrowser": "[IT] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Ricerca semplice",
   "pageTitleIndividualSearchadvanced": "[IT] Erweiterte Suche",
+  "pageTitleIndividualManual": "[IT] Anleitung",
   "pageTitleIndividualInformation": "Informazioni",
   "pageTitleIndividualProtocol": "{{signature}}",
 
-  "pageOverviewH1": "Verbali del Consiglio federale",
+  "pageOverviewH1": "[IT] Chronologisches Verzeichnis",
   "pageOverviewH2": "Periodo di tempo",
   "pageOverviewManifestUndefined": "Nessun manifesto è stato configurato.",
 
   "pageSearchH1": "Ricerca",
   "searchFormInputLabel": "Inserisci il termine di ricerca",
-  "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
+  "searchFormFoundMatches": "[IT] Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
   "searchFormRowsPerPage": "[IT] Anzahl Treffer pro Seite",
   "searchFormOrderBy": "[IT] Sortierung",
   "searchFormOrderBy_date asc": "[IT] Datum aufsteigend",
@@ -67,8 +69,11 @@
   "searchAdvancedFuzzyTooltip": "<h4>[IT] Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
   "searchAdvancedYears": "[IT] Zeitraum",
   "searchAdvancedButton": "[IT] Suchen",
+  "searchAdvancedOpen": "[IT] Erweiterte Suche",
+  "searchAdvancedClose": "[IT] Erweiterte Suche schliessen",
 
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
+  "protocolMiradorSearchTitle": "[IT] Suche im Dokument",
 
   "paginationResults": "[IT] Ergebnisse {{start}} - {{end}} von {{total}}",
   "paginationFirstPage": "[IT] Zur ersten Seite",

@@ -10,7 +10,7 @@ export default function PageSearch() {
             {(t) => (
                 <Main>
                     <>
-                        <div style={{marginTop: '40px', marginBottom: '40px'}}>
+                        <div style={{marginTop: '40px', marginBottom: '15px'}}>
                             <h1>{t('headerProjectSubtitle')}</h1>
                             <h3 dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                                 __html: DOMPurify.sanitize(t('searchIntroductionText'))

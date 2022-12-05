@@ -1,6 +1,7 @@
 
 .search {
-    scroll-margin-top: 30px;
+    margin-top: 40px;
+    scroll-margin-top: 20px;
 }
 
 .search p {
@@ -8,7 +9,7 @@
 }
 
 .search-form {
-    margin-bottom: 25px;
+    margin-bottom: 10px;
 }
 
 .search-form .mdc-text-field {
@@ -71,6 +72,11 @@
     gap: 0 15px;
 }
 
+.search-form-years-wrap {
+    width: 100%;
+    margin: 70px 8px -10px 0;
+}
+
 .search-form-years {
     grid-area: years;
     display: flex;
@@ -106,11 +112,18 @@
 
 .search-form-info {
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
 .search-form-info__link {
-    margin-left: auto;
+    margin-bottom: 2em;
+}
+
+.search-form-info__link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0 0.5em;
+    color: #069;
 }
 
 .results {

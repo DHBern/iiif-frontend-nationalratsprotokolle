@@ -43,10 +43,11 @@ export default function ReactMirador() {
             workspace: {
                 allowNewWindows: false,
                 isWorkspaceAddVisible: false,
+                showZoomControls: true,
             },
             window: {
                 allowFullscreen: true,
-                allowClose: true,
+                allowClose: false,
                 textOverlay: {
                     enabled: !isMobile,
                     visible: !isMobile,
@@ -55,13 +56,21 @@ export default function ReactMirador() {
                         enabled: true,
                         emailUrlKeepParams: ['manifest'],
                         emailRecipient: i18next.t('protocolMiradorOcrPluginEmailRecipient'),
-                    }
+                    },
+                    optionsRenderMode: 'simple'
                 },
                 sideBarOpenByDefault: !isMobile,
                 panels: {
                     info: true,
                     annotations: false,
+                    attribution: false,
+                    canvas: false,
                 },
+                views: [
+                    { key: 'single', behaviors: ['individuals'] },
+                    { key: 'book', behaviors: ['paged'] },
+                    { key: 'scroll', behaviors: ['continuous'] },
+                ],
             },
             windows: [],
             thumbnailNavigation: {
@@ -69,6 +78,25 @@ export default function ReactMirador() {
             },
             language: i18next.language,
             availableLanguages: false, // Workaround: Needs to be 'false' on init, otherwise restrictions won't be applied...
+            locales: {
+                de: {
+                    searchTitle: i18next.t('protocolMiradorSearchTitle'),
+                }
+            },
+            theme: {
+                overrides: {
+                    MuiButtonBase: {
+                        selected: {
+                            backgroundColor: 'transparent',
+                        }
+                    },
+                    MuiListItem: {
+                        root: {
+                            margin: 0,
+                        }
+                    }
+                }
+            }
         };
 
         setViewerInstance(Mirador.viewer(config, [...ocrHelperPlugin]));
@@ -128,6 +156,8 @@ export default function ReactMirador() {
             // If there is no window yet, we need to create one
             if (!firstWindow) {
                 store.dispatch(actions.addWindow({ manifestId: currentManifest.id }));
+                firstWindow = Object.values(store.getState().windows)[0];
+                store.dispatch(actions.maximizeWindow(firstWindow.id));
             } else {
                 store.dispatch(actions.updateWindow(firstWindow.id, { manifestId: currentManifest.id }));
             }
