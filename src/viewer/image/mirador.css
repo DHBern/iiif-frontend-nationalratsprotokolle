@@ -32,8 +32,7 @@
     margin-bottom: 0!important;
 }
 
-.aiiif-mirador [class^="WindowViewer-line-"],
-.aiiif-mirador [class~="WindowViewer-line-"] {
+.aiiif-mirador .ocr-line {
     color: inherit;
 }
 
