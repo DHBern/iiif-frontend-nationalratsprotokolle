@@ -14,11 +14,9 @@ declare let global: {
     config: Config;
 };
 
-interface IProps {
-    mode?: 'simple' | 'advanced',
-}
-
-const Search = ({ mode = 'simple' }: IProps) => {
+const Search = () => {
+    const [searchMode, setSearchMode] = useQueryState('searchMode', '');
+    const mode = searchMode === 'advanced' ? 'advanced' : 'simple';
     const [queryParams, setQueryParams] = useState<ISolrRequest>(global.config.getSolrFieldConfig());
     const [searchResults, setSearchResults] = useState<ISearchResults | undefined>(undefined);
     const [page, setPage] = useQueryState('page', '1');
@@ -50,6 +48,7 @@ const Search = ({ mode = 'simple' }: IProps) => {
         setSort,
         errors,
         setErrors,
+        setSearchMode,
     };
 
     const advancedSearchProps = {
@@ -63,6 +62,7 @@ const Search = ({ mode = 'simple' }: IProps) => {
         setYearRange,
         errors,
         setErrors,
+        setSearchMode
     };
 
     return (

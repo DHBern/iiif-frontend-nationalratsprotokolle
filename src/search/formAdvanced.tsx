@@ -12,7 +12,6 @@ import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
 import IManifestData from "../interface/IManifestData";
 import { buildManifest } from '../timeline/util';
 import { replaceSearchParameters } from '../util/url';
-import { menuItems } from '../navigation/navigation';
 import Tooltip from '../tooltip/tooltip';
 import { numberArrayToString, stringToNumberArray } from '../util/misc';
 import { isSolrExpertQuery, isSolrFrequencySortable } from 'util/solr';
@@ -210,8 +209,6 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
             queryParams,
         } = this.props;
 
-        const simpleSearchMenuItem = menuItems.find((item) => item.name === 'Search');
-
         return (
             <Translation ns="common">
                 {(t) => (
@@ -282,13 +279,11 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                 </div>
                             </div>
                             <div className="search-form-info">
-                                {simpleSearchMenuItem && (
-                                    <p className="mdc-typography search-form-info__link">
-                                        <Link to={`${simpleSearchMenuItem.to}${query && `?q=${query}`}`}>
-                                            <><CancelIcon /> <span>{t(`searchAdvancedClose`)}</span></>
-                                        </Link>
-                                    </p>
-                                )}
+                                <p className="mdc-typography search-form-info__link">
+                                    <Link to={query && `?q=${query}`}>
+                                        <><CancelIcon /> <span>{t(`searchAdvancedClose`)}</span></>
+                                    </Link>
+                                </p>
                                 {(!isSearchPending && searchResults && queryParams.q) && (
                                     <p  className="mdc-typography search-form-info__text"
                                         dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger

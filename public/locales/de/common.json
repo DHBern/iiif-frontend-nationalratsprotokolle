@@ -33,15 +33,13 @@
   "footerContactLink": "mailto:info@bar.admin.ch",
 
   "navItemOverview": "Chronologisches Verzeichnis",
-  "navItemSearch": "Einfache Suche",
-  "navItemSearchAdvanced": "Erweiterte Suche",
+  "navItemSearch": "Suche",
   "navItemManual": "Anleitung",
   "navItemInformation": "Information",
 
   "pageTitle": "Protokolle des Bundesrates (1848-1963) - {{individual}}",
   "pageTitleIndividualBrowser": "Chronologisches Verzeichnis",
-  "pageTitleIndividualSearch": "Einfache Suche",
-  "pageTitleIndividualSearchadvanced": "Erweiterte Suche",
+  "pageTitleIndividualSearch": "Suche",
   "pageTitleIndividualManual": "Anleitung",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",

@@ -10,6 +10,7 @@ import {AppContext} from "../../AppContext";
 export default function PageProtocol3() {
     const { currentManifest, setCurrentManifest } = useContext(AppContext);
     const [isLoading, setIsLoading] = useState(true);
+    
 
     useEffect(() => {
         setIsLoading(true);
