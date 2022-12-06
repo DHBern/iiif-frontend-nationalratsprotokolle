@@ -34,14 +34,12 @@
 
   "navItemOverview": "[IT] Chronologisches Verzeichnis",
   "navItemSearch": "Ricerca semplice",
-  "navItemSearchAdvanced": "[IT] Erweiterte Suche",
   "navItemManual": "[IT] Anleitung",
   "navItemInformation": "Informazioni",
 
   "pageTitle": "Verbali del Consiglio federale (1848-1963) - {{individual}}",
   "pageTitleIndividualBrowser": "[IT] Chronologisches Verzeichnis",
-  "pageTitleIndividualSearch": "Ricerca semplice",
-  "pageTitleIndividualSearchadvanced": "[IT] Erweiterte Suche",
+  "pageTitleIndividualSearch": "Ricerca",
   "pageTitleIndividualManual": "[IT] Anleitung",
   "pageTitleIndividualInformation": "Informazioni",
   "pageTitleIndividualProtocol": "{{signature}}",

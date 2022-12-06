@@ -3,7 +3,6 @@ import { withRouter, RouteComponentProps, Link } from 'react-router-dom';
 import { Translation } from 'react-i18next';
 import { LinearProgress } from '@material-ui/core';
 import { ISearchResults, ISolrRequest } from 'interface/IOcrSearchData';
-import { menuItems } from '../navigation/navigation';
 import { replaceSearchParameters } from '../util/url';
 import { isSolrFrequencySortable } from 'util/solr';
 import Tooltip from '../tooltip/tooltip';
@@ -137,8 +136,6 @@ class SearchFormSimple extends React.Component<IProps, IState> {
             queryParams
         } = this.props
 
-        const advancedSearchMenuItem = menuItems.find((item) => item.name === 'SearchAdvanced');
-
         return (
             <Translation ns="common">
                 {(t) => (
@@ -169,13 +166,11 @@ class SearchFormSimple extends React.Component<IProps, IState> {
                             </div>
                         </div>
                         <div className="search-form-info">
-                            {advancedSearchMenuItem && (
-                                <p className="mdc-typography search-form-info__link">
-                                    <Link to={`${advancedSearchMenuItem.to}${query && `?q=${query}`}`}>
-                                        {t(`searchAdvancedOpen`)}
-                                    </Link>
-                                </p>
-                            )}
+                            <p className="mdc-typography search-form-info__link">
+                                <Link to={`?searchMode=advanced${query && `&q=${query}`}`}>
+                                    {t(`searchAdvancedOpen`)}
+                                </Link>
+                            </p>
                             {(!isSearchPending && searchResults && queryParams.q) && (
                                 <p  className="mdc-typography search-form-info__text"
                                     dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger

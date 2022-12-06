@@ -12,7 +12,6 @@ import FederationHeader from '../federation/header';
 import FederationFooter from '../federation/footer';
 import PageOverview from "../page/overview";
 import PageSearch from "../page/search";
-import PageSearchAdvanced from 'page/searchAdvanced';
 import PageManual from "../page/manual";
 import PageInformation from "../page/information";
 import PageProtocolVariant3 from "../page/protocol/protocol";
@@ -53,9 +52,6 @@ export default function Main() {
             </Route>
             <Route path="/search">
                 <PageSearch />
-            </Route>
-            <Route path="/searchadvanced">
-                <PageSearchAdvanced />
             </Route>
             <Route path="/browser">
                 <PageOverview />

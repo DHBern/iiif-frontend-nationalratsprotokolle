@@ -12,10 +12,6 @@ export const menuItems = [
         name: 'Search',
     },
     {
-        to: '/searchadvanced',
-        name: 'SearchAdvanced',
-    },
-    {
         to: '/browser',
         name: 'Overview'
     },

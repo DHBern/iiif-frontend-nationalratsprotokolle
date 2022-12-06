@@ -5,6 +5,8 @@ import Main from "../main/main";
 import * as DOMPurify from "dompurify";
 
 export default function PageSearch() {
+   
+
     return (
         <Translation ns="common">
             {(t) => (
