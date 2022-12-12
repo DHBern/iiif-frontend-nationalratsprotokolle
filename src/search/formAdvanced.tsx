@@ -30,6 +30,8 @@ interface IProps extends RouteComponentProps<any> {
     setSearchResults: (sr: ISearchResults) => void,
     yearRange: string,
     setYearRange: Dispatch<SetStateAction<string | null>>,
+    fuzzy: string,
+    setFuzzy: Dispatch<SetStateAction<string | null>>,
     errors: string[],
     setErrors: (errors: string[]) => void,
     sort: string,
@@ -57,12 +59,11 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
             sources: ['gbooks', 'lunion'],
             yearsArray: undefined,
             yearsFilter: [0, 0],
-            fuzzyFilter: 0,
+            fuzzyFilter: props.fuzzy ? Number(props.fuzzy) : 0,
         };
     }
 
     url = process.env.REACT_APP_DEFAULT_COLLECTION_MANIFEST;
-    initialFuzzyFilter: number = 0;
     defaultQueryParams: ISolrRequest = global.config.getSolrFieldConfig();
 
     static defaultProps = {
@@ -79,7 +80,6 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                     const yearRange = stringToNumberArray(this.props.yearRange);
                     const isYearRangeSet = yearRange && yearRange.length === 2 && yearsArr.includes(yearRange[0].toString()) && yearsArr.includes(yearRange[1].toString()) && yearRange[0] <= yearRange[1];
 
-                    this.initialFuzzyFilter = this.state.fuzzyFilter;
                     this.setState({
                         yearsArray: yearsArr,
                     });
@@ -137,6 +137,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
         if(!isSolrExpertQuery(trimmedQuery)){
             // wrap each word in query in ~fuzzyFilter
             params.q = trimmedQuery.split(' ').map((word) => `${word}~${fuzzyFilter}`).join(' ');
+            this.props.setFuzzy(fuzzyFilter.toString());
         } else {
             params.q = trimmedQuery;
         }
@@ -237,7 +238,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                 <div className="search-form-fuzzy">
                                     <span className="search-form-fuzzy-label">{ t('searchAdvancedFuzzyFrom') }</span>
                                     <Slider
-                                        defaultValue={this.initialFuzzyFilter}
+                                        defaultValue={Number(this.props.fuzzy)}
                                         onChangeCommitted={(ev: any, newValue: number | number[]) => this.setState({ fuzzyFilter: newValue as number })}
                                         min={0}
                                         max={2}
