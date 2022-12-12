@@ -22,22 +22,32 @@ const Search = () => {
     const [page, setPage] = useQueryState('page', '1');
     const [rows, setRows] = useQueryState('rows', global.config.getSolrFieldConfig().rows);
     const [sort, setSort] = useQueryState('sort', global.config.getSolrFieldConfig().sort);
+    const [fuzzy, setFuzzy] = useQueryState('fuzzy', '0');
     const [yearRange, setYearRange] = useQueryState('yearRange', '');
     const [errors, setErrors] = useState<string[]>([]);
     const searchRef = useRef(null);
+    const firstRender = useRef(true);
 
     const numFound = parseInt((searchResults?.response?.numFound || '0').toString());
     const totalPages = Math.ceil(numFound / Number(rows));
 
     useEffect(() => {
-        setPage(null);
-        setQueryParams({ ...queryParams, rows: rows, sort: sort, start: String(0) });
+        if (!firstRender.current) {
+            setPage(null);
+            setQueryParams({ ...queryParams, rows: rows, sort: sort, start: String(0) });
+        }
     }, [rows, sort]); // eslint-disable-line react-hooks/exhaustive-deps
 
     useEffect(() => {
         const newStart = (Number(page) - 1) * Number(rows);
         setQueryParams({ ...queryParams, rows: rows, sort: sort, start: String(newStart) });
     }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+        if (firstRender.current) {
+            firstRender.current = false;
+        }
+      }, []);
 
     const simpleSearchProps = {
         queryParams,
@@ -60,6 +70,8 @@ const Search = () => {
         setSort,
         yearRange,
         setYearRange,
+        fuzzy,
+        setFuzzy,
         errors,
         setErrors,
         setSearchMode
