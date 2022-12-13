@@ -34,13 +34,13 @@
 
   "navItemOverview": "[FR] Chronologisches Verzeichnis",
   "navItemSearch": "Recherche simple",
-  "navItemManual": "[FR] Anleitung",
+  "navItemManual": "[FR] Hilfe",
   "navItemInformation": "Information",
 
   "pageTitle": "Procès-verbaux du Conseil fédéral (1848-1963) - {{individual}}",
   "pageTitleIndividualBrowser": "[FR] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Search",
-  "pageTitleIndividualManual": "[FR] Anleitung",
+  "pageTitleIndividualManual": "[FR] Hilfe",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 

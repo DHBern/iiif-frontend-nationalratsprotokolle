@@ -34,13 +34,13 @@
 
   "navItemOverview": "Chronologisches Verzeichnis",
   "navItemSearch": "Suche",
-  "navItemManual": "Anleitung",
+  "navItemManual": "Hilfe",
   "navItemInformation": "Information",
 
   "pageTitle": "Protokolle des Bundesrates (1848-1963) - {{individual}}",
   "pageTitleIndividualBrowser": "Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Suche",
-  "pageTitleIndividualManual": "Anleitung",
+  "pageTitleIndividualManual": "Hilfe",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 

@@ -34,13 +34,13 @@
 
   "navItemOverview": "[EN] Chronologisches Verzeichnis",
   "navItemSearch": "Search",
-  "navItemManual": "[EN] Anleitung",
+  "navItemManual": "[EN] Hilfe",
   "navItemInformation": "Information",
 
   "pageTitle": "Minutes of the Federal Council (1848-1963) - {{individual}}",
   "pageTitleIndividualBrowser": "[EN] Chronologisches Verzeichnis",
   "pageTitleIndividualSearch": "Search",
-  "pageTitleIndividualManual": "[EN] Anleitung",
+  "pageTitleIndividualManual": "[EN] Hilfe",
   "pageTitleIndividualInformation": "Information",
   "pageTitleIndividualProtocol": "{{signature}}",
 
