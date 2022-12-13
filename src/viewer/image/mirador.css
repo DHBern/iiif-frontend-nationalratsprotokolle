@@ -50,6 +50,27 @@
     border-color: currentColor;
 }
 
+.aiiif-mirador .mirador-window-top-bar {
+    border: 0!important;
+}
+
+.aiiif-mirador .mirador-companion-window-header h3 {
+    margin-bottom: 0!important;
+    display: inline-flex;
+    flex-direction: column; 
+    align-self: flex-start; 
+    justify-content: flex-start; 
+    align-items: self-start; 
+    padding-top: 12px;
+}
+
+.aiiif-mirador .mirador-companion-window-header h3 > .MuiButtonBase-root {
+    margin: 6px 0 15px;
+}
+
+.aiiif-mirador .mirador-companion-window-title-controls {
+    width: 100%;
+}
 
 /** 
  * Not sure if this is safe, as it hides the mirador brand too... 

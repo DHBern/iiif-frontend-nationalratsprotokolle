@@ -221,6 +221,7 @@ p.highlightable {
         grid-template-columns: 1fr;
     }
     .search-form-fuzzy {
+        padding-top: 12px;
         padding-left: 90px;
     }
     .search-form-years > label {
