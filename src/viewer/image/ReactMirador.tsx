@@ -94,6 +94,29 @@ export default function ReactMirador() {
                         root: {
                             margin: 0,
                         }
+                    },
+                    MuiInputLabel: {
+                        root: {
+                            '&$focused': {
+                                color: "#454545"
+                            }
+                        }
+                    },
+                    MuiInput: {
+                        underline: {
+                            '&::after': {
+                                borderColor: "#454545"
+                            }
+                        }
+                    },
+                    MuiChip: {
+                        outlinedSecondary: {
+                            color: '#069',
+                            borderColor: '#069'
+                        },
+                        deleteIconOutlinedColorSecondary: {
+                            color: '#069',
+                        }
                     }
                 }
             }
