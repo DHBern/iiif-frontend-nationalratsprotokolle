@@ -64,10 +64,10 @@
   "protocolMiradorSearchTitle": "Suche im Dokument",
 
   "searchAdvancedInputLabel": "Suchtext",
-  "searchAdvancedInputTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedInputTooltip": "<p>Benutzen Sie die Boolschen Operatoren (AND, OR, NOT), um Suchbegriffe miteinander zu verbinden.</p>",
   "searchAdvancedFuzzyFrom": "Exakt",
   "searchAdvancedFuzzyTo": "Unscharf",
-  "searchAdvancedFuzzyTooltip": "<h4>Lorem ipsum</h4><p>Lorem ipsum dolor sit amet.</p>",
+  "searchAdvancedFuzzyTooltip": "<p>Die unscharfe Suche berücksichtigt auch ähnliche Schreibweisen der Suchbegriffe.</p>",
   "searchAdvancedYears": "Zeitraum",
   "searchAdvancedButton": "Suchen",
   "searchAdvancedOpen": "Erweiterte Suche",
