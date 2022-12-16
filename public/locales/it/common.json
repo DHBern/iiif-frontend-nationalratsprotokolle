@@ -33,7 +33,7 @@
   "footerContactLink": "mailto:info@bar.admin.ch",
 
   "navItemOverview": "Elenco cronologico",
-  "navItemSearch": "Ricerca semplice",
+  "navItemSearch": "Ricerca",
   "navItemManual": "Aiuto",
   "navItemInformation": "Informazioni",
 
@@ -60,7 +60,7 @@
   "searchResultsMatchingPassages": "{{amount}} che corrisponde a passaggi trovati nel testo",
   "searchIntroductionText": "Sulla pagina «Verbali del Consiglio federale (1848-1963)» si possono effettuare ricerche mediante parole chiave nei verbali manoscritti e dattiloscritti delle decisioni del Consiglio federale.",
 
-  "searchAdvancedInputLabel": "[IT] Suchtext",
+  "searchAdvancedInputLabel": "Cerca",
   "searchAdvancedInputTooltip": "<p>Per concatenare i termini cercati si possono usare gli operatori logici (AND, OR, NOT)</p>",
   "searchAdvancedFuzzyFrom": "Esatta",
   "searchAdvancedFuzzyTo": "Approssimativa",
