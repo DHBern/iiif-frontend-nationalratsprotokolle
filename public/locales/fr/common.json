@@ -50,8 +50,7 @@
 
   "pageSearchH1": "Recherche",
   "searchFormInputLabel": "Saisir le terme de recherche",
-  "searchFormFoundMatches": "[FR] Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
-  "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}} documents trouvés dans {{QTime}}ms.",
+  "searchFormFoundMatches": "Correspondances trouvées dans {{numFound}} documents dans {{QTime}}ms.",
   "searchFormRowsPerPage": "Nombre de résultats par page",
   "searchFormOrderBy": "Tri",
   "searchFormOrderBy_date asc": "Date ascendante",
