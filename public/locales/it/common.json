@@ -50,7 +50,7 @@
 
   "pageSearchH1": "Ricerca",
   "searchFormInputLabel": "Inserisci il termine di ricerca",
-  "searchFormFoundMatches": "[IT] Es wurden Übereinstimmungen in {{numFound}} Dokumenten zu \"<b><i>{{q}}</i></b>\" in {{QTime}}ms gefunden.",
+  "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
   "searchFormRowsPerPage": "Numero di risultati per pagina",
   "searchFormOrderBy": "Ordina",
   "searchFormOrderBy_date asc": "Data crescente",
@@ -68,7 +68,7 @@
   "searchAdvancedYears": "Periodo",
   "searchAdvancedButton": "Ricerca",
   "searchAdvancedOpen": "Ricerca avanzata",
-  "searchAdvancedClose": "[IT] Erweiterte Suche schliessen",
+  "searchAdvancedClose": "Chiudere la ricerca avanzata",
 
   "protocolMiradorOcrPluginEmailRecipient": "bundesratsprotokolle@bar.admin.ch",
   "protocolMiradorSearchTitle": "[IT] Suche im Dokument",
