@@ -50,7 +50,7 @@
 
   "pageSearchH1": "Ricerca",
   "searchFormInputLabel": "Inserisci il termine di ricerca",
-  "searchFormFoundMatches": "Corrispondenze trovate in {{numFound}} Documenti trovati in {{QTime}}ms.",
+  "searchFormFoundMatches": "Corrispondenze per \"<b><i>{{q}}</i></b>\" trovate in {{numFound}} documenti in {{QTime}}ms.",
   "searchFormRowsPerPage": "Numero di risultati per pagina",
   "searchFormOrderBy": "Ordina",
   "searchFormOrderBy_date asc": "Data crescente",
