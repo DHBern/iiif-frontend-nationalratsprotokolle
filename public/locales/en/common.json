@@ -60,7 +60,7 @@
   "searchResultsMatchingPassages": "Found {{amount}} matching passages in the document.",
   "searchIntroductionText":"On the “Minutes of the Federal Council (1848–1963)” page, you can search both the handwritten and typewritten minutes of Federal Council decisions using search terms. ",
 
-  "searchAdvancedInputLabel": "[EN] Suchtext",
+  "searchAdvancedInputLabel": "Search",
   "searchAdvancedInputTooltip": "<p>Use the Boolean operators (AND, OR, NOT) to connect search terms.</p>",
   "searchAdvancedFuzzyFrom": "Exact",
   "searchAdvancedFuzzyTo": "Fuzzy",
@@ -76,7 +76,7 @@
   "paginationResults": "Results {{start}} - {{end}} of {{total}}",
   "paginationFirstPage": "Go to first page",
   "paginationBack": "Previous page",
-  "paginationForward": "Eine Seite vor",
+  "paginationForward": "Next page",
   "paginationLastPage": "Go to last page",
 
   "timelineResultsDate": "Date",
