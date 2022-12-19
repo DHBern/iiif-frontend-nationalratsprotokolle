@@ -50,7 +50,7 @@
 
   "pageSearchH1": "Recherche",
   "searchFormInputLabel": "Saisir le terme de recherche",
-  "searchFormFoundMatches": "Correspondances pour \"<b><i>{{q}}</i></b>\" trouvées dans {{numFound}} documents en {{QTime}}ms.",
+  "searchFormFoundMatches": "Correspondances pour \"<b><i>{{q}}</i></b>\" trouvées sur {{numFound}} pages en {{QTime}}ms.",
   "searchFormRowsPerPage": "Nombre de résultats par page",
   "searchFormOrderBy": "Tri",
   "searchFormOrderBy_date asc": "Date ascendante",
