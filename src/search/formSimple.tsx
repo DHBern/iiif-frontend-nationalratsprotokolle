@@ -42,6 +42,7 @@ class SearchFormSimple extends React.Component<IProps, IState> {
         };
     }
 
+    abortController: AbortController | null = null;
     defaultQueryParams: ISolrRequest = global.config.getSolrFieldConfig();
 
     componentDidMount() {
@@ -87,7 +88,7 @@ class SearchFormSimple extends React.Component<IProps, IState> {
         if (start !== '0') {
             params.start = start;
         }
-        if(sort === 'frequency') {
+        if (sort === 'frequency') {
             const termfrequency = `termfreq(ocr_text,'${trimmedQuery}')`
 
             if (isSolrFrequencySortable(trimmedQuery)) {
@@ -104,24 +105,32 @@ class SearchFormSimple extends React.Component<IProps, IState> {
             setSort(null);
         }
 
-        fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
+        this.setState({
+            isSearchPending: true
+        });
+
+        setQueryParams(params);
+
+        // abort previous request
+        if (this.abortController) {
+            this.abortController.abort();
+            this.abortController = null;
+        }
+
+        this.abortController = new AbortController();
+
+        fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`, { signal: this.abortController?.signal })
             .then((resp) => resp.json())
             .then((data: ISearchResults) => {
                 this.setState({ isSearchPending: false })
                 setSearchResults(data);
-                // remove error 400BadSolrRequest if set
-                setErrors(errors.filter((error) => error !== '400BadSolrRequest'));
+                setErrors([]);
             })
             .catch((err) => {
-                console.error(err);
                 this.setState({ isSearchPending: false });
                 setSearchResults(undefined as any);
-                setErrors([...errors, '400BadSolrRequest']);
+                setErrors([...errors, err?.name || '400BadSolrRequest']);
             });
-        this.setState({
-            isSearchPending: true
-        });
-        setQueryParams(params);
     }
 
     render() {
@@ -140,51 +149,51 @@ class SearchFormSimple extends React.Component<IProps, IState> {
             <Translation ns="common">
                 {(t) => (
                     <>
-                    <form className="search-form" onSubmit={this.onSubmit.bind(this)}>
-                        <div className="search-form-inner search-form-inner--advanced">
-                            <div className="search-form-input">
-                                <label>{ t('searchAdvancedInputLabel') }</label>
-                                <div className="search-form-input-wrap">
-                                    <div className="search-form-input-inner">
-                                        <input type="text" className={`form-control ${this.props.errors.find((err) => err === '400BadSolrRequest') ? 'is-invalid' : ''}`} disabled={isSearchPending || sources.length === 0} value={query} onChange={(ev) => this.setState({ query: ev.currentTarget.value })} ></input>
-                                        <div className="mdc-linear-progress-wrap">
-                                            {isSearchPending && <LinearProgress className="mdc-linear-progress" />}
+                        <form className="search-form" onSubmit={this.onSubmit.bind(this)}>
+                            <div className="search-form-inner search-form-inner--advanced">
+                                <div className="search-form-input">
+                                    <label>{t('searchAdvancedInputLabel')}</label>
+                                    <div className="search-form-input-wrap">
+                                        <div className="search-form-input-inner">
+                                            <input type="text" className={`form-control ${this.props.errors.find((err) => err === '400BadSolrRequest') ? 'is-invalid' : ''}`} disabled={isSearchPending || sources.length === 0} value={query} onChange={(ev) => this.setState({ query: ev.currentTarget.value })} ></input>
+                                            <div className="mdc-linear-progress-wrap">
+                                                {isSearchPending && <LinearProgress className="mdc-linear-progress" />}
+                                            </div>
                                         </div>
+                                        <Tooltip
+                                            className="search-form-tooltip"
+                                            title={
+                                                <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                                                    __html: DOMPurify.sanitize(t('searchAdvancedInputTooltip'))
+                                                }} />
+                                            }
+                                        />
                                     </div>
-                                    <Tooltip
-                                        className="search-form-tooltip"
-                                        title={
-                                            <div dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-                                                __html: DOMPurify.sanitize(t('searchAdvancedInputTooltip'))
-                                            }} />
-                                        }
-                                    />
+                                </div>
+                                <div className="search-form-controls">
+                                    <button type="submit" className="btn btn-primary" disabled={query === ''}>{t('searchAdvancedButton')}</button>
                                 </div>
                             </div>
-                            <div className="search-form-controls">
-                                <button type="submit" className="btn btn-primary" disabled={query === ''}>{ t('searchAdvancedButton') }</button>
+                            <div className="search-form-info">
+                                <p className="mdc-typography search-form-info__link">
+                                    <Link to={`?searchMode=advanced${query && `&q=${query}`}`}>
+                                        {t(`searchAdvancedOpen`)}
+                                    </Link>
+                                </p>
+                                {(!isSearchPending && searchResults && queryParams.q) && (
+                                    <p className="mdc-typography search-form-info__text"
+                                        dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
+                                            __html: DOMPurify.sanitize(t('searchFormFoundMatches', {
+                                                numFound: searchResults?.response?.numFound,
+                                                q: this.state.query,
+                                                QTime: searchResults?.responseHeader?.QTime,
+                                            }))
+                                        }}
+                                    />
+                                )}
                             </div>
-                        </div>
-                        <div className="search-form-info">
-                            <p className="mdc-typography search-form-info__link">
-                                <Link to={`?searchMode=advanced${query && `&q=${query}`}`}>
-                                    {t(`searchAdvancedOpen`)}
-                                </Link>
-                            </p>
-                            {(!isSearchPending && searchResults && queryParams.q) && (
-                                <p  className="mdc-typography search-form-info__text"
-                                    dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
-                                        __html: DOMPurify.sanitize(t('searchFormFoundMatches', {
-                                            numFound: searchResults?.response?.numFound,
-                                            q: this.state.query,
-                                            QTime: searchResults?.responseHeader?.QTime,
-                                        }))
-                                    }} 
-                                />
-                            )}
-                        </div>
-                    </form>
-                </>
+                        </form>
+                    </>
                 )}
             </Translation>
         )

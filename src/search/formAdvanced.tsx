@@ -63,7 +63,8 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
         };
     }
 
-    url = process.env.REACT_APP_DEFAULT_COLLECTION_MANIFEST;
+    abortController: AbortController | null = null;
+    url: string | undefined = process.env.REACT_APP_DEFAULT_COLLECTION_MANIFEST;
     defaultQueryParams: ISolrRequest = global.config.getSolrFieldConfig();
 
     static defaultProps = {
@@ -84,7 +85,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                         yearsArray: yearsArr,
                     });
                     if (!isYearRangeSet) {
-                        this.setState({ yearsFilter: [Number(yearsArr[0]), Number(yearsArr[yearsArr.length - 1])]});
+                        this.setState({ yearsFilter: [Number(yearsArr[0]), Number(yearsArr[yearsArr.length - 1])] });
                     } else {
                         this.setState({ yearsFilter: yearRange });
                     }
@@ -124,17 +125,17 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
             evt.preventDefault();
             history.push(replaceSearchParameters({ q: trimmedQuery, page: null }));
         }
-        
+
         const start = queryParams?.start || '1';
         const fq = [];
-        
+
         const params = {
             ...queryParams,
             q: query,
             fl: this.defaultQueryParams.fl
         };
-            
-        if(!isSolrExpertQuery(trimmedQuery)){
+
+        if (!isSolrExpertQuery(trimmedQuery)) {
             // wrap each word in query in ~fuzzyFilter
             params.q = trimmedQuery.split(' ').map((word) => `${word}~${fuzzyFilter}`).join(' ');
             this.props.setFuzzy(fuzzyFilter.toString());
@@ -158,7 +159,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
         if (start !== '0') {
             params.start = start;
         }
-        if(sort === 'frequency') {
+        if (sort === 'frequency') {
             const termfrequency = `termfreq(ocr_text,'${trimmedQuery}')`
 
             if (isSolrFrequencySortable(trimmedQuery)) {
@@ -181,18 +182,25 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
 
         setQueryParams(params);
 
-        fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`)
+        // abort previous request
+        if (this.abortController) {
+            this.abortController.abort();
+            this.abortController = null;
+        }
+
+        this.abortController = new AbortController();
+
+        fetch(`${process.env.REACT_APP_SOLR_API_BASE}?${new URLSearchParams(params)}`, { signal: this?.abortController?.signal })
             .then((resp) => resp.json())
             .then((data: ISearchResults) => {
                 this.setState({ isSearchPending: false })
                 setSearchResults(data);
-                // remove error 400BadSolrRequest if set
-                setErrors(errors.filter((error) => error !== '400BadSolrRequest'));
+                setErrors([]);
             })
             .catch((err) => {
                 this.setState({ isSearchPending: false });
                 setSearchResults(undefined as any);
-                setErrors([...errors, '400BadSolrRequest']);
+                setErrors([...errors, err?.name || '400BadSolrRequest']);
             });
     }
 
@@ -217,7 +225,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                         <form className="search-form" onSubmit={this.onSubmit.bind(this)}>
                             <div className="search-form-inner search-form-inner--advanced">
                                 <div className="search-form-input">
-                                    <label>{ t('searchAdvancedInputLabel') }</label>
+                                    <label>{t('searchAdvancedInputLabel')}</label>
                                     <div className="search-form-input-wrap">
                                         <div className="search-form-input-inner">
                                             <input type="text" className={`form-control ${this.props.errors.find((err) => err === '400BadSolrRequest') ? 'is-invalid' : ''}`} disabled={isSearchPending || sources.length === 0} value={query} onChange={(ev) => this.setState({ query: ev.currentTarget.value })} ></input>
@@ -236,7 +244,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                     </div>
                                 </div>
                                 <div className="search-form-fuzzy">
-                                    <span className="search-form-fuzzy-label">{ t('searchAdvancedFuzzyFrom') }</span>
+                                    <span className="search-form-fuzzy-label">{t('searchAdvancedFuzzyFrom')}</span>
                                     <Slider
                                         defaultValue={Number(this.props.fuzzy)}
                                         onChangeCommitted={(ev: any, newValue: number | number[]) => this.setState({ fuzzyFilter: newValue as number })}
@@ -245,7 +253,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                         step={1}
                                         disabled={isSolrExpertQuery(query)}
                                     />
-                                    <span className="search-form-fuzzy-label">{ t('searchAdvancedFuzzyTo') }</span>
+                                    <span className="search-form-fuzzy-label">{t('searchAdvancedFuzzyTo')}</span>
                                     <Tooltip
                                         className="search-form-tooltip"
                                         title={
@@ -258,7 +266,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                 <div className="search-form-years">
                                     {yearsArray && (
                                         <>
-                                            <label>{ t('searchAdvancedYears') }</label>
+                                            <label>{t('searchAdvancedYears')}</label>
                                             <div className="search-form-years-wrap">
                                                 <RangeSlider
                                                     marks={yearsArray.map((value: string) => ({ value: parseInt(value) }))}
@@ -276,7 +284,7 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                     )}
                                 </div>
                                 <div className="search-form-controls">
-                                    <button type="submit" className="btn btn-primary" disabled={query === ''}>{ t('searchAdvancedButton') }</button>
+                                    <button type="submit" className="btn btn-primary" disabled={query === ''}>{t('searchAdvancedButton')}</button>
                                 </div>
                             </div>
                             <div className="search-form-info">
@@ -286,14 +294,14 @@ class SearchFormAdvanced extends React.Component<IProps, IState> {
                                     </Link>
                                 </p>
                                 {(!isSearchPending && searchResults && queryParams.q) && (
-                                    <p  className="mdc-typography search-form-info__text"
+                                    <p className="mdc-typography search-form-info__text"
                                         dangerouslySetInnerHTML={{ // eslint-disable-line react/no-danger
                                             __html: DOMPurify.sanitize(t('searchFormFoundMatches', {
                                                 numFound: searchResults?.response?.numFound,
                                                 q: this.state.query,
                                                 QTime: searchResults?.responseHeader?.QTime,
                                             }))
-                                        }} 
+                                        }}
                                     />
                                 )}
                             </div>
