@@ -37,14 +37,16 @@ class SnippetView extends React.Component<IProps, IState> {
         const region = Array.isArray(snippet.regions) && snippet.regions[0];
 
         if (region && renderedImage) {
-            const regionWidth = region.lrx - region.ulx;
+            const scaleX = 1;//2.08045;
+            const scaleY = 1;//2.08672;
+            const regionWidth = scaleX*region.lrx - scaleY*region.ulx;
             const scaleFactor = (regionWidth) ? renderedImage.width / regionWidth : 0;
             styles = {
                 position: "absolute",
-                left: `${scaleFactor * hlInfo.ulx + renderedImage.x - 2}px`,
-                top: `${scaleFactor * hlInfo.uly + renderedImage.y - 2}px`,
-                width: `${scaleFactor * (hlInfo.lrx - hlInfo.ulx)}px`,
-                height: `${scaleFactor * (hlInfo.lry - hlInfo.uly)}px`,
+                left: `${scaleFactor * scaleX *hlInfo.ulx + renderedImage.x - 2}px`,
+                top: `${scaleFactor * scaleY * hlInfo.uly + renderedImage.y - 2}px`,
+                width: `${scaleFactor * (scaleX * hlInfo.lrx - scaleX* hlInfo.ulx)}px`,
+                height: `${scaleFactor * (scaleY * hlInfo.lry - scaleY*hlInfo.uly)}px`,
                 backgroundColor: `hsla(${hue}, 100%, 50%, 50%)`,
             }
         }
@@ -53,10 +55,30 @@ class SnippetView extends React.Component<IProps, IState> {
     }
 
     render() {
+        /**
+         * LS 22.12.2022: Hotfix due to improperly scaled ocr information with pdfalto tool
+         */
+        const applyMwHotfix = (docId: string, hlInfo: IHighlightInformation): IHighlightInformation => {
+            const scaleX = 2.08045;
+            const scaleY = 2.08672;
+            const firstMwDocId = 32324175;
+            const id = Number.parseInt(docId.substr(0,"32324175".length));
+            if(id >= firstMwDocId){
+                return {
+                    ulx: Math.floor(scaleX*hlInfo.ulx),
+                    uly: Math.floor(scaleY*hlInfo.uly),
+                    lrx: Math.floor(scaleX*hlInfo.lrx),
+                    lry: Math.floor(scaleY*hlInfo.lry),
+                    page: hlInfo.page,
+                    text: hlInfo.text,
+                } as IHighlightInformation;
+            }
+            return hlInfo;
+        }
         const { docId, query, getImageUrl, snippet, manifestUri } = this.props;
         if (snippet) {
             const { text, highlights } = snippet;
-            const region = snippet.regions[0];
+            let region = snippet.regions[0];
             const language = i18next.language;
             const viewerUrl = `${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifestUri}&cv=${docId}&q=${query}&lang=${language}`;
             return (
@@ -64,7 +86,7 @@ class SnippetView extends React.Component<IProps, IState> {
                     <Link to={viewerUrl}>
                         <img
                             ref={(i) => (this.img = i)}
-                            src={getImageUrl(region)}
+                            src={getImageUrl(applyMwHotfix(docId,region))}
                             alt=""
                         />
                     </Link>
