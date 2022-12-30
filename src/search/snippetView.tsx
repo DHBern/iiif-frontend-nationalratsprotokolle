@@ -30,11 +30,9 @@ class SnippetView extends React.Component<IProps, IState> {
 
     img: HTMLImageElement | null = null;
 
-    getHighlightStyle(hlInfo: IHighlightInformation, hue: number): React.CSSProperties {
+    getHighlightStyle(region: IHighlightInformation,hlInfo: IHighlightInformation, hue: number): React.CSSProperties {
         let styles = {};
-        const { snippet } = this.props;
         const { renderedImage } = this.state;
-        const region = Array.isArray(snippet.regions) && snippet.regions[0];
 
         if (region && renderedImage) {
             const scaleX = 1;//2.08045;
@@ -54,57 +52,64 @@ class SnippetView extends React.Component<IProps, IState> {
         return styles;
     }
 
-    render() {
-        /**
-         * LS 22.12.2022: Hotfix due to improperly scaled ocr information with pdfalto tool
-         */
-        const applyMwHotfix = (docId: string, hlInfo: IHighlightInformation): IHighlightInformation => {
-            const scaleX = 2.08045;
-            const scaleY = 2.08672;
-            const firstMwDocId = 32324175;
-            const id = Number.parseInt(docId.substr(0,"32324175".length));
-            if(id >= firstMwDocId){
-                return {
-                    ulx: Math.floor(scaleX*hlInfo.ulx),
-                    uly: Math.floor(scaleY*hlInfo.uly),
-                    lrx: Math.floor(scaleX*hlInfo.lrx),
-                    lry: Math.floor(scaleY*hlInfo.lry),
-                    page: hlInfo.page,
-                    text: hlInfo.text,
-                } as IHighlightInformation;
-            }
-            return hlInfo;
+    /**
+     * LS 22.12.2022: Hotfix due to improperly scaled ocr information with pdfalto tool
+     */
+    applyMwHotfix = (docId: string, hlInfo: IHighlightInformation): IHighlightInformation => {
+        const scaleX = 2.08045;
+        const scaleY = 2.08672;
+        const firstMwDocId = 32324175;
+        const id = Number.parseInt(docId.substr(0, "32324175".length));
+        if (id >= firstMwDocId) {
+            return {
+                ulx: Math.floor(scaleX * hlInfo.ulx),
+                uly: Math.floor(scaleY * hlInfo.uly),
+                lrx: Math.floor(scaleX * hlInfo.lrx),
+                lry: Math.floor(scaleY * hlInfo.lry),
+                page: hlInfo.page,
+                text: hlInfo.text,
+            } as IHighlightInformation;
         }
+        return hlInfo;
+    }
+
+    render() {
         const { docId, query, getImageUrl, snippet, manifestUri } = this.props;
         if (snippet) {
             const { text, highlights } = snippet;
-            let region = snippet.regions[0];
             const language = i18next.language;
             const viewerUrl = `${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifestUri}&cv=${docId}&q=${query}&lang=${language}`;
+
             return (
                 <div className="snippet-display">
-                    <Link to={viewerUrl}>
-                        <img
-                            ref={(i) => (this.img = i)}
-                            src={getImageUrl(applyMwHotfix(docId,region))}
-                            alt=""
-                        />
-                    </Link>
-                    {this.state.renderedImage &&
-                        highlights.flatMap((hls) =>
-                            hls.map((hl) => (
-                                <div
-                                    key={`${hl.lrx}_${hl.lry}_${hl.ulx}_${hl.uly}`}
-                                    className="highlight-box"
-                                    title={hl.text}
-                                    style={this.getHighlightStyle(hl, 50)}
+                    {snippet.regions.map((region, currentRegionIdx) => (
+                        <>
+                            <Link to={viewerUrl}>
+                                <img
+                                    ref={(i) => (this.img = i)}
+                                    src={getImageUrl(this.applyMwHotfix(docId,region))}
+                                    alt=""
                                 />
-                            ))
-                        )}
-                    <p
-                        className="highlightable"
-                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }}
-                    />
+                            </Link>
+                            {
+                                this.state.renderedImage &&
+                                highlights.flatMap((hls) =>
+                                    hls.filter(hl => hl.parentRegionIdx === currentRegionIdx).map((hl) => (
+                                        <div
+                                            key={`${hl.lrx}_${hl.lry}_${hl.ulx}_${hl.uly}`}
+                                            className="highlight-box"
+                                            title={hl.text}
+                                            style={this.getHighlightStyle(region, hl, 50)}
+                                        />
+                                    ))
+                                )
+                            }
+                            <p
+                                className="highlightable"
+                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }}
+                            />
+                        </>
+                    ))}
                 </div>
             );
         }
@@ -114,7 +119,7 @@ class SnippetView extends React.Component<IProps, IState> {
         if (!this.img) {
             return;
         }
-        
+
         this.setState({
             renderedImage: {
                 x: this.img.offsetLeft,
@@ -126,14 +131,14 @@ class SnippetView extends React.Component<IProps, IState> {
     }
 
     componentDidMount() {
-        if(this.img) {
+        if (this.img) {
             this.img.addEventListener("load", this.updateDimensions.bind(this));
             window.addEventListener("resize", this.updateDimensions.bind(this));
         }
     }
 
     componentWillUnmount() {
-        if(this.img) {
+        if (this.img) {
             window.removeEventListener("resize", this.updateDimensions.bind(this));
         }
     }
