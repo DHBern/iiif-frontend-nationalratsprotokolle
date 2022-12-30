@@ -30,21 +30,21 @@ class SnippetView extends React.Component<IProps, IState> {
 
     img: HTMLImageElement | null = null;
 
-    getHighlightStyle(region: IHighlightInformation,hlInfo: IHighlightInformation, hue: number): React.CSSProperties {
+    getHighlightStyle(region: IHighlightInformation, hlInfo: IHighlightInformation, hue: number): React.CSSProperties {
         let styles = {};
         const { renderedImage } = this.state;
 
         if (region && renderedImage) {
             const scaleX = 1;//2.08045;
             const scaleY = 1;//2.08672;
-            const regionWidth = scaleX*region.lrx - scaleY*region.ulx;
+            const regionWidth = scaleX * region.lrx - scaleY * region.ulx;
             const scaleFactor = (regionWidth) ? renderedImage.width / regionWidth : 0;
             styles = {
                 position: "absolute",
-                left: `${scaleFactor * scaleX *hlInfo.ulx + renderedImage.x - 2}px`,
+                left: `${scaleFactor * scaleX * hlInfo.ulx + renderedImage.x - 2}px`,
                 top: `${scaleFactor * scaleY * hlInfo.uly + renderedImage.y - 2}px`,
-                width: `${scaleFactor * (scaleX * hlInfo.lrx - scaleX* hlInfo.ulx)}px`,
-                height: `${scaleFactor * (scaleY * hlInfo.lry - scaleY*hlInfo.uly)}px`,
+                width: `${scaleFactor * (scaleX * hlInfo.lrx - scaleX * hlInfo.ulx)}px`,
+                height: `${scaleFactor * (scaleY * hlInfo.lry - scaleY * hlInfo.uly)}px`,
                 backgroundColor: `hsla(${hue}, 100%, 50%, 50%)`,
             }
         }
@@ -79,37 +79,38 @@ class SnippetView extends React.Component<IProps, IState> {
             const { text, highlights } = snippet;
             const language = i18next.language;
             const viewerUrl = `${process.env.REACT_APP_VIEWER_PAGE_URL}?manifest=${manifestUri}&cv=${docId}&q=${query}&lang=${language}`;
+            // get lowest parentRegionIdx of all highlights, to get relevant region
+            const minParentRegionIdx = Math.min(...highlights.flatMap((hls) => hls.map((hl) => hl.parentRegionIdx)));
+            const region = snippet.regions[minParentRegionIdx];
 
             return (
                 <div className="snippet-display">
-                    {snippet.regions.map((region, currentRegionIdx) => (
-                        <>
-                            <Link to={viewerUrl}>
-                                <img
-                                    ref={(i) => (this.img = i)}
-                                    src={getImageUrl(this.applyMwHotfix(docId,region))}
-                                    alt=""
-                                />
-                            </Link>
-                            {
-                                this.state.renderedImage &&
-                                highlights.flatMap((hls) =>
-                                    hls.filter(hl => hl.parentRegionIdx === currentRegionIdx).map((hl) => (
-                                        <div
-                                            key={`${hl.lrx}_${hl.lry}_${hl.ulx}_${hl.uly}`}
-                                            className="highlight-box"
-                                            title={hl.text}
-                                            style={this.getHighlightStyle(region, hl, 50)}
-                                        />
-                                    ))
-                                )
-                            }
-                            <p
-                                className="highlightable"
-                                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }}
+                    <>
+                        <Link to={viewerUrl}>
+                            <img
+                                ref={(i) => (this.img = i)}
+                                src={getImageUrl(this.applyMwHotfix(docId, region))}
+                                alt=""
                             />
-                        </>
-                    ))}
+                        </Link>
+                        {
+                            this.state.renderedImage &&
+                            highlights.flatMap((hls) =>
+                                hls.filter(hl => hl.parentRegionIdx === minParentRegionIdx).map((hl) => (
+                                    <div
+                                        key={`${hl.lrx}_${hl.lry}_${hl.ulx}_${hl.uly}`}
+                                        className="highlight-box"
+                                        title={hl.text}
+                                        style={this.getHighlightStyle(region, hl, 50)}
+                                    />
+                                ))
+                            )
+                        }
+                        <p
+                            className="highlightable"
+                            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(text) }}
+                        />
+                    </>
                 </div>
             );
         }
