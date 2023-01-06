@@ -3,12 +3,12 @@ import Main from "../main/main";
 import MarkdownFileToHtml from '../markdownFileToHtml/markdownFileToHtml';
 import { Translation } from 'react-i18next';
 
-export default function PageInformation() {
+export default function PageManual() {
     return (
         <Translation ns="common">
             {(t) => (
                 <Main>
-                    <MarkdownFileToHtml>{`/md/${i18n.language}/information.md`}</MarkdownFileToHtml>
+                    <MarkdownFileToHtml>{`/md/${i18n.language}/manual.md`}</MarkdownFileToHtml>
                 </Main>
             )}
         </Translation>

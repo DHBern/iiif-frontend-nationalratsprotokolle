@@ -778,9 +778,13 @@ class Manifest {
         return undefined;
     }
 
-    static getGetParameter(name: string, defaultValue?: string): string | undefined {
-        const urlObject = new URL(window.location.href);
-        return urlObject.searchParams.get(name) ?? defaultValue;
+    static getGetParameter(name: string, escape: boolean = true, defaultValue?: string): string | undefined {
+        if (escape) {
+            const urlObject = new URL(window.location.href);
+            return urlObject.searchParams.get(name) ?? defaultValue;
+        } else {
+            return (window.location.search.match(new RegExp('[?&]' + name + '=([^&]+)')) || [null, null])[1] || defaultValue;
+        }
     }
 
     static isV3(manifestoData: IIIFResource) {

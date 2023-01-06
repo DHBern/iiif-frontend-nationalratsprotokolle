@@ -286,7 +286,7 @@ $(window).scroll(function () {
 
   // Using mousedown instead of mouseover, so that previously focused elements don't lose focus ring on mouse move
   addListener('mousedown', function(){
-    setCSS(':focus{outline:0!important}::-moz-focus-inner{border:0!important}');
+    setCSS(':focus{outline:0}::-moz-focus-inner{border:0}');
   });
 
   addListener('keydown', function(){

@@ -196,7 +196,7 @@ const rootline = {
             },
             {
                 id: "project",
-                toggle: "Protokolle des Bundesrates (1848-1963)",
+                toggle: "Verbali del Consiglio federale (1848-1963)",
             }
         ]
     },
@@ -269,6 +269,6 @@ const rootline = {
     }
 }
 
-export const getRootline = (language: string) => rootline[language]
+export const getRootline = (language: string) => rootline[language] || rootline['de']
 
 export default rootline;

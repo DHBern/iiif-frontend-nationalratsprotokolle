@@ -54,7 +54,7 @@ const Timeline = function () {
                 setFilterRange([Math.max(minY, filterRange[0]), Math.min(maxY, filterRange[1])]);
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [yearsArray, selectedYear, selectedMonth])
 
 
@@ -66,7 +66,7 @@ const Timeline = function () {
                     setManifest(newManifest)
                 })
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [filterRange])
 
     // (re)defining selectedYear and selectedMonth by listening to URL parameters...
@@ -90,7 +90,7 @@ const Timeline = function () {
                     .catch(() => {})
             }
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [manifest, selectedMonth, selectedYear])
 
     return (
@@ -100,37 +100,42 @@ const Timeline = function () {
                     {manifest && yearsArray && (
                         <>
                             <h2>{t('pageOverviewH2')}</h2>
-                            <RangeSlider
-                                marks={Object.keys(manifest).map((value: string) => ({ value: parseInt(value) }))}
-                                value={filterRange}
-                                setValue={setFilterRange}
-                                min={parseInt(yearsArray[0])}
-                                max={parseInt(yearsArray[yearsArray.length - 1])}
-                                valueLabelDisplay="on"
-                            />
+                            <div className="aiiif-timeline-years">
+                                <RangeSlider
+                                    marks={Object.keys(manifest).map((value: string) => ({ value: parseInt(value) }))}
+                                    value={filterRange}
+                                    setValue={setFilterRange}
+                                    min={parseInt(yearsArray[0])}
+                                    max={parseInt(yearsArray[yearsArray.length - 1])}
+                                    valueLabelDisplay="on"
+                                    size="medium"
+                                />
+                            </div>
                         </>
                     )}
                     {filteredManifests && (
-                        <table className="aiii-timeline-results table">
-                            <tbody>
-                                {Object.keys(filteredManifests).map((year) => (
-                                    <React.Fragment key={year}>
-                                        <TimelineCalendar 
-                                            year={year} 
-                                            manifestsByMonth={filteredManifests[year].months} 
-                                            selectedMonth={selectedMonth} 
-                                            selectedYear={selectedYear} 
-                                        />
-                                        <TimelineResults 
-                                            year={year}
-                                            manifestsByMonth={filteredManifests[year].months}
-                                            selectedMonth={selectedMonth}
-                                            selectedYear={selectedYear} 
-                                        />
-                                    </React.Fragment>
-                                ))}
-                            </tbody>
-                        </table>
+                        <div className='aiii-timeline-results-container'>
+                            <table className="aiii-timeline-results table">
+                                <tbody>
+                                    {Object.keys(filteredManifests).map((year) => (
+                                        <React.Fragment key={year}>
+                                            <TimelineCalendar
+                                                year={year}
+                                                manifestsByMonth={filteredManifests[year].months}
+                                                selectedMonth={selectedMonth}
+                                                selectedYear={selectedYear}
+                                            />
+                                            <TimelineResults
+                                                year={year}
+                                                manifestsByMonth={filteredManifests[year].months}
+                                                selectedMonth={selectedMonth}
+                                                selectedYear={selectedYear}
+                                            />
+                                        </React.Fragment>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     )}
                 </>
             )}

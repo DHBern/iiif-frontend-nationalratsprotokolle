@@ -1,5 +1,22 @@
+.aiiif-main {
+    max-width: 100%;
+}
+
+.row {
+    width: 100%;
+}
+
+.aiiif-timeline-years {
+    width: 100%;
+    margin: 65px 0 50px;
+}
+
 .aiii-timeline-results {
     border-bottom: 1px solid #dddddd;
+}
+
+.aiii-timeline-results-container {
+    overflow-x: auto;
 }
 
 .aiii-timeline-results > tbody > tr:nth-of-type(4n-3) {

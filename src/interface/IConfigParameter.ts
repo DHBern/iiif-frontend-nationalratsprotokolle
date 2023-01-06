@@ -13,5 +13,6 @@ export default interface IConfigParameter {
     allowedOrigins?: string | string[];
     overviewYearSliderDefaultRange?: number[];
     solrFieldConfig: ISolrRequest,
+    fuzzySearchDefault?: '0' | '1' | '2';
 }
 
