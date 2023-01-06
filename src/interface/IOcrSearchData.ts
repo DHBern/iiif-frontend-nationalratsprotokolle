@@ -5,6 +5,7 @@ export interface IHighlightInformation {
     lry: number,
     page: string,
     text: string,
+    parentRegionIdx: number,
 }
 
 export interface IHighlightDocument {
