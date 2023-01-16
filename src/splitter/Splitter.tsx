@@ -41,9 +41,9 @@ export default function Splitter(props: IProps) {
         if (size <= 0) {
             sizeP = 0;
         } else if (size >= 100) {
-            sizeP = 'calc(100% - 8px)';
+            sizeP = 'calc(100% - 0.4rem)';
         } else {
-            sizeP = 'calc(' + size.toString() + '% - 4px)';
+            sizeP = 'calc(' + size.toString() + '% - 0.2rem)';
         }
         if (props.direction === 'vertical') {
             return {minWidth: sizeP, maxWidth: sizeP};
@@ -56,11 +56,11 @@ export default function Splitter(props: IProps) {
 
         let sizeP;
         if (size <= 0) {
-            sizeP = 'calc(100% - 8px)';
+            sizeP = 'calc(100% - 0.4rem)';
         } else if (size >= 100) {
             sizeP = '0';
         } else {
-            sizeP = 'calc(' + (100-size).toString() + '% - 4px)';
+            sizeP = 'calc(' + (100-size).toString() + '% - 0.2rem)';
         }
         if (props.direction === 'vertical') {
             return {minWidth: sizeP, maxWidth: sizeP};
