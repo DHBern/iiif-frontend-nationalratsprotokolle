@@ -49,6 +49,7 @@ export default function LanguageSwitcher() {
             <LanguageIcon/>
             <Translation ns="common">{(t, { i18n }) => <p>{t('language')}</p>}</Translation>
         </div>
+        <h1>Hello world</h1>
         <Menu
             className="aiiif-language-switch-menu"
             anchorEl={anchorEl}
@@ -60,5 +61,3 @@ export default function LanguageSwitcher() {
         </Menu>
     </>;
 }
-
-
