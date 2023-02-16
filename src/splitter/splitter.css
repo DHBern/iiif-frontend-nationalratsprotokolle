@@ -6,11 +6,11 @@
 
 .aiiif-splitter-vertical > .aiiif-splitter {
     cursor: col-resize;
-    min-width: 8px;
+    min-width: 0.4rem;
 }
 
 .aiiif-splitter-horizontal > .aiiif-splitter {
-    min-height: 8px;
+    min-height: 0.4rem;
     cursor: row-resize;
 }
 
